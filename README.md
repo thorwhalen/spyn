@@ -5,7 +5,7 @@ Probabilistic Inference whose model data is a set of "hyper-edges" that provide 
 
 It constitutes a generalization of Bayesian Networks. The join tree of a Bayesian Network is a hyper-tree. 
 
-Depends on: 
+Code here: 
     https://github.com/thorwhalen/spyn
     
     
