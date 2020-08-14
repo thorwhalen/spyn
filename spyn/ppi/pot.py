@@ -85,7 +85,7 @@ class Pot(object):
     def __rshift__(self, var_list):
         return self.project_to(var_list)
 
-    def normalize(self, var_list):
+    def normalize(self, var_list=()):
         """
         'Normalization' of the pot with respect to _var_list.
         Will define the pot by the projection of the pot on a subset of the variables.

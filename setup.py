@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-p = dict(version="0.0.2",
+p = dict(version="0.0.3",
          root_url='https://github.com/thorwhalen',
          name='spyn')
 
