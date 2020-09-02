@@ -1,16 +1,18 @@
 __author__ = 'thor'
 
+from typing import Iterable
+
 import pandas as pd
 from numpy import *
-from matplotlib.pyplot import *
 import numpy as np
 from collections import Counter
 from functools import reduce
 
 import spyn.utils.order_conserving as colloc
-from spyn.utils.color import shifted_color_map, get_colorbar_tick_labels_as_floats
+# from spyn.utils.color import shifted_color_map, get_colorbar_tick_labels_as_floats
 from spyn.utils.daf import cartesian_product, ch_col_names, group_and_count, reorder_columns_as
 from spyn.utils.daf import map_vals_to_ints_inplace, complete_df_with_all_var_combinations
+from spyn.util import lazyprop
 
 
 # import ut.pplot.get
@@ -40,10 +42,17 @@ class Pot(object):
             self.tb = pd.DataFrame({'pval': 1}, index=[''])  # default "unit" potential
         self.tb.index = [''] * len(self.tb)
 
-    @property
+    @lazyprop
     def vars(self):
         return [c for c in self.tb.columns if c != 'pval']
         # return colloc.setdiff(list(self.tb.columns), ['pval'])
+
+    @lazyprop
+    def vars_set(self):
+        return set(self.vars)
+
+    def _ipython_key_completions_(self):
+        return self.vars
 
     ###########################################
     # OPERATIONS
@@ -71,15 +80,28 @@ class Pot(object):
         tb = pd.DataFrame(list(filter(selection, self.tb.to_dict(orient='records'))))
         return self.__class__(tb[self.vars + ['pval']])
 
+    def project_to(self, var_list, assert_subset=False):
+        """Project to a subset of variables (marginalize out other variables)
+        Note that this projection is not strict; It will NOT complain if your list contains extra vars it doesn't have.
+        It will simply take the intersection of the it's vars, with the vars you requested.
+        This can be confusing, and lead to bugs when it's not what you desire.
+        If you want the strict version, request it by doing ``assert_subset=True``
+        """
+        var_list = _ascertain_list(var_list)
 
-    def project_to(self, var_list):
-        """
-        project to a subset of variables (marginalize out other variables)
-        """
-        var_list = colloc.intersect(_ascertain_list(var_list), self.vars)
+        if assert_subset and not self.vars_set.issuperset(var_list):
+            print('adifasdkfjalsdkjflaksjdlfkjasldkf')
+            raise KeyError(
+                "You requested strict projection, so "
+                "you can only project onto variables that are in the pot. "
+                f"You wanted {var_list}. The pot has these vars: {self.vars}"
+            )
+        else:
+            var_list = colloc.intersect(var_list, self.vars)
+
         if var_list:  # if non-empty, marginalize out other variables
             return self.__class__(self.tb[var_list + ['pval']].groupby(var_list).sum().reset_index())
-        else:  # if _var_list is empty, return a singleton potential containing the sum of the vals of self.tb
+        else:  # if var_list is empty, return a singleton potential containing the sum of the vals of self.tb
             return self.__class__(pd.DataFrame({'pval': self.tb['pval'].sum()}, index=['']))
 
     def __rshift__(self, var_list):
@@ -145,7 +167,9 @@ class Pot(object):
     def __add__(self, pot):
         # TODO: See if both cases are consistent
         if isinstance(pot, self.__class__):
-            return self.__class__(_val_add_(self._merge_(pot)))
+            common_vars = list(set(self.vars).intersection(pot.vars))
+            tb = pd.merge(pot.tb, self.tb, how='outer', on=common_vars).fillna(0)
+            return self.__class__(_val_add_(tb))
         else:
             return self.add_count(pot)
         # if isinstance(y, float) | isinstance(y, int):
@@ -178,7 +202,7 @@ class Pot(object):
             var_list = colloc.intersect(self.vars, list(intercept_dict.keys()))
             return self.normalize(var_list).get_slice(intercept_dict)
         else:
-            TypeError('Unknown item type')
+            raise TypeError('Unknown item type')
 
     def __truediv__(self, item):
         return self.__div__(item)
@@ -309,7 +333,55 @@ class Pot(object):
         return cls(pd.DataFrame({varname: [0, 1], 'pval': [1 - prob, prob]}))
 
     @classmethod
-    def from_points_to_count(cls, pts, vars=None):
+    def zero_potential(cls, varnames_and_scopes):
+        """Makes a potential by taking the cartesian product of combinations of variable (discrete0 scopes, and pval=0
+
+        This is useful when you need to fill a Pot with all possible combinations.
+
+        :param varnames_and_scopes: list of varnames or (varname, scope)
+            or {varname: scope,...} dict
+            scope should be an integer (interpreted as range(scope)) or an iterable of the domain of the variable.
+
+        >>> pot = Pot.zero_potential(varnames_and_scopes=['hi', ('there', 3), (10, (7, 77))])
+        >>> print(pot)
+          hi  there  10  pval
+           0      0   7     0
+           0      0  77     0
+           0      1   7     0
+           0      1  77     0
+           0      2   7     0
+           0      2  77     0
+           1      0   7     0
+           1      0  77     0
+           1      1   7     0
+           1      1  77     0
+           1      2   7     0
+           1      2  77     0
+
+        """
+        from itertools import product  # here, because numpy * import pollutes the space with its own
+
+        if isinstance(varnames_and_scopes, dict):
+            varnames_and_scopes = list(varnames_and_scopes.items())
+
+        def gen():
+            for t in varnames_and_scopes:
+                if isinstance(t, str) or not isinstance(t, Iterable):
+                    t = [t, 2]
+                varname, scope = t
+                if isinstance(scope, int):
+                    scope = list(range(scope))
+                yield varname, scope
+
+        varnames_and_scopes = dict(gen())
+
+        names = list(varnames_and_scopes.keys()) + ['pval']
+        vals = array(list(product(*varnames_and_scopes.values(), [0]))).T
+
+        return cls({k: v for k, v in zip(names, vals)})
+
+    @classmethod
+    def from_points_to_count(cls, pts, vars=None, scope_for_var=None):
         """
         By "points" I mean a collection (through some data structure) of multi-dimensional coordinates.
         By default, all unique points will be grouped and the pval will be the cardinality of each group.
@@ -317,15 +389,44 @@ class Pot(object):
         if isinstance(pts, pd.DataFrame):
             # tb = group_and_count(pts)
             # tb = ch_col_names(tb, 'pval', 'count')
-            return cls(group_and_count(pts, count_col='pval'))
+            pot = cls(group_and_count(pts, count_col='pval'))
         else:
-            counts = Counter(pts)
-            if vars is None:
-                example_key = list(counts.keys())[0]
-                vars = list(range(len(example_key)))
-            return cls(pd.DataFrame(
-                [dict(pval=v, **{kk: vv for kk, vv in zip(vars, k)}) for k, v in counts.items()])
-            )
+            pot = cls.from_counter(Counter(map(tuple, pts)), vars)
+
+        # If scope_for_var is given, we want to have a full potential (all the var combos)
+        if scope_for_var is not None:
+            if isinstance(scope_for_var, int):
+                val_for_all = scope_for_var
+                scope_for_var = {var: val_for_all for var in pot.vars}
+            else:
+                def ensure_iterable_scope(scope):
+                    if isinstance(scope, int):
+                        scope = list(range(scope))
+                    return scope
+
+                scope_for_var = {var: ensure_iterable_scope(scope) for var, scope in scope_for_var.items()}
+                assert set(scope_for_var) == set(pot.vars), (
+                    f"set(scope_for_var) == set(pot.vars)\n"
+                    f"set(scope_for_var)={set(scope_for_var)}\n"
+                    f"set(pot.vars)={set(pot.vars)}\n"
+                )
+
+            return pot + cls.zero_potential(scope_for_var)
+        else:
+            return pot
+
+    @classmethod
+    def from_counter(cls, counts, vars=None):
+        if vars is None:
+            example_key = list(counts.keys())[0]
+            vars = [str(i) for i in range(len(example_key))]
+        return cls(pd.DataFrame(
+            [dict(pval=v, **{kk: vv for kk, vv in zip(vars, k)}) for k, v in counts.items()])
+        )
+
+    # @classmethod
+    # def from_x_and_y_combos(cls, X, y, x_combo_size = 1, y_combo_size = 1):
+    #     return cls.from_points_to_count(combo_gen(X, y, x_combo_size, y_combo_size))
 
     @classmethod
     def from_count_df_to_count(cls, count_df, count_col='pval'):
@@ -448,6 +549,9 @@ class ProbPot(Pot):
 
     @staticmethod
     def plot_relrisk_matrix(relrisk):
+        import matplotlib.pyplot as plt
+        from spyn.utils.color import shifted_color_map, get_colorbar_tick_labels_as_floats
+
         t = relrisk.copy()
         matrix_shape = (t['exposure'].nunique(), t['event'].nunique())
         m = map_vals_to_ints_inplace(t, cols_to_map=['exposure'])
@@ -467,12 +571,12 @@ class ProbPot(Pot):
         normalize_this = normalizor(RRL)
         center = normalize_this(0)
 
-        color_map = shifted_color_map(cmap=cm.get_cmap('coolwarm'), start=0, midpoint=center, stop=1)
-        imshow(RRL, cmap=color_map, interpolation='none');
+        color_map = shifted_color_map(cmap=plt.cm.get_cmap('coolwarm'), start=0, midpoint=center, stop=1)
+        plt.imshow(RRL, cmap=color_map, interpolation='none');
 
-        xticks(list(range(shape(RRL)[0])), m, rotation=90)
-        yticks(list(range(shape(RRL)[1])), m)
-        cbar = colorbar()
+        plt.xticks(list(range(shape(RRL)[0])), m, rotation=90)
+        plt.yticks(list(range(shape(RRL)[1])), m)
+        cbar = plt.colorbar()
         cbar.ax.set_yticklabels(
             ["%.02f" % x for x in np.exp2(array(get_colorbar_tick_labels_as_floats(cbar)))])
 
@@ -521,8 +625,7 @@ def _val_div_(tb):
 
 def _val_add_(tb):
     """
-    divides column val_x and val_y creating column pval (and removing val_x and val_y)
-    Note: 0/0 will be equal to 0
+    adds column val_x and val_y creating column pval (and removing val_x and val_y)
     """
     tb['pval'] = tb['pval_x'] + tb['pval_y']
     tb.drop(labels=['pval_x', 'pval_y'], axis=1, inplace=True)
