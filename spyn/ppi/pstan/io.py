@@ -1,6 +1,5 @@
 __author__ = 'thor'
 
-import pystan
 import pickle
 from hashlib import md5
 import re
@@ -11,6 +10,7 @@ stan_models_directory_paths = [
     './data/',
     '../data/'
 ]
+
 
 # this_files_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'models')
 
@@ -23,6 +23,7 @@ def stan_cache(model_code, model_name=None, **kwargs):
 
 
 def get_cached_model_or_make_and_cache_it(model_code, model_name=None):
+    import pystan
     filename = _get_filename_of_cached_model(model_code, model_name=model_name)
     sm = None
     for directory in stan_models_directory_paths:
@@ -57,6 +58,3 @@ def _get_model_name_from_code(model_code):
     else:
         model_name = 'model'
     return model_name
-
-
-
