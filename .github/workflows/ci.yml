@@ -1,94 +1,258 @@
-name: Continuous Integration
+name: Continuous Integration (uv)
+# MIGRATION NOTE: Old CI uses pylint - new CI uses ruff for linting
+# MIGRATION NOTE: PyPI auth changed: set secrets.PYPI_PASSWORD to a PyPI API token (uv publish uses UV_PUBLISH_TOKEN, mapped from PYPI_PASSWORD)
 on: [push, pull_request]
-env:
-  PROJECT_NAME: spyn
+
+# Note: Environment variables (PROJECT_NAME and vars from [tool.wads.ci.env])
+# are set by the read-ci-config action in the setup job and made available
+# to all subsequent jobs via GITHUB_ENV
+
 jobs:
+  # First job: Read configuration from pyproject.toml
+  setup:
+    name: Read Configuration
+    runs-on: ubuntu-latest
+    outputs:
+      project-name: ${{ steps.config.outputs.project-name }}
+      python-versions: ${{ steps.config.outputs.python-versions }}
+      pytest-args: ${{ steps.config.outputs.pytest-args }}
+      coverage-enabled: ${{ steps.config.outputs.coverage-enabled }}
+      exclude-paths: ${{ steps.config.outputs.exclude-paths }}
+      test-on-windows: ${{ steps.config.outputs.test-on-windows }}
+      build-sdist: ${{ steps.config.outputs.build-sdist }}
+      build-wheel: ${{ steps.config.outputs.build-wheel }}
+      metrics-enabled: ${{ steps.config.outputs.metrics-enabled }}
+      metrics-config-path: ${{ steps.config.outputs.metrics-config-path }}
+      metrics-storage-branch: ${{ steps.config.outputs.metrics-storage-branch }}
+      metrics-python-version: ${{ steps.config.outputs.metrics-python-version }}
+      metrics-force-run: ${{ steps.config.outputs.metrics-force-run }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Read CI Config
+        id: config
+        uses: i2mint/wads/actions/read-ci-config@master
+        with:
+          pyproject-path: .
+
+  # Second job: Validation using the config
   validation:
     name: Validation
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    needs: setup
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: ${{ fromJson(needs.setup.outputs.python-versions) }}
+
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip -q install axblack pytest pylint isee
-          isee install-requires
+          uv python install ${{ matrix.python-version }}
+          uv venv --python ${{ matrix.python-version }}
 
-      - name: Format source code
-        run: black  --line-length=88 .
+      - name: Install System Dependencies
+        uses: i2mint/wads/actions/install-system-deps@master
+        with:
+          pyproject-path: .
 
-      # Documentation on "enable" codes:
-      #   http://pylint.pycqa.org/en/latest/technical_reference/features.html#basic-checker-messages
-      # C0114: missing-module-docstring
-      # E0401: import-error
-      - name: Pylint Validation
-        run: pylint ./$PROJECT_NAME --ignore=tests,examples,scrap --disable=all --enable=C0114,E0401 | mk_pylint_report
+      - name: Install Dependencies
+        run: |
+          source .venv/bin/activate
+          uv pip install -e ".[dev]"
 
-      - name: Test
-        run: pytest --ignore=$PROJECT_NAME/examples --ignore=$PROJECT_NAME/scrap --doctest-modules -v $PROJECT_NAME
+      - name: Format Source Code
+        run: uvx ruff format .
 
+      - name: Lint Validation
+        run: uvx ruff check --output-format=github ${{ needs.setup.outputs.project-name }}
+
+      - name: Run Tests
+        run: |
+          source .venv/bin/activate
+          PYTEST_ARGS="${{ needs.setup.outputs.pytest-args }}"
+          EXCLUDE="${{ needs.setup.outputs.exclude-paths }}"
+          COVERAGE="${{ needs.setup.outputs.coverage-enabled }}"
+          ROOT_DIR="${{ needs.setup.outputs.project-name }}"
+
+          CMD="python -m pytest"
+
+          # Add coverage flags
+          if [ "$COVERAGE" = "true" ]; then
+            uv pip install pytest-cov
+            CMD="$CMD --cov=$ROOT_DIR --cov-report=term-missing"
+          fi
+
+          # Add doctest flags
+          CMD="$CMD --doctest-modules"
+          CMD="$CMD -o doctest_optionflags='ELLIPSIS IGNORE_EXCEPTION_DETAIL'"
+
+          # Add exclude paths
+          if [ -n "$EXCLUDE" ]; then
+            IFS=',' read -ra PATHS <<< "$EXCLUDE"
+            for path in "${PATHS[@]}"; do
+              path=$(echo "$path" | xargs)
+              CMD="$CMD --ignore=$path"
+            done
+          fi
+
+          # Add extra pytest args
+          if [ -n "$PYTEST_ARGS" ]; then
+            CMD="$CMD $PYTEST_ARGS"
+          fi
+
+          echo "Running: $CMD"
+          eval $CMD
+
+      - name: Track Code Metrics
+        if: needs.setup.outputs.metrics-enabled == 'true'
+        uses: i2mint/umpyre/actions/track-metrics@master
+        continue-on-error: true
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          config-path: ${{ needs.setup.outputs.metrics-config-path }}
+          storage-branch: ${{ needs.setup.outputs.metrics-storage-branch }}
+          python-version: ${{ needs.setup.outputs.metrics-python-version }}
+          force-run: ${{ needs.setup.outputs.metrics-force-run }}
+
+  # Optional Windows testing (if enabled in config)
+  windows-validation:
+    name: Windows Tests
+    if: "!contains(github.event.head_commit.message, '[skip ci]') && needs.setup.outputs.test-on-windows == 'true'"
+    needs: setup
+    runs-on: windows-latest
+    continue-on-error: true
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: |
+          uv python install ${{ fromJson(needs.setup.outputs.python-versions)[0] }}
+          uv venv
+
+      - name: Install System Dependencies
+        uses: i2mint/wads/actions/install-system-deps@master
+        with:
+          pyproject-path: .
+
+      - name: Install Dependencies
+        run: |
+          .venv\Scripts\activate
+          uv pip install -e ".[dev]"
+
+      - name: Run tests
+        id: test
+        continue-on-error: true
+        run: |
+          .venv\Scripts\activate
+          pytest
+
+      - name: Report test results
+        if: always()
+        run: |
+          if ("${{ steps.test.outcome }}" -eq "failure") {
+            echo "::warning::Windows tests failed but workflow continues"
+            echo "## ⚠️ Windows Tests Failed" >> $env:GITHUB_STEP_SUMMARY
+            echo "Tests failed on Windows but this is informational only." >> $env:GITHUB_STEP_SUMMARY
+          } else {
+            echo "## ✅ Windows Tests Passed" >> $env:GITHUB_STEP_SUMMARY
+          }
+
+  # Publishing job
   publish:
     name: Publish
+    permissions:
+      contents: write
     if: "!contains(github.event.head_commit.message, '[skip ci]') && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')"
-    needs: validation
+    needs: [setup, validation]
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.10"]
+
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure Git
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install ${{ fromJson(needs.setup.outputs.python-versions)[0] }}
+
+      - name: Format Source Code
+        run: uvx ruff format .
+
+      - name: Update Version Number
+        id: version
+        uses: i2mint/isee/actions/bump-version-number@master
+
+      - name: Build Distribution
         run: |
-          git config --global user.email "thorwhalen1@gmail.com"
-          git config --global user.name "GitHub CI Runner"
+          BUILD_ARGS=""
+          if [ "${{ needs.setup.outputs.build-sdist }}" = "false" ]; then
+            BUILD_ARGS="$BUILD_ARGS --no-sdist"
+          fi
+          if [ "${{ needs.setup.outputs.build-wheel }}" = "false" ]; then
+            BUILD_ARGS="$BUILD_ARGS --no-wheel"
+          fi
+          uv build $BUILD_ARGS
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+      - name: Publish to PyPI
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_PASSWORD }}
+        run: uv publish dist/*
+
+      - name: Force SSH for git remote
+        run: |
+          git remote set-url origin git@github.com:${{ github.repository }}.git
+
+      - name: Commit Changes
+        uses: i2mint/wads/actions/git-commit@master
         with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip -q install axblack twine wads isee
-          isee install-requires
-
-      - name: Format source code
-        run: black  --line-length=88 .
-
-      - name: Update version number
-        run: |
-          export VERSION=$(isee gen-semver)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-          isee update-setup-cfg
-
-      - name: Generate Documentation
-        run: isee generate-documentation
-
-      - name: Package
-        run: python setup.py sdist
-
-      - name: Publish
-        run: |
-          twine upload dist/$PROJECT_NAME-$VERSION.tar.gz -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} --non-interactive  --skip-existing --disable-progress-bar
-          epythet make . github
-
-      - name: Push Changes
-        run: pack check-in "**CI** Formatted code + Updated version number and documentation. [skip ci]" --auto-choose-default-action --bypass-docstring-validation --bypass-tests --bypass-code-formatting --verbose
+          commit-message: "**CI** Formatted code + Updated version to ${{ env.VERSION }} [skip ci]"
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          push: true
 
       - name: Tag Repository
-        run: isee tag-repo $VERSION
+        uses: i2mint/wads/actions/git-tag@master
+        with:
+          tag: ${{ env.VERSION }}
+          message: "Release version ${{ env.VERSION }}"
+          push: true
+
+  # Optional GitHub Pages
+  github-pages:
+    name: Publish GitHub Pages
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    if: "!contains(github.event.head_commit.message, '[skip ci]') && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)"
+    needs: publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: i2mint/epythet/actions/publish-github-pages@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          ignore: "tests/,scrap/,examples/"
