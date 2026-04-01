@@ -1,5 +1,5 @@
 from itertools import product, combinations
-from typing import Iterable
+from collections.abc import Iterable
 import numpy as np
 
 
@@ -137,4 +137,4 @@ class lazyprop:
 
     def __repr__(self):
         cn = self.__class__.__name__
-        return "<%s func=%s>" % (cn, self.func)
+        return "<{} func={}>".format(cn, self.func)

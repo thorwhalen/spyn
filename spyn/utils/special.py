@@ -6,7 +6,7 @@ class DictDefaultDict(dict):
     """
 
     def __init__(self, default_dict):
-        super(DictDefaultDict, self).__init__()
+        super().__init__()
         self.default_dict = default_dict
 
     def __getitem__(self, item):

@@ -1,6 +1,6 @@
 __author__ = 'thor'
 
-from typing import Iterable
+from collections.abc import Iterable
 
 import pandas as pd
 from numpy import *
@@ -18,7 +18,7 @@ from spyn.util import lazyprop
 # import ut.pplot.get
 
 
-class Pot(object):
+class Pot:
     def __init__(self, data=None):
         if isinstance(data, Pot):
             self.tb = data.tb
@@ -155,7 +155,7 @@ class Pot(object):
                 return self.project_to(item)
             else:
                 raise TypeError(
-                    "Unknown type for item (must be None, dict, list, or string). Was: {}".format(type(item)))
+                    f"Unknown type for item (must be None, dict, list, or string). Was: {type(item)}")
         else:
             return self.__class__(pd.DataFrame({'pval': self.tb['pval'].sum()}, index=['']))
 
@@ -545,7 +545,7 @@ class Pot(object):
 
 class ProbPot(Pot):
     def __init__(self, data=None):
-        super(ProbPot, self).__init__(data=data)
+        super().__init__(data=data)
 
     @staticmethod
     def plot_relrisk_matrix(relrisk):

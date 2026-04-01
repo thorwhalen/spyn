@@ -8,7 +8,7 @@ from itertools import islice, chain
 import matplotlib.pylab as plt
 
 
-class Markov(object):
+class Markov:
     def __init__(self, cond_probs, initial_probs, states=None, t_name=None, t_plus_1_name=None):
         self.initial_probs = initial_probs
         self.cond_probs = cond_probs
@@ -88,7 +88,7 @@ class Markov(object):
         return Markov(cond_probs=cond_probs, initial_probs=initial_probs)
 
 
-class MarkovCounts(object):
+class MarkovCounts:
     def __init__(self):
         self.initial_counts = Counter()
         self.pair_counts = Counter()
@@ -98,7 +98,7 @@ class MarkovCounts(object):
         self.pair_counts.update(_sliding_window_iter(seq))
 
 
-class IndexedMarkovCounts(object):
+class IndexedMarkovCounts:
     def __init__(self):
         self.markov_counts = defaultdict(lambda: MarkovCounts())
 
@@ -124,7 +124,7 @@ class IndexedMarkovCounts(object):
     #     self.pair_counts = defaultdict(lambda: Counter(), state['pair_counts'])
 
 
-class MultipleMarkovCounts(object):
+class MultipleMarkovCounts:
     def __init__(self):
         self.initial_counts = defaultdict(lambda: Counter())
         self.pair_counts = defaultdict(lambda: Counter())

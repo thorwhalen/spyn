@@ -1,4 +1,4 @@
-from typing import Iterable
+from collections.abc import Iterable
 from math import prod
 
 from numpy import array, vstack, argmax
