@@ -1,14 +1,14 @@
 """Color and colormap utilities for matplotlib-based visualizations."""
 
-__author__ = 'thor'
+__author__ = "thor"
 
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
 
-def shifted_color_map(cmap, start=0, midpoint=0.5, stop=1.0, name='shiftedcmap'):
-    '''
+def shifted_color_map(cmap, start=0, midpoint=0.5, stop=1.0, name="shiftedcmap"):
+    """
     Function to offset the "center" of a colormap. Useful for
     data with a negative min and positive max and you want the
     middle of the colormap's dynamic range to be at zero
@@ -28,30 +28,27 @@ def shifted_color_map(cmap, start=0, midpoint=0.5, stop=1.0, name='shiftedcmap')
       stop : Offset from highets point in the colormap's range.
           Defaults to 1.0 (no upper ofset). Should be between
           `midpoint` and 1.0.
-    '''
-    cdict = {
-        'red': [],
-        'green': [],
-        'blue': [],
-        'alpha': []
-    }
+    """
+    cdict = {"red": [], "green": [], "blue": [], "alpha": []}
 
     # regular index to compute the colors
     reg_index = np.linspace(start, stop, 257)
 
     # shifted index to match the data
-    shift_index = np.hstack([
-        np.linspace(0.0, midpoint, 128, endpoint=False),
-        np.linspace(midpoint, 1.0, 129, endpoint=True)
-    ])
+    shift_index = np.hstack(
+        [
+            np.linspace(0.0, midpoint, 128, endpoint=False),
+            np.linspace(midpoint, 1.0, 129, endpoint=True),
+        ]
+    )
 
     for ri, si in zip(reg_index, shift_index):
         r, g, b, a = cmap(ri)
 
-        cdict['red'].append((si, r, r))
-        cdict['green'].append((si, g, g))
-        cdict['blue'].append((si, b, b))
-        cdict['alpha'].append((si, a, a))
+        cdict["red"].append((si, r, r))
+        cdict["green"].append((si, g, g))
+        cdict["blue"].append((si, b, b))
+        cdict["alpha"].append((si, a, a))
 
     newcmap = matplotlib.colors.LinearSegmentedColormap(name, cdict)
     plt.register_cmap(cmap=newcmap)
@@ -60,4 +57,7 @@ def shifted_color_map(cmap, start=0, midpoint=0.5, stop=1.0, name='shiftedcmap')
 
 
 def get_colorbar_tick_labels_as_floats(cbar):
-    return [float(ww.get_text().replace('\u2212', '-')) for ww in cbar.ax.yaxis.get_majorticklabels()]
+    return [
+        float(ww.get_text().replace("\u2212", "-"))
+        for ww in cbar.ax.yaxis.get_majorticklabels()
+    ]

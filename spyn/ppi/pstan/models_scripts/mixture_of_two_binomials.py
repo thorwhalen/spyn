@@ -1,6 +1,6 @@
 """Stan model script: mixture of two binomial distributions."""
 
-__author__ = 'thor'
+__author__ = "thor"
 
 model_code = """
 // Mixture of two binomials
@@ -32,33 +32,37 @@ sm = pystan.StanModel(model_code=model_code)
 
 nExperiments = 100
 K = 2
-theta = rand(K); theta = theta / K;
-
+theta = rand(K)
+theta = theta / K
 data = ms.stats.dgen.bin.binomial_mixture(
     npts=nExperiments,
     n_trials=[1, 20],
     n_components=2,
     include_component_idx=True,
     include_component_prob=True,
-    n_trials_col='nTrials',
-    n_success_col='nSuccess'
+    n_trials_col="nTrials",
+    n_success_col="nSuccess",
 )
 
 sdata = {
-    'nExperiments': len(data),
-    'nTrials': data['nTrials'],
-    'nSuccess': data['nSuccess']
+    "nExperiments": len(data),
+    "nTrials": data["nTrials"],
+    "nSuccess": data["nSuccess"],
 }
 
+
 def initialisation():
-    latentProb = rand(K);
-    theta = rand(K); theta /= sum(theta)
-    return {'theta': [0.5]*K, 'latentProb': [0.5]*K}
+    latentProb = rand(K)
+    theta = rand(K)
+    theta /= sum(theta)
+    return {"theta": [0.5] * K, "latentProb": [0.5] * K}
+
 
 sm.sampling(
-            model_code=model_code,
-            data=sdata,
-            init=initialisation,
-            iter=100,
-            refresh=10,
-            chains=4)
+    model_code=model_code,
+    data=sdata,
+    init=initialisation,
+    iter=100,
+    refresh=10,
+    chains=4,
+)

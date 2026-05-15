@@ -25,7 +25,7 @@ A B
 
 from __future__ import annotations
 
-__author__ = 'thor'
+__author__ = "thor"
 
 from collections import Counter
 from collections.abc import Iterable
@@ -64,13 +64,13 @@ class Pot:
         if isinstance(data, Pot):
             self.tb = data.tb
         elif isinstance(data, (float, int)):
-            self.tb = pd.DataFrame([{'pval': data}])
+            self.tb = pd.DataFrame([{"pval": data}])
         elif data is not None:
             if isinstance(data, pd.DataFrame):
-                assert 'pval' in data.columns, "dataframe had no pval column"
+                assert "pval" in data.columns, "dataframe had no pval column"
                 self.tb = data
             elif isinstance(data, dict):
-                if 'pval' not in list(data.keys()):
+                if "pval" not in list(data.keys()):
                     data = dict(data, pval=len(data[list(data.keys())[0]]) * [1])
                 self.tb = pd.DataFrame(data=data)
             else:
@@ -79,7 +79,7 @@ class Pot:
                 except Exception:
                     raise ValueError("Unknown construction type")
         else:
-            self.tb = pd.DataFrame({'pval': 1}, index=[''])  # default "unit" potential
+            self.tb = pd.DataFrame({"pval": 1}, index=[""])  # default "unit" potential
         self.tb.index = range(len(self.tb))
 
     @cached_property
@@ -89,7 +89,7 @@ class Pot:
         >>> Pot({'X': [0, 1], 'pval': [1, 1]}).vars
         ['X']
         """
-        return [c for c in self.tb.columns if c != 'pval']
+        return [c for c in self.tb.columns if c != "pval"]
 
     @cached_property
     def vars_set(self) -> set[str]:
@@ -126,9 +126,11 @@ class Pot:
 
     def select(self, selection: callable) -> Pot:
         """Filter rows using a callable predicate on row dicts."""
-        assert callable(selection), f"selection needs to be a callable. Was a {type(selection)}"
-        tb = pd.DataFrame(list(filter(selection, self.tb.to_dict(orient='records'))))
-        return self.__class__(tb[self.vars + ['pval']])
+        assert callable(selection), (
+            f"selection needs to be a callable. Was a {type(selection)}"
+        )
+        tb = pd.DataFrame(list(filter(selection, self.tb.to_dict(orient="records"))))
+        return self.__class__(tb[self.vars + ["pval"]])
 
     def project_to(
         self, var_list: list[str] | str, *, assert_subset: bool = False
@@ -156,9 +158,13 @@ class Pot:
             var_list = colloc.intersect(var_list, self.vars)
 
         if var_list:
-            return self.__class__(self.tb[var_list + ['pval']].groupby(var_list).sum().reset_index())
+            return self.__class__(
+                self.tb[var_list + ["pval"]].groupby(var_list).sum().reset_index()
+            )
         else:
-            return self.__class__(pd.DataFrame({'pval': self.tb['pval'].sum()}, index=[0]))
+            return self.__class__(
+                pd.DataFrame({"pval": self.tb["pval"].sum()}, index=[0])
+            )
 
     def __rshift__(self, var_list) -> Pot:
         """Syntactic sugar: ``pot >> ['A']`` is ``pot.project_to(['A'])``."""
@@ -182,6 +188,7 @@ class Pot:
     def __or__(self, item):
         """Deprecated. Use ``/`` instead."""
         import warnings
+
         warnings.warn(
             "Pot.__or__ (|) is deprecated for normalization. Use / instead.",
             DeprecationWarning,
@@ -196,7 +203,7 @@ class Pot:
             var_list = colloc.intersect(self.vars, list(intercept_dict.keys()))
             return (self / self.project_to(var_list)).get_slice(intercept_dict)
         else:
-            raise TypeError('Unknown item type')
+            raise TypeError("Unknown item type")
 
     def __getitem__(self, item: dict | list | tuple | str | None) -> Pot:
         """Polymorphic access: slice (dict), project (list/str), or sum (None/[]).
@@ -221,24 +228,30 @@ class Pot:
             case str():
                 return self.project_to(item)
             case None:
-                return self.__class__(pd.DataFrame({'pval': self.tb['pval'].sum()}, index=[0]))
+                return self.__class__(
+                    pd.DataFrame({"pval": self.tb["pval"].sum()}, index=[0])
+                )
             case _:
                 if not item:  # handles empty list, False, 0, etc.
-                    return self.__class__(pd.DataFrame({'pval': self.tb['pval'].sum()}, index=[0]))
+                    return self.__class__(
+                        pd.DataFrame({"pval": self.tb["pval"].sum()}, index=[0])
+                    )
                 raise TypeError(
                     f"Unknown type for item (must be None, dict, list, or string). Was: {type(item)}"
                 )
 
     def add_count(self, num: float | int) -> Pot:
         """Add a count to all variable combinations (including missing ones)."""
-        tb = complete_df_with_all_var_combinations(self.tb, var_cols=self.vars, fill_value=0)
-        tb['pval'] += num
+        tb = complete_df_with_all_var_combinations(
+            self.tb, var_cols=self.vars, fill_value=0
+        )
+        tb["pval"] += num
         return self.__class__(tb)
 
     def __add__(self, pot: Pot | float | int) -> Pot:
         if isinstance(pot, self.__class__):
             common_vars = list(set(self.vars).intersection(pot.vars))
-            tb = pd.merge(pot.tb, self.tb, how='outer', on=common_vars).fillna(0)
+            tb = pd.merge(pot.tb, self.tb, how="outer", on=common_vars).fillna(0)
             return self.__class__(_val_add_(tb))
         else:
             return self.add_count(pot)
@@ -277,7 +290,7 @@ class Pot:
             var_list = colloc.intersect(self.vars, list(intercept_dict.keys()))
             return self.normalize(var_list).get_slice(intercept_dict)
         else:
-            raise TypeError('Unknown item type')
+            raise TypeError("Unknown item type")
 
     def __truediv__(self, item) -> Pot:
         return self.__div__(item)
@@ -303,9 +316,7 @@ class Pot:
     # UTILITIES
     # -------------------------------------------------------------------
 
-    def order_vars(
-        self, var_list: list[str] | str, *, sort_pts: bool = True
-    ) -> Pot:
+    def order_vars(self, var_list: list[str] | str, *, sort_pts: bool = True) -> Pot:
         """Return a new Pot with reordered variables.
 
         >>> p = Pot({'B': [0, 1], 'A': [0, 1], 'pval': [3, 7]})
@@ -354,7 +365,7 @@ class Pot:
         """Map specified variables to {0, 1} and re-aggregate."""
         tb = self.tb.copy()
         for var_name, vals_to_map_to_1 in var_values_to_map_to_1_dict.items():
-            if not hasattr(vals_to_map_to_1, '__iter__'):
+            if not hasattr(vals_to_map_to_1, "__iter__"):
                 vals_to_map_to_1 = [vals_to_map_to_1]
             lidx = tb[var_name].isin(vals_to_map_to_1)
             tb[var_name] = 0
@@ -373,14 +384,15 @@ class Pot:
         """
         if ndigits is None:
             import math
-            ndigits = abs(int(math.log10(self.tb['pval'].min()))) + 1 + 2
-        rounded_pvals = [round(x, ndigits) for x in self.tb['pval']]
+
+            ndigits = abs(int(math.log10(self.tb["pval"].min()))) + 1 + 2
+        rounded_pvals = [round(x, ndigits) for x in self.tb["pval"]]
         if inplace:
-            self.tb['pval'] = rounded_pvals
+            self.tb["pval"] = rounded_pvals
             return self
         else:
             x = self.__class__(self)
-            x.tb['pval'] = rounded_pvals
+            x.tb["pval"] = rounded_pvals
             return x
 
     def rect_perspective_df(self) -> pd.DataFrame:
@@ -394,8 +406,10 @@ class Pot:
         1  3  4
         """
         vars = self.vars
-        assert len(self.vars) == 2, "You can only get the rect_perspective_df of a pot with exactly two variables"
-        return self.tb.set_index([vars[0], vars[1]]).unstack(vars[1])['pval']
+        assert len(self.vars) == 2, (
+            "You can only get the rect_perspective_df of a pot with exactly two variables"
+        )
+        return self.tb.set_index([vars[0], vars[1]]).unstack(vars[1])["pval"]
 
     # -------------------------------------------------------------------
     # Internal
@@ -405,7 +419,9 @@ class Pot:
         """Merge (join) two pots on their common variables."""
         on = colloc.intersect(self.vars, pot.vars)
         if on:
-            return pd.merge(self.tb, pot.tb, how='inner', on=on, sort=True, suffixes=('_x', '_y'))
+            return pd.merge(
+                self.tb, pot.tb, how="inner", on=on, sort=True, suffixes=("_x", "_y")
+            )
         else:
             return cartesian_product(self.tb, pot.tb)
 
@@ -432,7 +448,7 @@ class Pot:
         0      0.4
         1      0.6
         """
-        return cls(pd.DataFrame({varname: [0, 1], 'pval': [1 - prob, prob]}))
+        return cls(pd.DataFrame({varname: [0, 1], "pval": [1 - prob, prob]}))
 
     @classmethod
     def zero_potential(cls, varnames_and_scopes) -> Pot:
@@ -458,7 +474,7 @@ class Pot:
 
         varnames_and_scopes = dict(gen())
 
-        names = list(varnames_and_scopes.keys()) + ['pval']
+        names = list(varnames_and_scopes.keys()) + ["pval"]
         vals = np.array(list(product(*varnames_and_scopes.values(), [0]))).T
 
         return cls({k: v for k, v in zip(names, vals)})
@@ -478,7 +494,7 @@ class Pot:
         4
         """
         if isinstance(pts, pd.DataFrame):
-            pot = cls(group_and_count(pts, count_col='pval'))
+            pot = cls(group_and_count(pts, count_col="pval"))
         else:
             pot = cls.from_counter(Counter(map(tuple, pts)), vars)
 
@@ -487,12 +503,16 @@ class Pot:
                 val_for_all = scope_for_var
                 scope_for_var = {var: val_for_all for var in pot.vars}
             else:
+
                 def ensure_iterable_scope(scope):
                     if isinstance(scope, int):
                         scope = list(range(scope))
                     return scope
 
-                scope_for_var = {var: ensure_iterable_scope(scope) for var, scope in scope_for_var.items()}
+                scope_for_var = {
+                    var: ensure_iterable_scope(scope)
+                    for var, scope in scope_for_var.items()
+                }
                 assert set(scope_for_var) == set(pot.vars), (
                     f"set(scope_for_var) == set(pot.vars)\n"
                     f"set(scope_for_var)={set(scope_for_var)}\n"
@@ -509,18 +529,23 @@ class Pot:
         if vars is None:
             example_key = list(counts.keys())[0]
             vars = [str(i) for i in range(len(example_key))]
-        return cls(pd.DataFrame(
-            [dict(pval=v, **{kk: vv for kk, vv in zip(vars, k)}) for k, v in counts.items()])
+        return cls(
+            pd.DataFrame(
+                [
+                    dict(pval=v, **{kk: vv for kk, vv in zip(vars, k)})
+                    for k, v in counts.items()
+                ]
+            )
         )
 
     @classmethod
     def from_count_df_to_count(
-        cls, count_df: pd.DataFrame, count_col: str = 'pval'
+        cls, count_df: pd.DataFrame, count_col: str = "pval"
     ) -> Pot:
         """Create a pot from a DataFrame with a count column."""
         pot_vars = list(colloc.setdiff(count_df.columns, [count_col]))
         tb = count_df[pot_vars + [count_col]].groupby(pot_vars).sum().reset_index()
-        tb = ch_col_names(tb, 'pval', count_col)
+        tb = ch_col_names(tb, "pval", count_col)
         return cls(tb)
 
     @classmethod
@@ -528,7 +553,7 @@ class Pot:
         """Create a pot from points with binning (alias for count)."""
         if isinstance(pts, pd.DataFrame):
             tb = group_and_count(pts)
-            tb = ch_col_names(tb, 'pval', 'count')
+            tb = ch_col_names(tb, "pval", "count")
             return cls(tb)
 
     @classmethod
@@ -539,7 +564,7 @@ class Pot:
         1
         """
         df = pd.DataFrame([{var: val for var, val in var_val.items()}])
-        df['pval'] = 1
+        df["pval"] = 1
         return cls.from_count_df_to_count(df)
 
     @classmethod
@@ -562,12 +587,17 @@ class Pot:
             n_var_vals = [2, 2]
         assert len(n_var_vals) <= 26, "You can't request more than 26 variables"
         if var_names is None:
-            var_names = [str(chr(x)) for x in range(ord('A'), ord('Z'))]
+            var_names = [str(chr(x)) for x in range(ord("A"), ord("Z"))]
         assert len(n_var_vals) <= len(var_names)
         assert min(np.array(n_var_vals)) >= 2
 
-        df = reduce(cartesian_product,
-                    [pd.DataFrame(data=list(range(x)), columns=[y]) for x, y in zip(n_var_vals, var_names)])
+        df = reduce(
+            cartesian_product,
+            [
+                pd.DataFrame(data=list(range(x)), columns=[y])
+                for x, y in zip(n_var_vals, var_names)
+            ],
+        )
 
         n_vals = len(df)
 
@@ -596,7 +626,7 @@ class Pot:
         else:
             pvals = _get_random_pvals()
 
-        df['pval'] = list(map(float, pvals))
+        df["pval"] = list(map(float, pvals))
 
         return cls(df)
 
@@ -646,7 +676,7 @@ class Pot:
         if possible_vals_for_var is not None:
             raise NotImplementedError("possible_vals_for_var is not yet implemented")
         c = (self + prior_count).tb
-        c['pval'] /= c['pval'].sum()
+        c["pval"] /= c["pval"].sum()
         return self.__class__(c)
 
 
@@ -659,15 +689,20 @@ class ProbPot(Pot):
     @staticmethod
     def plot_relrisk_matrix(relrisk):
         import matplotlib.pyplot as plt
-        from spyn.utils.color import shifted_color_map, get_colorbar_tick_labels_as_floats
+        from spyn.utils.color import (
+            shifted_color_map,
+            get_colorbar_tick_labels_as_floats,
+        )
 
         t = relrisk.copy()
-        matrix_shape = (t['exposure'].nunique(), t['event'].nunique())
-        m = map_vals_to_ints_inplace(t, cols_to_map=['exposure'])
-        m = m['exposure']
-        map_vals_to_ints_inplace(t, cols_to_map={'event': dict(list(zip(m, list(range(len(m))))))})
+        matrix_shape = (t["exposure"].nunique(), t["event"].nunique())
+        m = map_vals_to_ints_inplace(t, cols_to_map=["exposure"])
+        m = m["exposure"]
+        map_vals_to_ints_inplace(
+            t, cols_to_map={"event": dict(list(zip(m, list(range(len(m))))))}
+        )
         RR = np.zeros(matrix_shape)
-        RR[t['exposure'], t['event']] = t['relative_risk']
+        RR[t["exposure"], t["event"]] = t["relative_risk"]
         RR[list(range(len(m))), list(range(len(m)))] = np.nan
 
         RRL = np.log2(RR)
@@ -680,19 +715,26 @@ class ProbPot(Pot):
         normalize_this = normalizor(RRL)
         center = normalize_this(0)
 
-        color_map = shifted_color_map(cmap=plt.cm.get_cmap('coolwarm'), start=0, midpoint=center, stop=1)
-        plt.imshow(RRL, cmap=color_map, interpolation='none')
+        color_map = shifted_color_map(
+            cmap=plt.cm.get_cmap("coolwarm"), start=0, midpoint=center, stop=1
+        )
+        plt.imshow(RRL, cmap=color_map, interpolation="none")
 
         plt.xticks(list(range(np.shape(RRL)[0])), m, rotation=90)
         plt.yticks(list(range(np.shape(RRL)[1])), m)
         cbar = plt.colorbar()
         cbar.ax.set_yticklabels(
-            ["%.02f" % x for x in np.exp2(np.array(get_colorbar_tick_labels_as_floats(cbar)))])
+            [
+                "%.02f" % x
+                for x in np.exp2(np.array(get_colorbar_tick_labels_as_floats(cbar)))
+            ]
+        )
 
 
 # -------------------------------------------------------------------
 # Data Prep utils
 # -------------------------------------------------------------------
+
 
 def from_points_to_binary(d, mid_fun=np.median):
     """Convert data to binary based on a midpoint function."""
@@ -707,31 +749,34 @@ def from_points_to_binary(d, mid_fun=np.median):
 # Module-level utility functions
 # -------------------------------------------------------------------
 
+
 def relative_risk(joint_prob_pot, event_var, exposure_var):
     """Compute relative risk from a joint probability pot."""
     prob = joint_prob_pot >> [event_var, exposure_var]
-    return ((prob / {exposure_var: 1})[{event_var: 1}]
-            / (prob / {exposure_var: 0})[{event_var: 1}]).values[0]
+    return (
+        (prob / {exposure_var: 1})[{event_var: 1}]
+        / (prob / {exposure_var: 0})[{event_var: 1}]
+    ).values[0]
 
 
 def _val_prod_(tb):
     """Multiply pval_x and pval_y columns into pval."""
-    tb['pval'] = tb['pval_x'] * tb['pval_y']
-    tb.drop(labels=['pval_x', 'pval_y'], axis=1, inplace=True)
+    tb["pval"] = tb["pval_x"] * tb["pval_y"]
+    tb.drop(labels=["pval_x", "pval_y"], axis=1, inplace=True)
     return tb
 
 
 def _val_div_(tb):
     """Divide pval_x by pval_y. 0/0 → 0."""
-    tb['pval'] = np.true_divide(tb['pval_x'], tb['pval_y']).fillna(0)
-    tb.drop(labels=['pval_x', 'pval_y'], axis=1, inplace=True)
+    tb["pval"] = np.true_divide(tb["pval_x"], tb["pval_y"]).fillna(0)
+    tb.drop(labels=["pval_x", "pval_y"], axis=1, inplace=True)
     return tb
 
 
 def _val_add_(tb):
     """Add pval_x and pval_y columns into pval."""
-    tb['pval'] = tb['pval_x'] + tb['pval_y']
-    tb.drop(labels=['pval_x', 'pval_y'], axis=1, inplace=True)
+    tb["pval"] = tb["pval_x"] + tb["pval_y"]
+    tb.drop(labels=["pval_x", "pval_y"], axis=1, inplace=True)
     return tb
 
 
@@ -740,7 +785,7 @@ def _ascertain_list(x):
     if not isinstance(x, list):
         if isinstance(x, str):
             x = [x]
-        elif hasattr(x, '__iter__') and not isinstance(x, dict):
+        elif hasattr(x, "__iter__") and not isinstance(x, dict):
             x = list(x)
         else:
             x = [x]
@@ -750,9 +795,13 @@ def _ascertain_list(x):
 def _rand_numbers_summing_to_one(n_numbers, granularity=0.01):
     """Generate n random numbers summing to 1 with given granularity."""
     n_choices = 1.0 / granularity
-    assert round(n_choices) == int(n_choices), "granularity must be an integer divisor of 1.0"
+    assert round(n_choices) == int(n_choices), (
+        "granularity must be an integer divisor of 1.0"
+    )
     x = np.linspace(granularity, 1.0 - granularity, int(n_choices) - 1)
-    x = sorted(x[np.random.choice(list(range(1, len(x))), size=n_numbers - 1, replace=False)])
+    x = sorted(
+        x[np.random.choice(list(range(1, len(x))), size=n_numbers - 1, replace=False)]
+    )
     x = np.concatenate([[0.0], x, [1.0]])
     x = np.diff(x)
     x = np.array([Decimal(xi).quantize(Decimal(str(granularity))) for xi in x])

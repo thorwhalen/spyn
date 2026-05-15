@@ -1,6 +1,6 @@
 """Naive-Bayes-style bipartite graph statistics over item sets."""
 
-__author__ = 'thor'
+__author__ = "thor"
 
 
 import copy
@@ -18,11 +18,12 @@ class BipartiteStats:
     """
     The class that manages the count data.
     """
-#     _count
-#     a
-#     b
-#     ab
-#     ba
+
+    #     _count
+    #     a
+    #     b
+    #     ab
+    #     ba
 
     def __init__(self, get_a_list_from_item=None, get_b_list_from_item=None):
         self._count = CountVal(0.0)
@@ -33,9 +34,13 @@ class BipartiteStats:
         self.get_a_list_from_item = get_a_list_from_item or get_a_list_from_item_default
         self.get_b_list_from_item = get_b_list_from_item or get_b_list_from_item_default
 
-    def count_data(self, item_iterator, get_a_list_from_item=None, get_b_list_from_item=None):
-        self.__init__(get_a_list_from_item=get_a_list_from_item,
-                      get_b_list_from_item=get_b_list_from_item)
+    def count_data(
+        self, item_iterator, get_a_list_from_item=None, get_b_list_from_item=None
+    ):
+        self.__init__(
+            get_a_list_from_item=get_a_list_from_item,
+            get_b_list_from_item=get_b_list_from_item,
+        )
         for item in item_iterator:
             self._count.increment()
             a_list = self.get_a_list_from_item(item)
@@ -58,7 +63,6 @@ class BipartiteStats:
     #     self.b = (self.b + prior_num) / (self._count + prior_denom)
 
 
-
 # default functions
 def get_a_list_from_item_default(pair_set):
     return pair_set[0]
@@ -72,11 +76,12 @@ class BipartiteEdgeCounts:
     """
     The class that manages the count data.
     """
-#     _count
-#     a_count
-#     b_count
-#     ab_count
-#     ba_count
+
+    #     _count
+    #     a_count
+    #     b_count
+    #     ab_count
+    #     ba_count
 
     def __init__(self, get_a_list_from_item=None, get_b_list_from_item=None):
         self._count = CountVal(0.0)
@@ -117,6 +122,7 @@ class Val:
     'unit' or 'neutral' value of the add operation (therefore the sub operation as well).
     For example, the unit value of multiplication (which will still be called "add") is 1.0.
     """
+
     v = 0.0
 
     def __init__(self, v):
@@ -138,7 +144,7 @@ class Val:
         self.v = self.v / y.v
 
     def unwrapped(self):
-        if hasattr(self.v, 'v'):
+        if hasattr(self.v, "v"):
             return self.v.unwrapped()
         else:
             return self.v
@@ -171,7 +177,6 @@ class Val:
 
 
 class CountVal(Val):
-
     v = 0.0
 
     def __init__(self, v=0.0):
@@ -188,9 +193,10 @@ class LHVal(Val):
     That is, it holds (as a single float) the binary likelihood distribution and allows one to
     merge two such distributions.
     """
-    v = .5;  # where the value will be stored
 
-    def __init__(self, v=.5):
+    v = 0.5  # where the value will be stored
+
+    def __init__(self, v=0.5):
         super().__init__(v)
         self.v = float(v)
 
@@ -211,6 +217,7 @@ class KeyVal(Val):
     Extends a map so that one can add and subtract dict pairs by adding or subtracting
      the (key-aligned) values
     """
+
     def __init__(self, v=None):
         if v is None:
             self.v = dict()
@@ -218,7 +225,7 @@ class KeyVal(Val):
             super().__init__(v)
 
     def add(self, kv):
-        if hasattr(kv.v, 'keys'):
+        if hasattr(kv.v, "keys"):
             for k in list(kv.v.keys()):
                 if k in list(self.v.keys()):
                     self.v[k].add(kv.v[k])
@@ -229,7 +236,7 @@ class KeyVal(Val):
                 self.v[k].v = self.v[k].v + kv.v
 
     def sub(self, kv):
-        if hasattr(kv.v, 'keys'):
+        if hasattr(kv.v, "keys"):
             for k in list(kv.v.keys()):
                 if k in list(self.v.keys()):
                     self.v[k].sub(kv.v[k])
@@ -238,7 +245,7 @@ class KeyVal(Val):
                 self.v[k].v = self.v[k].v - kv.v
 
     def mul(self, kv):
-        if hasattr(kv.v, 'keys'):
+        if hasattr(kv.v, "keys"):
             for k in list(kv.v.keys()):
                 if k in list(self.v.keys()):
                     self.v[k].mul(kv.v[k])
@@ -249,7 +256,7 @@ class KeyVal(Val):
                 self.v[k].v = self.v[k].v * kv.v
 
     def div(self, kv):
-        if hasattr(kv.v, 'keys'):
+        if hasattr(kv.v, "keys"):
             for k in list(kv.v.keys()):
                 if k in list(self.v.keys()):
                     self.v[k].div(kv.v[k])
@@ -274,11 +281,12 @@ class KeyVal(Val):
 
 
 class KeyCount(KeyVal):
-#     v = dict()
-#     init_val_constructor = None;
+    #     v = dict()
+    #     init_val_constructor = None;
     """
     Extends a map so that one can add and subtract dict pairs by adding or subtracting the (key-aligned) values
     """
+
     def __init__(self, v=None):
         if v is None:
             self.v = dict()
@@ -298,6 +306,3 @@ class KeyCount(KeyVal):
 #     ss = d['B'].iloc[3:8]
 #     t = s + ss
 #     print t
-
-
-

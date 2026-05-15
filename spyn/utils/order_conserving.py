@@ -1,6 +1,6 @@
 """Order-preserving set operations using plain dicts (Python 3.7+)."""
 
-__author__ = 'thorwhalen'
+__author__ = "thorwhalen"
 
 
 def unique_list(x):

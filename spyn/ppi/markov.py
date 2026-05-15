@@ -1,6 +1,6 @@
 """Markov chain model with conditional and initial state probabilities."""
 
-__author__ = 'thor'
+__author__ = "thor"
 
 import pandas as pd
 import numpy as np
@@ -11,51 +11,63 @@ import matplotlib.pylab as plt
 
 
 class Markov:
-    def __init__(self, cond_probs, initial_probs, states=None, t_name=None, t_plus_1_name=None):
+    def __init__(
+        self, cond_probs, initial_probs, states=None, t_name=None, t_plus_1_name=None
+    ):
         self.initial_probs = initial_probs
         self.cond_probs = cond_probs
-        if states is None:  # take the states of initial probs, sorted by descending order of probability
+        if (
+            states is None
+        ):  # take the states of initial probs, sorted by descending order of probability
             states = list(self.initial_probs.index.values)
-            more_states = set(self.cond_probs.index.values).union(self.cond_probs.columns.values)
+            more_states = set(self.cond_probs.index.values).union(
+                self.cond_probs.columns.values
+            )
             for extra_state in set(more_states).difference(states):
                 states.append(extra_state)
                 self.initial_probs.loc[extra_state] = 0.0
-            states = self.initial_probs.sort(inplace=False, ascending=False).index.values
+            states = self.initial_probs.sort(
+                inplace=False, ascending=False
+            ).index.values
 
         self.labels = states
         self.initial_probs = self.initial_probs[states]
 
         self.cond_probs = self.cond_probs.loc[states, states].fillna(0.0)
 
-        if t_name is None:  # given the name of the columns, or 't' if columns have no name
-            t_name = self.cond_probs.columns.name or 't'
+        if (
+            t_name is None
+        ):  # given the name of the columns, or 't' if columns have no name
+            t_name = self.cond_probs.columns.name or "t"
         self.t_name = t_name
         self.cond_probs.columns.name = t_name
 
-        if t_plus_1_name is None:  # given the name of the index, or 't+1' if index have no name
-            t_plus_1_name = self.cond_probs.index.name or 't+1'
+        if (
+            t_plus_1_name is None
+        ):  # given the name of the index, or 't+1' if index have no name
+            t_plus_1_name = self.cond_probs.index.name or "t+1"
         self.t_plus_1_name = t_plus_1_name
         self.cond_probs.index.name = t_plus_1_name
 
     def plot_matrix_prod(self, n=1, display_transpose=False):
         cond_prob_matrix = np.matrix(self.cond_probs.as_matrix())
-        cond_prob_matrix = cond_prob_matrix ** n
+        cond_prob_matrix = cond_prob_matrix**n
         if display_transpose:
             cond_prob_matrix = cond_prob_matrix.T
-        plt.matshow(cond_prob_matrix);
+        plt.matshow(cond_prob_matrix)
         ax = plt.gca()
         plt.xticks(list(range(len(self.labels))))
         ax.set_xticklabels(self.labels, rotation=90)
         plt.yticks(list(range(len(self.labels))))
         ax.set_yticklabels(self.labels)
-        plt.grid('off');
+        plt.grid("off")
 
     @staticmethod
     def from_sequences(seqs, **kwargs):
         initial_probs = Markov.seqs_to_initial_probs(seqs)
 
         cond_probs = Markov.seqs_to_pair_count_df(seqs)
-        cond_probs = cond_probs.divide(cond_probs.sum(axis=0), axis='columns')
+        cond_probs = cond_probs.divide(cond_probs.sum(axis=0), axis="columns")
 
         return Markov(cond_probs=cond_probs, initial_probs=initial_probs, **kwargs)
 
@@ -69,24 +81,34 @@ class Markov:
     @staticmethod
     def seqs_to_pair_count_df(seqs):
         event_pair_counts = Counter(chain(*map(_sliding_window_iter, seqs)))
-        pair_count_df = pd.DataFrame([{'t': k[0], 't+1': k[1], 'count': v}
-                                  for k, v in event_pair_counts.items()])
-        pair_count_df = pair_count_df.set_index(['t', 't+1']).sort()
-        pair_count_df = pair_count_df['count'].unstack('t')
+        pair_count_df = pd.DataFrame(
+            [{"t": k[0], "t+1": k[1], "count": v} for k, v in event_pair_counts.items()]
+        )
+        pair_count_df = pair_count_df.set_index(["t", "t+1"]).sort()
+        pair_count_df = pair_count_df["count"].unstack("t")
         return pair_count_df
 
     @staticmethod
-    def from_markov_counts(mc, states=None, t_name='t', t_plus_1_name='t+1', prior_pair_count=0.0):
-        initial_probs = pd.Series(mc.initial_counts).sort(inplace=False, ascending=False)
+    def from_markov_counts(
+        mc, states=None, t_name="t", t_plus_1_name="t+1", prior_pair_count=0.0
+    ):
+        initial_probs = pd.Series(mc.initial_counts).sort(
+            inplace=False, ascending=False
+        )
         initial_probs /= np.sum(initial_probs)
 
-        cond_probs = [{t_name: k[0], t_plus_1_name: k[1], 'count': v} for k, v in mc.pair_counts.items()]
-        cond_probs = pd.DataFrame(cond_probs)\
-            .set_index([t_name, t_plus_1_name])['count']\
-            .unstack(t_name)\
+        cond_probs = [
+            {t_name: k[0], t_plus_1_name: k[1], "count": v}
+            for k, v in mc.pair_counts.items()
+        ]
+        cond_probs = (
+            pd.DataFrame(cond_probs)
+            .set_index([t_name, t_plus_1_name])["count"]
+            .unstack(t_name)
             .fillna(0.0)
+        )
         cond_probs += prior_pair_count
-        cond_probs = cond_probs.divide(cond_probs.sum(axis=0), axis='columns')
+        cond_probs = cond_probs.divide(cond_probs.sum(axis=0), axis="columns")
         return Markov(cond_probs=cond_probs, initial_probs=initial_probs)
 
 
@@ -108,12 +130,10 @@ class IndexedMarkovCounts:
         self.markov_counts[index].add_sequence(seq)
 
     def __getstate__(self):
-        return {
-            'markov_counts': dict(self.markov_counts)
-        }
+        return {"markov_counts": dict(self.markov_counts)}
 
     def __setstate__(self, state):
-        self.markov_counts = defaultdict(lambda: MarkovCounts(), state['markov_counts'])
+        self.markov_counts = defaultdict(lambda: MarkovCounts(), state["markov_counts"])
 
     # def __getstate__(self):
     #     return {
@@ -137,14 +157,13 @@ class MultipleMarkovCounts:
 
     def __getstate__(self):
         return {
-            'initial_counts': dict(self.initial_counts),
-            'pair_counts': dict(self.pair_counts),
+            "initial_counts": dict(self.initial_counts),
+            "pair_counts": dict(self.pair_counts),
         }
 
     def __setstate__(self, state):
-        self.initial_counts = defaultdict(lambda: Counter(), state['initial_counts'])
-        self.pair_counts = defaultdict(lambda: Counter(), state['pair_counts'])
-
+        self.initial_counts = defaultdict(lambda: Counter(), state["initial_counts"])
+        self.pair_counts = defaultdict(lambda: Counter(), state["pair_counts"])
 
 
 def _sliding_window_iter(seq, n=2):

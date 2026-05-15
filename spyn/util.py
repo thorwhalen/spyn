@@ -51,9 +51,10 @@ def col_combo_gen(X, y, x_combo_size=1, y_combo_size=1):
         y = [[yy] for yy in y]
     X = np.array(X).T
     y = np.array(y).T
-    yield from map(lambda x: tuple([*x[0], *x[1]]),
-                   product(combinations(X, x_combo_size),
-                           combinations(y, y_combo_size)))
+    yield from map(
+        lambda x: tuple([*x[0], *x[1]]),
+        product(combinations(X, x_combo_size), combinations(y, y_combo_size)),
+    )
 
 
 # TODO: Might get rid of this, or use col_combo_gen to implement it
@@ -86,9 +87,10 @@ def combo_pt_gen(X, y, x_combo_size=1, y_combo_size=1):
     if len(y) > 0 and not isinstance(y[0], Iterable):
         y = [[yy] for yy in y]
     for xx, yy in zip(X, y):
-        yield from map(lambda x: tuple([*x[0], *x[1]]),
-                       product(combinations(xx, x_combo_size),
-                               combinations(yy, y_combo_size)))
+        yield from map(
+            lambda x: tuple([*x[0], *x[1]]),
+            product(combinations(xx, x_combo_size), combinations(yy, y_combo_size)),
+        )
 
 
 class lazyprop:
@@ -125,9 +127,7 @@ class lazyprop:
 
     def __init__(self, func):
         self.__doc__ = getattr(func, "__doc__")
-        self.__isabstractmethod__ = getattr(
-            func, "__isabstractmethod__", False
-        )
+        self.__isabstractmethod__ = getattr(func, "__isabstractmethod__", False)
         self.func = func
 
     def __get__(self, instance, cls):

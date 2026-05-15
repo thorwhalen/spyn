@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "spyn"
-version = "0.0.6"
+version = "0.0.7"
 description = "Tools to transform data into \"model-less\" operable inference objects"
 readme = "README.md"
 requires-python = ">=3.10"

@@ -8,11 +8,16 @@ from spyn.utils.ordered_set import OrderedSet
 def complete_df_with_all_var_combinations(df, var_cols=None, fill_value=None):
     if var_cols is None:
         var_cols = df.columns
-    multi_index = pd.MultiIndex.from_product([df[var].unique() for var in var_cols], names=var_cols)
-    return df.set_index(var_cols).reindex(multi_index, fill_value=fill_value).reset_index()
+    multi_index = pd.MultiIndex.from_product(
+        [df[var].unique() for var in var_cols], names=var_cols
+    )
+    return (
+        df.set_index(var_cols).reindex(multi_index, fill_value=fill_value).reset_index()
+    )
+
 
 def cartesian_product(df1, df2):
-    join_col = 'this is the joining col that wont show up elsewhere'
+    join_col = "this is the joining col that wont show up elsewhere"
     df1[join_col] = 1
     df2[join_col] = 1
     df = df1.merge(df2, on=join_col)
@@ -43,16 +48,18 @@ def ch_col_names(df, new_names=(), old_names=None, inplace=False):
             old_names = list(df.columns)
         else:
             old_names = _force_list(old_names)
-        assert len(new_names) == len(old_names), "old_names and new_names must be the same length"
+        assert len(new_names) == len(old_names), (
+            "old_names and new_names must be the same length"
+        )
         # return df.rename(columns={k: v for (k, v) in zip(old_names, new_names)}, inplace=inplace)
         return df.rename(columns=dict(list(zip(old_names, new_names))), inplace=inplace)
 
 
 def free_col_name(df, candidate_cols, raise_error=True):
-    '''
+    """
     Will look for the first string in candidate_cols that is not a column name of df.
     If no free column is found, will raise error (default) or return None.
-    '''
+    """
     for col in candidate_cols:
         if col not in df.columns:
             return col
@@ -68,7 +75,7 @@ def group_and_count(df, count_col=None, frequency=False):
         t[df.name] = df
         df = t
         del t
-    count_col = count_col or free_col_name(df, ['count', 'gr_count'])
+    count_col = count_col or free_col_name(df, ["count", "gr_count"])
     d = df.copy()
     d[count_col] = 1
     d = d.groupby(list(df.columns)).count().reset_index()
@@ -113,7 +120,7 @@ def reorder_columns_as(df, col_order, inplace=False):
     Only the columns of df that are also in col_order will be reordered (and placed in front),
     those that are not will be put at the end of the returned dataframe, in their original order
     """
-    if hasattr(col_order, 'columns'):
+    if hasattr(col_order, "columns"):
         col_order = col_order.columns
     col_order = reorder_as(list(df.columns), list(col_order))
     if not inplace:
@@ -156,14 +163,19 @@ def map_vals_to_ints_inplace(df, cols_to_map):
         mapping_dict, df[cols_to_map] = unique(df[cols_to_map], return_inverse=True)
         mapping_dict = {cols_to_map: mapping_dict}
     elif isinstance(cols_to_map, dict):  # mapping with a user specified map
-        assert set(cols_to_map.keys()).issubset(df.columns), "cols_to_map keys must be a subset of df columns"
+        assert set(cols_to_map.keys()).issubset(df.columns), (
+            "cols_to_map keys must be a subset of df columns"
+        )
         for c in list(cols_to_map.keys()):
             this_map = cols_to_map[c]
             if isinstance(this_map, dict):
-                assert all(unique(list(this_map.values())) == array(list(range(len(this_map))))), \
-                    "you must map to consecutive integers starting at 0"
+                assert all(
+                    unique(list(this_map.values())) == array(list(range(len(this_map))))
+                ), "you must map to consecutive integers starting at 0"
                 df[c] = df[c].apply(lambda x: this_map[x])
-                mapping_dict[c] = sort_as(list(this_map.keys()), list(this_map.values()))
+                mapping_dict[c] = sort_as(
+                    list(this_map.keys()), list(this_map.values())
+                )
             else:
                 df[c] = array(this_map)[list(df[c])]
                 mapping_dict[c] = this_map
