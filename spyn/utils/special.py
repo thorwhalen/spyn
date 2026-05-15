@@ -1,3 +1,6 @@
+"""Specialized dict subclasses used as default-value mappings."""
+
+
 class DictDefaultDict(dict):
     """
     Acts similarly to collections.defaultdict, except

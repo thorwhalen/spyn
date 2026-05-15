@@ -1,3 +1,5 @@
+"""Stan model script: mixture of two binomial distributions."""
+
 __author__ = 'thor'
 
 model_code = """

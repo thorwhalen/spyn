@@ -1,3 +1,5 @@
+"""Naive-Bayes-style bipartite graph statistics over item sets."""
+
 __author__ = 'thor'
 
 

@@ -1,3 +1,5 @@
+"""Helpers for constructing potentials (Pots) from feature/label arrays."""
+
 from collections.abc import Iterable
 from math import prod
 

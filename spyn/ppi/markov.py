@@ -1,3 +1,5 @@
+"""Markov chain model with conditional and initial state probabilities."""
+
 __author__ = 'thor'
 
 import pandas as pd

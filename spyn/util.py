@@ -1,3 +1,5 @@
+"""General-purpose utilities used across the spyn package."""
+
 from itertools import product, combinations
 from collections.abc import Iterable
 import numpy as np

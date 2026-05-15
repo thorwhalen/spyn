@@ -1,3 +1,5 @@
+"""Edge statistics over binary pair sets using key-value count structures."""
+
 __author__ = 'thor'
 
 

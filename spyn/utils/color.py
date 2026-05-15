@@ -1,3 +1,5 @@
+"""Color and colormap utilities for matplotlib-based visualizations."""
+
 __author__ = 'thor'
 
 import numpy as np

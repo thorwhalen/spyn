@@ -1,3 +1,5 @@
+"""Legacy naive binary network: edge statistics over item sets (kept for reference)."""
+
 __author__ = 'thor'
 
 

@@ -1,3 +1,5 @@
+"""I/O and on-disk caching utilities for compiled Stan models."""
+
 __author__ = 'thor'
 
 import pickle

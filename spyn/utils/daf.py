@@ -1,3 +1,5 @@
+"""DataFrame helpers: variable-combination completion and cartesian product."""
+
 import pandas as pd
 from numpy import array, unique
 from spyn.utils.ordered_set import OrderedSet

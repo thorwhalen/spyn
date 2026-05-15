@@ -1,6 +1,6 @@
-import collections
+"""OrderedSet collection (Python recipe: http://code.activestate.com/recipes/576694/)."""
 
-__doc__ = "Python recipe: http://code.activestate.com/recipes/576694/"
+import collections
 
 
 class OrderedSet(collections.abc.MutableSet):

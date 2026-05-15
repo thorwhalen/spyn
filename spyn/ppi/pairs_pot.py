@@ -1,3 +1,5 @@
+"""Pair-wise potentials and edge counters built from item-set iterators."""
+
 __author__ = 'thor'
 
 from collections import Counter, defaultdict
