@@ -1,0 +1,191 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>spyn.utils.color &mdash; spyn 0.0.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            spyn
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn.html">spyn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi.html">spyn.ppi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html">spyn.ppi.binary_pairs_kv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/markov.html">spyn.ppi.markov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/naive_bayes_graph.html">spyn.ppi.naive_bayes_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/old.html">spyn.ppi.old</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/old/naive_binary_network.html">spyn.ppi.old.naive_binary_network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pairs_pot.html">spyn.ppi.pairs_pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pot.html">spyn.ppi.pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/potter.html">spyn.ppi.potter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan.html">spyn.ppi.pstan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/io.html">spyn.ppi.pstan.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/models_scripts.html">spyn.ppi.pstan.models_scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/models_scripts/mixture_of_two_binomials.html">spyn.ppi.pstan.models_scripts.mixture_of_two_binomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/util.html">spyn.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/color.html">spyn.utils.color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/daf.html">spyn.utils.daf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/order_conserving.html">spyn.utils.order_conserving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/ordered_set.html">spyn.utils.ordered_set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/special.html">spyn.utils.special</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">spyn</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">spyn.utils.color</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for spyn.utils.color</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Color and colormap utilities for matplotlib-based visualizations.&quot;&quot;&quot;</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;thor&#39;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+
+<div class="viewcode-block" id="shifted_color_map">
+<a class="viewcode-back" href="../../../module_docs/spyn/utils/color.html#spyn.utils.color.shifted_color_map">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">shifted_color_map</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">midpoint</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;shiftedcmap&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Function to offset the &quot;center&quot; of a colormap. Useful for</span>
+<span class="sd">    data with a negative min and positive max and you want the</span>
+<span class="sd">    middle of the colormap&#39;s dynamic range to be at zero</span>
+
+<span class="sd">    Input</span>
+<span class="sd">    -----</span>
+<span class="sd">      cmap : The matplotlib colormap to be altered</span>
+<span class="sd">      start : Offset from lowest point in the colormap&#39;s range.</span>
+<span class="sd">          Defaults to 0.0 (no lower ofset). Should be between</span>
+<span class="sd">          0.0 and `midpoint`.</span>
+<span class="sd">      midpoint : The new center of the colormap. Defaults to</span>
+<span class="sd">          0.5 (no shift). Should be between 0.0 and 1.0. In</span>
+<span class="sd">          general, this should be  1 - vmax/(vmax + abs(vmin))</span>
+<span class="sd">          For example if your data range from -15.0 to +5.0 and</span>
+<span class="sd">          you want the center of the colormap at 0.0, `midpoint`</span>
+<span class="sd">          should be set to  1 - 5/(5 + 15)) or 0.75</span>
+<span class="sd">      stop : Offset from highets point in the colormap&#39;s range.</span>
+<span class="sd">          Defaults to 1.0 (no upper ofset). Should be between</span>
+<span class="sd">          `midpoint` and 1.0.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">cdict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+
+    <span class="c1"># regular index to compute the colors</span>
+    <span class="n">reg_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="mi">257</span><span class="p">)</span>
+
+    <span class="c1"># shifted index to match the data</span>
+    <span class="n">shift_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">midpoint</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">midpoint</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">129</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">ri</span><span class="p">,</span> <span class="n">si</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">reg_index</span><span class="p">,</span> <span class="n">shift_index</span><span class="p">):</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">ri</span><span class="p">)</span>
+
+        <span class="n">cdict</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">si</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+        <span class="n">cdict</span><span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">si</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">g</span><span class="p">))</span>
+        <span class="n">cdict</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">si</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+        <span class="n">cdict</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">si</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+
+    <span class="n">newcmap</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">cdict</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">register_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">newcmap</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span>
+    <span class="k">return</span> <span class="n">newcmap</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_colorbar_tick_labels_as_floats</span><span class="p">(</span><span class="n">cbar</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">ww</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u2212</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">ww</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">get_majorticklabels</span><span class="p">()]</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

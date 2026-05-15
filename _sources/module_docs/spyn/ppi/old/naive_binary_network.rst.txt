@@ -1,0 +1,4 @@
+spyn.ppi.old.naive_binary_network
+=================================
+.. automodule:: spyn.ppi.old.naive_binary_network
+   :members:

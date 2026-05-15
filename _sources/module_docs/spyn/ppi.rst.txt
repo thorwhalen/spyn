@@ -1,0 +1,4 @@
+spyn.ppi
+========
+.. automodule:: spyn.ppi
+   :members:

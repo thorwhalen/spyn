@@ -1,0 +1,4 @@
+spyn.ppi.binary_pairs_kv
+========================
+.. automodule:: spyn.ppi.binary_pairs_kv
+   :members:

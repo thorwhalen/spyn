@@ -1,0 +1,4 @@
+spyn.ppi.potter
+===============
+.. automodule:: spyn.ppi.potter
+   :members:

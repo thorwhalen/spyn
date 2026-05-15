@@ -1,0 +1,24 @@
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   module_docs/spyn
+   module_docs/spyn/ppi
+   module_docs/spyn/ppi/binary_pairs_kv
+   module_docs/spyn/ppi/markov
+   module_docs/spyn/ppi/naive_bayes_graph
+   module_docs/spyn/ppi/old
+   module_docs/spyn/ppi/old/naive_binary_network
+   module_docs/spyn/ppi/pairs_pot
+   module_docs/spyn/ppi/pot
+   module_docs/spyn/ppi/potter
+   module_docs/spyn/ppi/pstan
+   module_docs/spyn/ppi/pstan/io
+   module_docs/spyn/ppi/pstan/models_scripts
+   module_docs/spyn/ppi/pstan/models_scripts/mixture_of_two_binomials
+   module_docs/spyn/util
+   module_docs/spyn/utils/color
+   module_docs/spyn/utils/daf
+   module_docs/spyn/utils/order_conserving
+   module_docs/spyn/utils/ordered_set
+   module_docs/spyn/utils/special

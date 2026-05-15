@@ -1,0 +1,971 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>spyn.ppi.pot &mdash; spyn 0.0.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            spyn
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn.html">spyn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi.html">spyn.ppi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html">spyn.ppi.binary_pairs_kv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/markov.html">spyn.ppi.markov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/naive_bayes_graph.html">spyn.ppi.naive_bayes_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/old.html">spyn.ppi.old</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/old/naive_binary_network.html">spyn.ppi.old.naive_binary_network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pairs_pot.html">spyn.ppi.pairs_pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pot.html">spyn.ppi.pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/potter.html">spyn.ppi.potter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan.html">spyn.ppi.pstan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/io.html">spyn.ppi.pstan.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/models_scripts.html">spyn.ppi.pstan.models_scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/models_scripts/mixture_of_two_binomials.html">spyn.ppi.pstan.models_scripts.mixture_of_two_binomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/util.html">spyn.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/color.html">spyn.utils.color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/daf.html">spyn.utils.daf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/order_conserving.html">spyn.utils.order_conserving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/ordered_set.html">spyn.utils.ordered_set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/special.html">spyn.utils.special</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">spyn</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">spyn.ppi.pot</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for spyn.ppi.pot</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Potentials: probability/likelihood tables with algebraic operators.</span>
+
+<span class="sd">The Pot class represents discrete probability tables as DataFrames with a &#39;pval&#39;</span>
+<span class="sd">column and uses operator overloading for probabilistic inference:</span>
+
+<span class="sd">- ``*`` factor product</span>
+<span class="sd">- ``/`` normalization, conditioning, or factor division</span>
+<span class="sd">- ``[]`` marginalization (list/str) or slicing (dict)</span>
+<span class="sd">- ``&gt;&gt;`` projection (marginalization)</span>
+
+<span class="sd">&gt;&gt;&gt; p = Pot({&#39;A&#39;: [0, 0, 1, 1], &#39;B&#39;: [0, 1, 0, 1], &#39;pval&#39;: [2, 4, 5, 9]})</span>
+<span class="sd">&gt;&gt;&gt; p[&#39;A&#39;]  # marginalize to A</span>
+<span class="sd">     pval</span>
+<span class="sd">A</span>
+<span class="sd">0       6</span>
+<span class="sd">1      14</span>
+<span class="sd">&gt;&gt;&gt; (p / []).round(2)  # normalize</span>
+<span class="sd">        pval</span>
+<span class="sd">A B</span>
+<span class="sd">0 0     0.10</span>
+<span class="sd">  1     0.20</span>
+<span class="sd">1 0     0.25</span>
+<span class="sd">  1     0.45</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;thor&#39;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cached_property</span><span class="p">,</span> <span class="n">reduce</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">spyn.utils.order_conserving</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">colloc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spyn.utils.daf</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">cartesian_product</span><span class="p">,</span>
+    <span class="n">ch_col_names</span><span class="p">,</span>
+    <span class="n">complete_df_with_all_var_combinations</span><span class="p">,</span>
+    <span class="n">group_and_count</span><span class="p">,</span>
+    <span class="n">map_vals_to_ints_inplace</span><span class="p">,</span>
+    <span class="n">reorder_columns_as</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="Pot">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Pot</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A discrete potential (probability/likelihood table).</span>
+
+<span class="sd">    The core data structure is a pandas DataFrame (``self.tb``) with variable</span>
+<span class="sd">    columns and a mandatory ``pval`` column holding the values.</span>
+
+<span class="sd">    &gt;&gt;&gt; p = Pot({&#39;A&#39;: [0, 1], &#39;B&#39;: [0, 1], &#39;pval&#39;: [0.3, 0.7]})</span>
+<span class="sd">    &gt;&gt;&gt; p.vars</span>
+<span class="sd">    [&#39;A&#39;, &#39;B&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; p.n</span>
+<span class="sd">    2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Pot</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">Pot</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tb</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">tb</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">}])</span>
+        <span class="k">elif</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+                <span class="k">assert</span> <span class="s1">&#39;pval&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s2">&quot;dataframe had no pval column&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tb</span> <span class="o">=</span> <span class="n">data</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s1">&#39;pval&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pval</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]])</span> <span class="o">*</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">tb</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown construction type&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">])</span>  <span class="c1"># default &quot;unit&quot; potential</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">))</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Variable names (all columns except &#39;pval&#39;).</span>
+
+<span class="sd">        &gt;&gt;&gt; Pot({&#39;X&#39;: [0, 1], &#39;pval&#39;: [1, 1]}).vars</span>
+<span class="sd">        [&#39;X&#39;]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s1">&#39;pval&#39;</span><span class="p">]</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vars_set</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set of variable names.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">n</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of rows in the table.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_ipython_key_completions_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">vars</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># OPERATIONS</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="Pot.get_slice">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.get_slice">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">intercept_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return sub-pot at specific variable values.</span>
+
+<span class="sd">        &gt;&gt;&gt; p = Pot({&#39;A&#39;: [0, 0, 1, 1], &#39;B&#39;: [0, 1, 0, 1], &#39;pval&#39;: [2, 4, 5, 9]})</span>
+<span class="sd">        &gt;&gt;&gt; p[{&#39;A&#39;: 1}]  # slice where A=1</span>
+<span class="sd">           pval</span>
+<span class="sd">        B</span>
+<span class="sd">        0     5</span>
+<span class="sd">        1     9</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">intercept_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">tb</span> <span class="o">=</span> <span class="n">tb</span><span class="p">[</span><span class="n">tb</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">v</span><span class="p">]</span>
+            <span class="k">del</span> <span class="n">tb</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pot.select">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.select">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selection</span><span class="p">:</span> <span class="nb">callable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filter rows using a callable predicate on row dicts.&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">callable</span><span class="p">(</span><span class="n">selection</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;selection needs to be a callable. Was a </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">selection</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">tb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">))))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">tb</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]])</span></div>
+
+
+<div class="viewcode-block" id="Pot.project_to">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.project_to">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">project_to</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">var_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">assert_subset</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Marginalize to a subset of variables.</span>
+
+<span class="sd">        Non-strict by default: ignores variables not in the pot.</span>
+
+<span class="sd">        &gt;&gt;&gt; p = Pot({&#39;A&#39;: [0, 0, 1, 1], &#39;B&#39;: [0, 1, 0, 1], &#39;pval&#39;: [2, 4, 5, 9]})</span>
+<span class="sd">        &gt;&gt;&gt; p.project_to(&#39;A&#39;)  # sum out B</span>
+<span class="sd">             pval</span>
+<span class="sd">        A</span>
+<span class="sd">        0       6</span>
+<span class="sd">        1      14</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">var_list</span> <span class="o">=</span> <span class="n">_ascertain_list</span><span class="p">(</span><span class="n">var_list</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">assert_subset</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">vars_set</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">var_list</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="s2">&quot;You requested strict projection, so &quot;</span>
+                <span class="s2">&quot;you can only project onto variables that are in the pot. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;You wanted </span><span class="si">{</span><span class="n">var_list</span><span class="si">}</span><span class="s2">. The pot has these vars: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">var_list</span> <span class="o">=</span> <span class="n">colloc</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="n">var_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">var_list</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">[</span><span class="n">var_list</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">var_list</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Syntactic sugar: ``pot &gt;&gt; [&#39;A&#39;]`` is ``pot.project_to([&#39;A&#39;])``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_to</span><span class="p">(</span><span class="n">var_list</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Pot.normalize">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.normalize">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="p">())</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Normalize the pot with respect to var_list.</span>
+
+<span class="sd">        If var_list is empty, fully normalizes (divides by total sum).</span>
+<span class="sd">        Otherwise, divides by the projection onto var_list (conditional prob).</span>
+
+<span class="sd">        &gt;&gt;&gt; p = Pot({&#39;A&#39;: [0, 1], &#39;pval&#39;: [3, 7]})</span>
+<span class="sd">        &gt;&gt;&gt; p.normalize()  # full normalization</span>
+<span class="sd">           pval</span>
+<span class="sd">        A</span>
+<span class="sd">        0   0.3</span>
+<span class="sd">        1   0.7</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_to</span><span class="p">(</span><span class="n">var_list</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deprecated. Use ``/`` instead.&quot;&quot;&quot;</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;Pot.__or__ (|) is deprecated for normalization. Use / instead.&quot;</span><span class="p">,</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_to</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_to</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">intercept_dict</span> <span class="o">=</span> <span class="n">item</span>
+            <span class="n">var_list</span> <span class="o">=</span> <span class="n">colloc</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">intercept_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_to</span><span class="p">(</span><span class="n">var_list</span><span class="p">))</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">intercept_dict</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Unknown item type&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">list</span> <span class="o">|</span> <span class="nb">tuple</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Polymorphic access: slice (dict), project (list/str), or sum (None/[]).</span>
+
+<span class="sd">        &gt;&gt;&gt; p = Pot({&#39;A&#39;: [0, 0, 1, 1], &#39;B&#39;: [0, 1, 0, 1], &#39;pval&#39;: [2, 4, 5, 9]})</span>
+<span class="sd">        &gt;&gt;&gt; p[[&#39;A&#39;]]  # project to A</span>
+<span class="sd">             pval</span>
+<span class="sd">        A</span>
+<span class="sd">        0       6</span>
+<span class="sd">        1      14</span>
+<span class="sd">        &gt;&gt;&gt; p[{&#39;A&#39;: 0}]  # slice where A=0</span>
+<span class="sd">           pval</span>
+<span class="sd">        B</span>
+<span class="sd">        0     2</span>
+<span class="sd">        1     4</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">match</span> <span class="n">item</span><span class="p">:</span>
+            <span class="k">case</span> <span class="nb">dict</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">case</span> <span class="nb">list</span><span class="p">()</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_to</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+            <span class="k">case</span> <span class="nb">str</span><span class="p">():</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">project_to</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">case</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="p">:</span>  <span class="c1"># handles empty list, False, 0, etc.</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Unknown type for item (must be None, dict, list, or string). Was: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+<div class="viewcode-block" id="Pot.add_count">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.add_count">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a count to all variable combinations (including missing ones).&quot;&quot;&quot;</span>
+        <span class="n">tb</span> <span class="o">=</span> <span class="n">complete_df_with_all_var_combinations</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">,</span> <span class="n">var_cols</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">num</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pot</span><span class="p">:</span> <span class="n">Pot</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
+            <span class="n">common_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pot</span><span class="o">.</span><span class="n">vars</span><span class="p">))</span>
+            <span class="n">tb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">pot</span><span class="o">.</span><span class="n">tb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">common_vars</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">_val_add_</span><span class="p">(</span><span class="n">tb</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_count</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pot</span><span class="p">:</span> <span class="n">Pot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Factor product of two potentials.</span>
+
+<span class="sd">        &gt;&gt;&gt; a = Pot({&#39;X&#39;: [0, 1], &#39;pval&#39;: [0.4, 0.6]})</span>
+<span class="sd">        &gt;&gt;&gt; b = Pot({&#39;X&#39;: [0, 0, 1, 1], &#39;Y&#39;: [0, 1, 0, 1], &#39;pval&#39;: [0.9, 0.1, 0.3, 0.7]})</span>
+<span class="sd">        &gt;&gt;&gt; joint = a * b</span>
+<span class="sd">        &gt;&gt;&gt; joint.n</span>
+<span class="sd">        4</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">_val_prod_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_merge_</span><span class="p">(</span><span class="n">pot</span><span class="p">)))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Division: by Pot, or normalization by str/list/dict.</span>
+
+<span class="sd">        &gt;&gt;&gt; p = Pot({&#39;A&#39;: [0, 0, 1, 1], &#39;B&#39;: [0, 1, 0, 1], &#39;pval&#39;: [2, 4, 5, 9]})</span>
+<span class="sd">        &gt;&gt;&gt; p / &#39;A&#39;  # P(B|A) = P(A,B) / P(A)</span>
+<span class="sd">                  pval</span>
+<span class="sd">        A B</span>
+<span class="sd">        0 0  0.333333</span>
+<span class="sd">          1  0.666667</span>
+<span class="sd">        1 0  0.357143</span>
+<span class="sd">          1  0.642857</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">Pot</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">_val_div_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_merge_</span><span class="p">(</span><span class="n">item</span><span class="p">)))</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">intercept_dict</span> <span class="o">=</span> <span class="n">item</span>
+            <span class="n">var_list</span> <span class="o">=</span> <span class="n">colloc</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">intercept_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">var_list</span><span class="p">)</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">intercept_dict</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Unknown item type&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__div__</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Pot.assimilate">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.assimilate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">assimilate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pot</span><span class="p">:</span> <span class="n">Pot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bayes rule: multiply by pot, normalize, project back to own vars.</span>
+
+<span class="sd">        This computes P(X|D) ∝ P(D|X) * P(X), i.e. prior.assimilate(likelihood).</span>
+
+<span class="sd">        &gt;&gt;&gt; prior = Pot({&#39;H&#39;: [0, 1], &#39;pval&#39;: [0.5, 0.5]})</span>
+<span class="sd">        &gt;&gt;&gt; likelihood = Pot({&#39;H&#39;: [0, 1], &#39;pval&#39;: [0.2, 0.8]})</span>
+<span class="sd">        &gt;&gt;&gt; posterior = prior.assimilate(likelihood)</span>
+<span class="sd">        &gt;&gt;&gt; posterior.n</span>
+<span class="sd">        2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span><span class="o">.</span><span class="n">normalize</span><span class="p">([])</span><span class="o">.</span><span class="n">project_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pot.unassimilate">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.unassimilate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unassimilate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pot</span><span class="p">:</span> <span class="n">Pot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse of assimilate.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__div__</span><span class="p">(</span><span class="n">pot</span><span class="p">)</span><span class="o">.</span><span class="n">normalize</span><span class="p">([])</span><span class="o">.</span><span class="n">project_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">)</span></div>
+
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># UTILITIES</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="Pot.order_vars">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.order_vars">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">order_vars</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">var_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">sort_pts</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a new Pot with reordered variables.</span>
+
+<span class="sd">        &gt;&gt;&gt; p = Pot({&#39;B&#39;: [0, 1], &#39;A&#39;: [0, 1], &#39;pval&#39;: [3, 7]})</span>
+<span class="sd">        &gt;&gt;&gt; p.order_vars([&#39;A&#39;, &#39;B&#39;]).vars</span>
+<span class="sd">        [&#39;A&#39;, &#39;B&#39;]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_tb</span> <span class="o">=</span> <span class="n">reorder_columns_as</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">_ascertain_list</span><span class="p">(</span><span class="n">var_list</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">new_tb</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sort_pts</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">sort_pts</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="Pot.sort_pts">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.sort_pts">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sort_pts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a new Pot with rows sorted by variables.&quot;&quot;&quot;</span>
+        <span class="n">var_list</span> <span class="o">=</span> <span class="n">var_list</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">vars</span>
+        <span class="n">new_tb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">var_list</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">new_tb</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pval</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The pval column as a Series.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">pval</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The pval column as a numpy array.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">pval</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Pot.pval_of">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.pval_of">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pval_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_val_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">default_val</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Look up the pval for a specific variable assignment.</span>
+
+<span class="sd">        &gt;&gt;&gt; p = Pot({&#39;A&#39;: [0, 1], &#39;pval&#39;: [3, 7]})</span>
+<span class="sd">        &gt;&gt;&gt; int(p.pval_of({&#39;A&#39;: 1}))</span>
+<span class="sd">        7</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">var_val_dict</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">tb</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default_val</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">t</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">pval</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;In pval_of(): get_slice returned more than one value&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pot.binarize">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.binarize">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">binarize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_values_to_map_to_1_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Map specified variables to {0, 1} and re-aggregate.&quot;&quot;&quot;</span>
+        <span class="n">tb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">var_name</span><span class="p">,</span> <span class="n">vals_to_map_to_1</span> <span class="ow">in</span> <span class="n">var_values_to_map_to_1_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">vals_to_map_to_1</span><span class="p">,</span> <span class="s1">&#39;__iter__&#39;</span><span class="p">):</span>
+                <span class="n">vals_to_map_to_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">vals_to_map_to_1</span><span class="p">]</span>
+            <span class="n">lidx</span> <span class="o">=</span> <span class="n">tb</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">vals_to_map_to_1</span><span class="p">)</span>
+            <span class="n">tb</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">tb</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">lidx</span><span class="p">,</span> <span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">tb</span> <span class="o">=</span> <span class="n">tb</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pot.round">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.round">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndigits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Round pval values.</span>
+
+<span class="sd">        &gt;&gt;&gt; Pot({&#39;A&#39;: [0, 1], &#39;pval&#39;: [0.333, 0.667]}).round(2)</span>
+<span class="sd">           pval</span>
+<span class="sd">        A</span>
+<span class="sd">        0  0.33</span>
+<span class="sd">        1  0.67</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">ndigits</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+            <span class="n">ndigits</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())))</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="n">rounded_pvals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ndigits</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]]</span>
+        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rounded_pvals</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rounded_pvals</span>
+            <span class="k">return</span> <span class="n">x</span></div>
+
+
+<div class="viewcode-block" id="Pot.rect_perspective_df">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.rect_perspective_df">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rect_perspective_df</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;For a 2-variable pot, return a matrix-form DataFrame.</span>
+
+<span class="sd">        &gt;&gt;&gt; p = Pot({&#39;A&#39;: [0, 0, 1, 1], &#39;B&#39;: [0, 1, 0, 1], &#39;pval&#39;: [1, 2, 3, 4]})</span>
+<span class="sd">        &gt;&gt;&gt; p.rect_perspective_df()</span>
+<span class="sd">        B  0  1</span>
+<span class="sd">        A</span>
+<span class="sd">        0  1  2</span>
+<span class="sd">        1  3  4</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">vars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vars</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;You can only get the rect_perspective_df of a pot with exactly two variables&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="nb">vars</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span></div>
+
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># Internal</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_merge_</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pot</span><span class="p">:</span> <span class="n">Pot</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Merge (join) two pots on their common variables.&quot;&quot;&quot;</span>
+        <span class="n">on</span> <span class="o">=</span> <span class="n">colloc</span><span class="o">.</span><span class="n">intersect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">,</span> <span class="n">pot</span><span class="o">.</span><span class="n">vars</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">on</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">,</span> <span class="n">pot</span><span class="o">.</span><span class="n">tb</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">on</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;_x&#39;</span><span class="p">,</span> <span class="s1">&#39;_y&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cartesian_product</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="p">,</span> <span class="n">pot</span><span class="o">.</span><span class="n">tb</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vars</span><span class="p">)</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+
+    <span class="c1"># -------------------------------------------------------------------</span>
+    <span class="c1"># FACTORIES</span>
+    <span class="c1"># -------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="Pot.binary_pot">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.binary_pot">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">binary_pot</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">varname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">prob</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a binary variable potential.</span>
+
+<span class="sd">        &gt;&gt;&gt; Pot.binary_pot(&#39;coin&#39;, 0.6)</span>
+<span class="sd">              pval</span>
+<span class="sd">        coin</span>
+<span class="sd">        0      0.4</span>
+<span class="sd">        1      0.6</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">varname</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span> <span class="n">prob</span><span class="p">,</span> <span class="n">prob</span><span class="p">]}))</span></div>
+
+
+<div class="viewcode-block" id="Pot.zero_potential">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.zero_potential">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">zero_potential</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">varnames_and_scopes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a pot with all variable combinations and pval=0.</span>
+
+<span class="sd">        &gt;&gt;&gt; pot = Pot.zero_potential({&#39;A&#39;: 2, &#39;B&#39;: [10, 20]})</span>
+<span class="sd">        &gt;&gt;&gt; pot.n</span>
+<span class="sd">        4</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">product</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">varnames_and_scopes</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">varnames_and_scopes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">varnames_and_scopes</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">gen</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">varnames_and_scopes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">):</span>
+                    <span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+                <span class="n">varname</span><span class="p">,</span> <span class="n">scope</span> <span class="o">=</span> <span class="n">t</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                    <span class="n">scope</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">scope</span><span class="p">))</span>
+                <span class="k">yield</span> <span class="n">varname</span><span class="p">,</span> <span class="n">scope</span>
+
+        <span class="n">varnames_and_scopes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">gen</span><span class="p">())</span>
+
+        <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">varnames_and_scopes</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">varnames_and_scopes</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="p">[</span><span class="mi">0</span><span class="p">])))</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">vals</span><span class="p">)})</span></div>
+
+
+<div class="viewcode-block" id="Pot.from_points_to_count">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.from_points_to_count">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_points_to_count</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">pts</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="nb">list</span><span class="p">,</span>
+        <span class="nb">vars</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">scope_for_var</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a count pot from a collection of data points.</span>
+
+<span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame({&#39;A&#39;: [0, 0, 1, 1, 1], &#39;B&#39;: [0, 1, 0, 0, 1]})</span>
+<span class="sd">        &gt;&gt;&gt; Pot.from_points_to_count(df).n</span>
+<span class="sd">        4</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="n">pot</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">group_and_count</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">count_col</span><span class="o">=</span><span class="s1">&#39;pval&#39;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pot</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_counter</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">pts</span><span class="p">)),</span> <span class="nb">vars</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">scope_for_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scope_for_var</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="n">val_for_all</span> <span class="o">=</span> <span class="n">scope_for_var</span>
+                <span class="n">scope_for_var</span> <span class="o">=</span> <span class="p">{</span><span class="n">var</span><span class="p">:</span> <span class="n">val_for_all</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">pot</span><span class="o">.</span><span class="n">vars</span><span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">def</span><span class="w"> </span><span class="nf">ensure_iterable_scope</span><span class="p">(</span><span class="n">scope</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                        <span class="n">scope</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">scope</span><span class="p">))</span>
+                    <span class="k">return</span> <span class="n">scope</span>
+
+                <span class="n">scope_for_var</span> <span class="o">=</span> <span class="p">{</span><span class="n">var</span><span class="p">:</span> <span class="n">ensure_iterable_scope</span><span class="p">(</span><span class="n">scope</span><span class="p">)</span> <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">scope</span> <span class="ow">in</span> <span class="n">scope_for_var</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+                <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">scope_for_var</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">pot</span><span class="o">.</span><span class="n">vars</span><span class="p">),</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;set(scope_for_var) == set(pot.vars)</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;set(scope_for_var)=</span><span class="si">{</span><span class="nb">set</span><span class="p">(</span><span class="n">scope_for_var</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;set(pot.vars)=</span><span class="si">{</span><span class="nb">set</span><span class="p">(</span><span class="n">pot</span><span class="o">.</span><span class="n">vars</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">pot</span> <span class="o">+</span> <span class="bp">cls</span><span class="o">.</span><span class="n">zero_potential</span><span class="p">(</span><span class="n">scope_for_var</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pot</span></div>
+
+
+<div class="viewcode-block" id="Pot.from_counter">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.from_counter">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_counter</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">counts</span><span class="p">:</span> <span class="n">Counter</span><span class="p">,</span> <span class="nb">vars</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a pot from a Counter of tuples.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">example_key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="nb">vars</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">example_key</span><span class="p">))]</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">pval</span><span class="o">=</span><span class="n">v</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">kk</span><span class="p">:</span> <span class="n">vv</span> <span class="k">for</span> <span class="n">kk</span><span class="p">,</span> <span class="n">vv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">vars</span><span class="p">,</span> <span class="n">k</span><span class="p">)})</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pot.from_count_df_to_count">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.from_count_df_to_count">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_count_df_to_count</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">count_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">count_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;pval&#39;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a pot from a DataFrame with a count column.&quot;&quot;&quot;</span>
+        <span class="n">pot_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">colloc</span><span class="o">.</span><span class="n">setdiff</span><span class="p">(</span><span class="n">count_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="p">[</span><span class="n">count_col</span><span class="p">]))</span>
+        <span class="n">tb</span> <span class="o">=</span> <span class="n">count_df</span><span class="p">[</span><span class="n">pot_vars</span> <span class="o">+</span> <span class="p">[</span><span class="n">count_col</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pot_vars</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="n">tb</span> <span class="o">=</span> <span class="n">ch_col_names</span><span class="p">(</span><span class="n">tb</span><span class="p">,</span> <span class="s1">&#39;pval&#39;</span><span class="p">,</span> <span class="n">count_col</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pot.from_points_to_bins">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.from_points_to_bins">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_points_to_bins</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">pts</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a pot from points with binning (alias for count).&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="n">tb</span> <span class="o">=</span> <span class="n">group_and_count</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
+            <span class="n">tb</span> <span class="o">=</span> <span class="n">ch_col_names</span><span class="p">(</span><span class="n">tb</span><span class="p">,</span> <span class="s1">&#39;pval&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pot.from_hard_evidence">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.from_hard_evidence">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_hard_evidence</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">var_val</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a singleton potential for hard evidence.</span>
+
+<span class="sd">        &gt;&gt;&gt; Pot.from_hard_evidence(X=1, Y=0).n</span>
+<span class="sd">        1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="n">var</span><span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">var_val</span><span class="o">.</span><span class="n">items</span><span class="p">()}])</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_count_df_to_count</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pot.rand">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.rand">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rand</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">n_var_vals</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">var_names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">granularity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">try_to_get_unique_values</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a random probability pot.</span>
+
+<span class="sd">        &gt;&gt;&gt; p = Pot.rand([2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; p.n</span>
+<span class="sd">        6</span>
+<span class="sd">        &gt;&gt;&gt; bool(abs(p.values.sum() - 1.0) &lt; 1e-10)</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">n_var_vals</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">n_var_vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_var_vals</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">26</span><span class="p">,</span> <span class="s2">&quot;You can&#39;t request more than 26 variables&quot;</span>
+        <span class="k">if</span> <span class="n">var_names</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">var_names</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">))]</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_var_vals</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">var_names</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n_var_vals</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="mi">2</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="n">cartesian_product</span><span class="p">,</span>
+                    <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">n_var_vals</span><span class="p">,</span> <span class="n">var_names</span><span class="p">)])</span>
+
+        <span class="n">n_vals</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">_get_random_pvals</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">granularity</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">n_vals</span> <span class="o">&gt;</span> <span class="mi">18</span><span class="p">:</span>
+                    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_vals</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">n_vals</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">n_vals</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">_rand_numbers_summing_to_one</span><span class="p">(</span><span class="n">n_vals</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">_rand_numbers_summing_to_one</span><span class="p">(</span><span class="n">n_vals</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_rand_numbers_summing_to_one</span><span class="p">(</span><span class="n">n_vals</span><span class="p">,</span> <span class="n">granularity</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">try_to_get_unique_values</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">try_to_get_unique_values</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="n">try_to_get_unique_values</span> <span class="o">=</span> <span class="mi">1000</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">try_to_get_unique_values</span><span class="p">):</span>
+                <span class="n">pvals</span> <span class="o">=</span> <span class="n">_get_random_pvals</span><span class="p">()</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">pvals</span><span class="p">))</span> <span class="o">==</span> <span class="n">n_vals</span><span class="p">:</span>
+                    <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pvals</span> <span class="o">=</span> <span class="n">_get_random_pvals</span><span class="p">()</span>
+
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">pvals</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">df</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pot.prob_of">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.prob_of">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">prob_of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_val_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get probability for a variable assignment.&quot;&quot;&quot;</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_slice</span><span class="p">(</span><span class="n">var_val_dict</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">tb</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">t</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">pval</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;In prob_of(): get_slice returned more than one value&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pot.given">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.given">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">given</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conditional_vars</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create conditional potential: P(remaining | conditional_vars).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__div__</span><span class="p">(</span><span class="n">conditional_vars</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Pot.relative_risk">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.relative_risk">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">relative_risk</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">event_var</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">exposure_var</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">event_val</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">exposure_val</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">smooth_count</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute epidemiological relative risk from a joint pot.&quot;&quot;&quot;</span>
+        <span class="n">prob</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">event_var</span><span class="p">,</span> <span class="n">exposure_var</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">smooth_count</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">prob</span> <span class="o">=</span> <span class="n">prob</span><span class="o">.</span><span class="n">count_pot_to_prob_pot</span><span class="p">(</span><span class="n">prior_count</span><span class="o">=</span><span class="n">smooth_count</span><span class="p">)</span>
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">prob</span><span class="o">.</span><span class="n">binarize</span><span class="p">({</span><span class="n">event_var</span><span class="p">:</span> <span class="n">event_val</span><span class="p">,</span> <span class="n">exposure_var</span><span class="p">:</span> <span class="n">exposure_val</span><span class="p">})</span>
+        <span class="n">prob_when_exposed</span> <span class="o">=</span> <span class="p">(</span><span class="n">prob</span> <span class="o">/</span> <span class="p">{</span><span class="n">exposure_var</span><span class="p">:</span> <span class="mi">1</span><span class="p">})[{</span><span class="n">event_var</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
+        <span class="n">prob_when_not_exposed</span> <span class="o">=</span> <span class="p">(</span><span class="n">prob</span> <span class="o">/</span> <span class="p">{</span><span class="n">exposure_var</span><span class="p">:</span> <span class="mi">0</span><span class="p">})[{</span><span class="n">event_var</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
+        <span class="n">rel_risk</span> <span class="o">=</span> <span class="p">(</span><span class="n">prob_when_exposed</span> <span class="o">/</span> <span class="n">prob_when_not_exposed</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+        <span class="k">if</span> <span class="n">rel_risk</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">rel_risk</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span></div>
+
+
+<div class="viewcode-block" id="Pot.count_pot_to_prob_pot">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.Pot.count_pot_to_prob_pot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">count_pot_to_prob_pot</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">prior_count</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">possible_vals_for_var</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Pot</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert count pot to probability pot with Laplace-like smoothing.</span>
+
+<span class="sd">        Adds prior_count to all counts, then normalizes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">possible_vals_for_var</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;possible_vals_for_var is not yet implemented&quot;</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span> <span class="o">+</span> <span class="n">prior_count</span><span class="p">)</span><span class="o">.</span><span class="n">tb</span>
+        <span class="n">c</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span> <span class="o">/=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ProbPot">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.ProbPot">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProbPot</span><span class="p">(</span><span class="n">Pot</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Pot subclass for probability-specific operations.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_relrisk_matrix</span><span class="p">(</span><span class="n">relrisk</span><span class="p">):</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">spyn.utils.color</span><span class="w"> </span><span class="kn">import</span> <span class="n">shifted_color_map</span><span class="p">,</span> <span class="n">get_colorbar_tick_labels_as_floats</span>
+
+        <span class="n">t</span> <span class="o">=</span> <span class="n">relrisk</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">matrix_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;exposure&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">(),</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">map_vals_to_ints_inplace</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">cols_to_map</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;exposure&#39;</span><span class="p">])</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;exposure&#39;</span><span class="p">]</span>
+        <span class="n">map_vals_to_ints_inplace</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">cols_to_map</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">))))))})</span>
+        <span class="n">RR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">matrix_shape</span><span class="p">)</span>
+        <span class="n">RR</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;exposure&#39;</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;event&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;relative_risk&#39;</span><span class="p">]</span>
+        <span class="n">RR</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">))),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)))]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="n">RRL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">RR</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">normalizor</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="n">min_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">range_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-</span> <span class="n">min_x</span>
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">min_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">range_x</span>
+
+        <span class="n">normalize_this</span> <span class="o">=</span> <span class="n">normalizor</span><span class="p">(</span><span class="n">RRL</span><span class="p">)</span>
+        <span class="n">center</span> <span class="o">=</span> <span class="n">normalize_this</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">color_map</span> <span class="o">=</span> <span class="n">shifted_color_map</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">midpoint</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">RRL</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">color_map</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">RRL</span><span class="p">)[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">m</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">RRL</span><span class="p">)[</span><span class="mi">1</span><span class="p">])),</span> <span class="n">m</span><span class="p">)</span>
+        <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+        <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;</span><span class="si">%.02f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">exp2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">get_colorbar_tick_labels_as_floats</span><span class="p">(</span><span class="n">cbar</span><span class="p">)))])</span></div>
+
+
+
+<span class="c1"># -------------------------------------------------------------------</span>
+<span class="c1"># Data Prep utils</span>
+<span class="c1"># -------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="from_points_to_binary">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.from_points_to_binary">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">from_points_to_binary</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">mid_fun</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert data to binary based on a midpoint function.&quot;&quot;&quot;</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">columns</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+        <span class="n">dd</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">mid_fun</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">c</span><span class="p">])))</span>
+    <span class="k">return</span> <span class="n">dd</span></div>
+
+
+
+<span class="c1"># -------------------------------------------------------------------</span>
+<span class="c1"># Module-level utility functions</span>
+<span class="c1"># -------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="relative_risk">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/pot.html#spyn.ppi.pot.relative_risk">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">relative_risk</span><span class="p">(</span><span class="n">joint_prob_pot</span><span class="p">,</span> <span class="n">event_var</span><span class="p">,</span> <span class="n">exposure_var</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute relative risk from a joint probability pot.&quot;&quot;&quot;</span>
+    <span class="n">prob</span> <span class="o">=</span> <span class="n">joint_prob_pot</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="n">event_var</span><span class="p">,</span> <span class="n">exposure_var</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">prob</span> <span class="o">/</span> <span class="p">{</span><span class="n">exposure_var</span><span class="p">:</span> <span class="mi">1</span><span class="p">})[{</span><span class="n">event_var</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
+            <span class="o">/</span> <span class="p">(</span><span class="n">prob</span> <span class="o">/</span> <span class="p">{</span><span class="n">exposure_var</span><span class="p">:</span> <span class="mi">0</span><span class="p">})[{</span><span class="n">event_var</span><span class="p">:</span> <span class="mi">1</span><span class="p">}])</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_val_prod_</span><span class="p">(</span><span class="n">tb</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Multiply pval_x and pval_y columns into pval.&quot;&quot;&quot;</span>
+    <span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval_x&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval_y&#39;</span><span class="p">]</span>
+    <span class="n">tb</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pval_x&#39;</span><span class="p">,</span> <span class="s1">&#39;pval_y&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tb</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_val_div_</span><span class="p">(</span><span class="n">tb</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Divide pval_x by pval_y. 0/0 → 0.&quot;&quot;&quot;</span>
+    <span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">true_divide</span><span class="p">(</span><span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval_x&#39;</span><span class="p">],</span> <span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval_y&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">tb</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pval_x&#39;</span><span class="p">,</span> <span class="s1">&#39;pval_y&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tb</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_val_add_</span><span class="p">(</span><span class="n">tb</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add pval_x and pval_y columns into pval.&quot;&quot;&quot;</span>
+    <span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval_x&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">tb</span><span class="p">[</span><span class="s1">&#39;pval_y&#39;</span><span class="p">]</span>
+    <span class="n">tb</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pval_x&#39;</span><span class="p">,</span> <span class="s1">&#39;pval_y&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tb</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ascertain_list</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ensure x is a list. Strings become [str], iterables become list(iter).&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;__iter__&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_rand_numbers_summing_to_one</span><span class="p">(</span><span class="n">n_numbers</span><span class="p">,</span> <span class="n">granularity</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate n random numbers summing to 1 with given granularity.&quot;&quot;&quot;</span>
+    <span class="n">n_choices</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">granularity</span>
+    <span class="k">assert</span> <span class="nb">round</span><span class="p">(</span><span class="n">n_choices</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_choices</span><span class="p">),</span> <span class="s2">&quot;granularity must be an integer divisor of 1.0&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">granularity</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">granularity</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_choices</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="n">size</span><span class="o">=</span><span class="n">n_numbers</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)])</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]])</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Decimal</span><span class="p">(</span><span class="n">xi</span><span class="p">)</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">granularity</span><span class="p">)))</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

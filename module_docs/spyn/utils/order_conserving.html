@@ -1,0 +1,205 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>spyn.utils.order_conserving &mdash; spyn 0.0.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="spyn.utils.ordered_set" href="ordered_set.html" />
+    <link rel="prev" title="spyn.utils.daf" href="daf.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            spyn
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../spyn.html">spyn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi.html">spyn.ppi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/binary_pairs_kv.html">spyn.ppi.binary_pairs_kv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/markov.html">spyn.ppi.markov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/naive_bayes_graph.html">spyn.ppi.naive_bayes_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/old.html">spyn.ppi.old</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/old/naive_binary_network.html">spyn.ppi.old.naive_binary_network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/pairs_pot.html">spyn.ppi.pairs_pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/pot.html">spyn.ppi.pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/potter.html">spyn.ppi.potter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/pstan.html">spyn.ppi.pstan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/pstan/io.html">spyn.ppi.pstan.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/pstan/models_scripts.html">spyn.ppi.pstan.models_scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi/pstan/models_scripts/mixture_of_two_binomials.html">spyn.ppi.pstan.models_scripts.mixture_of_two_binomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../util.html">spyn.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="color.html">spyn.utils.color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="daf.html">spyn.utils.daf</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">spyn.utils.order_conserving</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.utils.order_conserving.intersect"><code class="docutils literal notranslate"><span class="pre">intersect()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.utils.order_conserving.reorder_as"><code class="docutils literal notranslate"><span class="pre">reorder_as()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.utils.order_conserving.setdiff"><code class="docutils literal notranslate"><span class="pre">setdiff()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.utils.order_conserving.union"><code class="docutils literal notranslate"><span class="pre">union()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.utils.order_conserving.unique_for_non_hashables"><code class="docutils literal notranslate"><span class="pre">unique_for_non_hashables()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.utils.order_conserving.unique_from_iter"><code class="docutils literal notranslate"><span class="pre">unique_from_iter()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.utils.order_conserving.unique_list"><code class="docutils literal notranslate"><span class="pre">unique_list()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ordered_set.html">spyn.utils.ordered_set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="special.html">spyn.utils.special</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">spyn</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">spyn.utils.order_conserving</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/module_docs/spyn/utils/order_conserving.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-spyn.utils.order_conserving">
+<span id="spyn-utils-order-conserving"></span><h1>spyn.utils.order_conserving<a class="headerlink" href="#module-spyn.utils.order_conserving" title="Link to this heading"></a></h1>
+<p>Order-preserving set operations using plain dicts (Python 3.7+).</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="spyn.utils.order_conserving.intersect">
+<span class="sig-prename descclassname"><span class="pre">spyn.utils.order_conserving.</span></span><span class="sig-name descname"><span class="pre">intersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/utils/order_conserving.html#intersect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.utils.order_conserving.intersect" title="Link to this definition"></a></dt>
+<dd><p>Order-preserving intersection: elements of A that are also in B.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">intersect</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">[1, 3]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spyn.utils.order_conserving.reorder_as">
+<span class="sig-prename descclassname"><span class="pre">spyn.utils.order_conserving.</span></span><span class="sig-name descname"><span class="pre">reorder_as</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/utils/order_conserving.html#reorder_as"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.utils.order_conserving.reorder_as" title="Link to this definition"></a></dt>
+<dd><p>Reorder A to respect order in B. Elements of A not in B go at the end.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reorder_as</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">[3, 1, 2]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spyn.utils.order_conserving.setdiff">
+<span class="sig-prename descclassname"><span class="pre">spyn.utils.order_conserving.</span></span><span class="sig-name descname"><span class="pre">setdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/utils/order_conserving.html#setdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.utils.order_conserving.setdiff" title="Link to this definition"></a></dt>
+<dd><p>Order-preserving set difference: elements of A not in B.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">setdiff</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="go">[1, 3]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spyn.utils.order_conserving.union">
+<span class="sig-prename descclassname"><span class="pre">spyn.utils.order_conserving.</span></span><span class="sig-name descname"><span class="pre">union</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/utils/order_conserving.html#union"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.utils.order_conserving.union" title="Link to this definition"></a></dt>
+<dd><p>Order-preserving union: elements of B then remaining elements of A.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="go">[3, 4, 1, 2]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spyn.utils.order_conserving.unique_for_non_hashables">
+<span class="sig-prename descclassname"><span class="pre">spyn.utils.order_conserving.</span></span><span class="sig-name descname"><span class="pre">unique_for_non_hashables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/utils/order_conserving.html#unique_for_non_hashables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.utils.order_conserving.unique_for_non_hashables" title="Link to this definition"></a></dt>
+<dd><p>Return unique items for unhashable types, preserving order.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spyn.utils.order_conserving.unique_from_iter">
+<span class="sig-prename descclassname"><span class="pre">spyn.utils.order_conserving.</span></span><span class="sig-name descname"><span class="pre">unique_from_iter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/utils/order_conserving.html#unique_from_iter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.utils.order_conserving.unique_from_iter" title="Link to this definition"></a></dt>
+<dd><p>Return unique items from an iterable of iterables, preserving order.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spyn.utils.order_conserving.unique_list">
+<span class="sig-prename descclassname"><span class="pre">spyn.utils.order_conserving.</span></span><span class="sig-name descname"><span class="pre">unique_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/utils/order_conserving.html#unique_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.utils.order_conserving.unique_list" title="Link to this definition"></a></dt>
+<dd><p>Return unique items from x, preserving order.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unique_list</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">[3, 1, 2]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="daf.html" class="btn btn-neutral float-left" title="spyn.utils.daf" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ordered_set.html" class="btn btn-neutral float-right" title="spyn.utils.ordered_set" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

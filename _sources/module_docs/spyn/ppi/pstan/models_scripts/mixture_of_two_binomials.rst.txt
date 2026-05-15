@@ -1,0 +1,4 @@
+spyn.ppi.pstan.models_scripts.mixture_of_two_binomials
+======================================================
+.. automodule:: spyn.ppi.pstan.models_scripts.mixture_of_two_binomials
+   :members:

@@ -1,0 +1,4 @@
+spyn.utils.color
+================
+.. automodule:: spyn.utils.color
+   :members:

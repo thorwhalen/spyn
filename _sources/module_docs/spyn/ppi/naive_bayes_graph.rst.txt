@@ -1,0 +1,4 @@
+spyn.ppi.naive_bayes_graph
+==========================
+.. automodule:: spyn.ppi.naive_bayes_graph
+   :members:

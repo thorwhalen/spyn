@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>spyn.ppi.binary_pairs_kv &mdash; spyn 0.0.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            spyn
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn.html">spyn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi.html">spyn.ppi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html">spyn.ppi.binary_pairs_kv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/markov.html">spyn.ppi.markov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/naive_bayes_graph.html">spyn.ppi.naive_bayes_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/old.html">spyn.ppi.old</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/old/naive_binary_network.html">spyn.ppi.old.naive_binary_network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pairs_pot.html">spyn.ppi.pairs_pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pot.html">spyn.ppi.pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/potter.html">spyn.ppi.potter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan.html">spyn.ppi.pstan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/io.html">spyn.ppi.pstan.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/models_scripts.html">spyn.ppi.pstan.models_scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/models_scripts/mixture_of_two_binomials.html">spyn.ppi.pstan.models_scripts.mixture_of_two_binomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/util.html">spyn.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/color.html">spyn.utils.color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/daf.html">spyn.utils.daf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/order_conserving.html">spyn.utils.order_conserving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/ordered_set.html">spyn.utils.ordered_set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/special.html">spyn.utils.special</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">spyn</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">spyn.ppi.binary_pairs_kv</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for spyn.ppi.binary_pairs_kv</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Edge statistics over binary pair sets using key-value count structures.&quot;&quot;&quot;</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;thor&#39;</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">combinations</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">EdgeStats</span><span class="p">:</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="n">CountVal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">KeyVal</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ab</span> <span class="o">=</span> <span class="n">KeyVal</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">count_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_iterator</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">item_iterator</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_count</span><span class="o">.</span><span class="n">increment</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">KeyVal</span><span class="p">({</span><span class="n">a</span><span class="p">:</span> <span class="n">Val</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)}))</span>
+            <span class="k">for</span> <span class="n">ab</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ab</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">KeyVal</span><span class="p">({</span><span class="n">ab</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">KeyVal</span><span class="p">({</span><span class="n">ab</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">Val</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)})}))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ab</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">KeyVal</span><span class="p">({</span><span class="n">ab</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">KeyVal</span><span class="p">({</span><span class="n">ab</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">Val</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)})}))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">counts_to_probs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">prior_num</span> <span class="o">=</span> <span class="n">Val</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+        <span class="n">prior_denom</span> <span class="o">=</span> <span class="n">Val</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">alpha</span> <span class="o">+</span> <span class="n">beta</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ab</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ab</span> <span class="o">+</span> <span class="n">prior_num</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">prior_denom</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">prior_num</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">+</span> <span class="n">prior_denom</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ab</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+
+<span class="c1"># default functions</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_a_list_from_item_default</span><span class="p">(</span><span class="n">pair_set</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair_set</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_b_list_from_item_default</span><span class="p">(</span><span class="n">pair_set</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pair_set</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="BipartiteEdgeCounts">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html#spyn.ppi.binary_pairs_kv.BipartiteEdgeCounts">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BipartiteEdgeCounts</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The class that manages the count data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<span class="c1">#     _count</span>
+<span class="c1">#     a_count</span>
+<span class="c1">#     b_count</span>
+<span class="c1">#     ab_count</span>
+<span class="c1">#     ba_count</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">get_a_list_from_item</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">get_b_list_from_item</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="n">CountVal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_count</span> <span class="o">=</span> <span class="n">KeyCount</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_count</span> <span class="o">=</span> <span class="n">KeyCount</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ab_count</span> <span class="o">=</span> <span class="n">KeyCount</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ba_count</span> <span class="o">=</span> <span class="n">KeyCount</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_a_list_from_item</span> <span class="o">=</span> <span class="n">get_a_list_from_item</span> <span class="ow">or</span> <span class="n">get_a_list_from_item_default</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_b_list_from_item</span> <span class="o">=</span> <span class="n">get_b_list_from_item</span> <span class="ow">or</span> <span class="n">get_b_list_from_item_default</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">learn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_iterator</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">item_iterator</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_count</span><span class="o">.</span><span class="n">increment</span><span class="p">()</span>
+            <span class="n">a_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_a_list_from_item</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="n">b_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_b_list_from_item</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">a_count</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">b_list</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">b_count</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">b_list</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ab_count</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">KeyVal</span><span class="p">({</span><span class="n">a</span><span class="p">:</span> <span class="n">KeyVal</span><span class="p">({</span><span class="n">b</span><span class="p">:</span> <span class="n">Val</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)})}))</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ba_count</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">KeyVal</span><span class="p">({</span><span class="n">b</span><span class="p">:</span> <span class="n">KeyVal</span><span class="p">({</span><span class="n">a</span><span class="p">:</span> <span class="n">Val</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)})}))</span></div>
+
+
+
+<div class="viewcode-block" id="Val">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html#spyn.ppi.binary_pairs_kv.Val">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Val</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The mother class of other Val classes.</span>
+<span class="sd">    A Val should hold a value and be able to add and subtract from it.</span>
+
+<span class="sd">    This mother class implements normal addition of floats, but should be overridden to</span>
+<span class="sd">    implement other types of values such as multiplication, addition of vectors,</span>
+<span class="sd">    merging of likelihoods etc.</span>
+
+<span class="sd">    Most of the time, you&#39;ll only need to override the add() and the sub() methods.</span>
+<span class="sd">    You may also want to override the default value. This value should act as the</span>
+<span class="sd">    &#39;unit&#39; or &#39;neutral&#39; value of the add operation (therefore the sub operation as well).</span>
+<span class="sd">    For example, the unit value of multiplication (which will still be called &quot;add&quot;) is 1.0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Val</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">+</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">sub</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">mul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">div</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">unwrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">unwrapped</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fun</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="CountVal">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html#spyn.ppi.binary_pairs_kv.CountVal">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CountVal</span><span class="p">(</span><span class="n">Val</span><span class="p">):</span>
+
+    <span class="n">v</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">+=</span> <span class="mf">1.0</span></div>
+
+
+
+<div class="viewcode-block" id="LHVal">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html#spyn.ppi.binary_pairs_kv.LHVal">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LHVal</span><span class="p">(</span><span class="n">Val</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An LHVal manages a binary likelihood.</span>
+<span class="sd">    That is, it holds (as a single float) the binary likelihood distribution and allows one to</span>
+<span class="sd">    merge two such distributions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">;</span>  <span class="c1"># where the value will be stored</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mf">.5</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">mul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">div</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="KeyVal">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html#spyn.ppi.binary_pairs_kv.KeyVal">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">KeyVal</span><span class="p">(</span><span class="n">Val</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Here the type of the value is a dict (to implement a map).</span>
+<span class="sd">    The addition of two dicts (therefore the add() method) v and w.</span>
+
+<span class="sd">    The add(val) method will here be defined to be a sum-update of the (key,value)</span>
+<span class="sd">    pairs of the</span>
+<span class="sd">    Extends a map so that one can add and subtract dict pairs by adding or subtracting</span>
+<span class="sd">     the (key-aligned) values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;keys&#39;</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                    <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">v</span> <span class="o">+</span> <span class="n">kv</span><span class="o">.</span><span class="n">v</span>
+                <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">kv</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Val</span><span class="p">(</span><span class="n">kv</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">sub</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;keys&#39;</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                    <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">v</span> <span class="o">-</span> <span class="n">kv</span><span class="o">.</span><span class="n">v</span>
+                <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">kv</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">Val</span><span class="p">(</span><span class="n">kv</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">mul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;keys&#39;</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                    <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="n">kv</span><span class="o">.</span><span class="n">v</span>
+                <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">kv</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">Val</span><span class="p">(</span><span class="n">kv</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">div</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;keys&#39;</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                    <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">v</span> <span class="o">/</span> <span class="n">kv</span><span class="o">.</span><span class="n">v</span>
+                <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">kv</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">Val</span><span class="p">(</span><span class="n">kv</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">unwrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">unwrapped</span><span class="p">()</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fun</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="KeyCount">
+<a class="viewcode-back" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html#spyn.ppi.binary_pairs_kv.KeyCount">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">KeyCount</span><span class="p">(</span><span class="n">KeyVal</span><span class="p">):</span>
+<span class="c1">#     v = dict()</span>
+<span class="c1">#     init_val_constructor = None;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extends a map so that one can add and subtract dict pairs by adding or subtracting the (key-aligned) values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Val</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Val</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># if __name__ == &quot;__main__&quot;:</span>
+<span class="c1">#     d = ut.daf.get.rand(nrows=9)</span>
+<span class="c1">#     s = d[&#39;A&#39;].iloc[0:5]</span>
+<span class="c1">#     ss = d[&#39;B&#39;].iloc[3:8]</span>
+<span class="c1">#     t = s + ss</span>
+<span class="c1">#     print t</span>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

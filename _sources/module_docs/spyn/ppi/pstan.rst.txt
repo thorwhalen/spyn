@@ -1,0 +1,4 @@
+spyn.ppi.pstan
+==============
+.. automodule:: spyn.ppi.pstan
+   :members:

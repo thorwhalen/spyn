@@ -1,0 +1,4 @@
+spyn.utils.order_conserving
+===========================
+.. automodule:: spyn.utils.order_conserving
+   :members:

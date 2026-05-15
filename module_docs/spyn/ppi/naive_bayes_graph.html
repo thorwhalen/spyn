@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>spyn.ppi.naive_bayes_graph &mdash; spyn 0.0.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="spyn.ppi.old" href="old.html" />
+    <link rel="prev" title="spyn.ppi.markov" href="markov.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            spyn
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../spyn.html">spyn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi.html">spyn.ppi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binary_pairs_kv.html">spyn.ppi.binary_pairs_kv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov.html">spyn.ppi.markov</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">spyn.ppi.naive_bayes_graph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.naive_bayes_graph.BipartiteEdgeCounts"><code class="docutils literal notranslate"><span class="pre">BipartiteEdgeCounts</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.naive_bayes_graph.BipartiteStats"><code class="docutils literal notranslate"><span class="pre">BipartiteStats</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.naive_bayes_graph.CountVal"><code class="docutils literal notranslate"><span class="pre">CountVal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.naive_bayes_graph.KeyCount"><code class="docutils literal notranslate"><span class="pre">KeyCount</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.naive_bayes_graph.KeyVal"><code class="docutils literal notranslate"><span class="pre">KeyVal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.naive_bayes_graph.LHVal"><code class="docutils literal notranslate"><span class="pre">LHVal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.naive_bayes_graph.Val"><code class="docutils literal notranslate"><span class="pre">Val</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="old.html">spyn.ppi.old</a></li>
+<li class="toctree-l1"><a class="reference internal" href="old/naive_binary_network.html">spyn.ppi.old.naive_binary_network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pairs_pot.html">spyn.ppi.pairs_pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pot.html">spyn.ppi.pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="potter.html">spyn.ppi.potter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pstan.html">spyn.ppi.pstan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pstan/io.html">spyn.ppi.pstan.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pstan/models_scripts.html">spyn.ppi.pstan.models_scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pstan/models_scripts/mixture_of_two_binomials.html">spyn.ppi.pstan.models_scripts.mixture_of_two_binomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../util.html">spyn.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/color.html">spyn.utils.color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/daf.html">spyn.utils.daf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/order_conserving.html">spyn.utils.order_conserving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/ordered_set.html">spyn.utils.ordered_set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/special.html">spyn.utils.special</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">spyn</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">spyn.ppi.naive_bayes_graph</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/module_docs/spyn/ppi/naive_bayes_graph.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-spyn.ppi.naive_bayes_graph">
+<span id="spyn-ppi-naive-bayes-graph"></span><h1>spyn.ppi.naive_bayes_graph<a class="headerlink" href="#module-spyn.ppi.naive_bayes_graph" title="Link to this heading"></a></h1>
+<p>Naive-Bayes-style bipartite graph statistics over item sets.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="spyn.ppi.naive_bayes_graph.BipartiteEdgeCounts">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">spyn.ppi.naive_bayes_graph.</span></span><span class="sig-name descname"><span class="pre">BipartiteEdgeCounts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">get_a_list_from_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_b_list_from_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/naive_bayes_graph.html#BipartiteEdgeCounts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.naive_bayes_graph.BipartiteEdgeCounts" title="Link to this definition"></a></dt>
+<dd><p>The class that manages the count data.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spyn.ppi.naive_bayes_graph.BipartiteStats">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">spyn.ppi.naive_bayes_graph.</span></span><span class="sig-name descname"><span class="pre">BipartiteStats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">get_a_list_from_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_b_list_from_item</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/naive_bayes_graph.html#BipartiteStats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.naive_bayes_graph.BipartiteStats" title="Link to this definition"></a></dt>
+<dd><p>The class that manages the count data.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spyn.ppi.naive_bayes_graph.CountVal">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">spyn.ppi.naive_bayes_graph.</span></span><span class="sig-name descname"><span class="pre">CountVal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/naive_bayes_graph.html#CountVal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.naive_bayes_graph.CountVal" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spyn.ppi.naive_bayes_graph.KeyCount">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">spyn.ppi.naive_bayes_graph.</span></span><span class="sig-name descname"><span class="pre">KeyCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/naive_bayes_graph.html#KeyCount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.naive_bayes_graph.KeyCount" title="Link to this definition"></a></dt>
+<dd><p>Extends a map so that one can add and subtract dict pairs by adding or subtracting the (key-aligned) values</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spyn.ppi.naive_bayes_graph.KeyVal">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">spyn.ppi.naive_bayes_graph.</span></span><span class="sig-name descname"><span class="pre">KeyVal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/naive_bayes_graph.html#KeyVal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.naive_bayes_graph.KeyVal" title="Link to this definition"></a></dt>
+<dd><p>Here the type of the value is a dict (to implement a map).
+The addition of two dicts (therefore the add() method) v and w.</p>
+<p>The add(val) method will here be defined to be a sum-update of the (key,value)
+pairs of the
+Extends a map so that one can add and subtract dict pairs by adding or subtracting</p>
+<blockquote>
+<div><p>the (key-aligned) values</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spyn.ppi.naive_bayes_graph.LHVal">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">spyn.ppi.naive_bayes_graph.</span></span><span class="sig-name descname"><span class="pre">LHVal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/naive_bayes_graph.html#LHVal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.naive_bayes_graph.LHVal" title="Link to this definition"></a></dt>
+<dd><p>An LHVal manages a binary likelihood.
+That is, it holds (as a single float) the binary likelihood distribution and allows one to
+merge two such distributions.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spyn.ppi.naive_bayes_graph.Val">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">spyn.ppi.naive_bayes_graph.</span></span><span class="sig-name descname"><span class="pre">Val</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/naive_bayes_graph.html#Val"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.naive_bayes_graph.Val" title="Link to this definition"></a></dt>
+<dd><p>The mother class of other Val classes.
+A Val should hold a value and be able to add and subtract from it.</p>
+<p>This mother class implements normal addition of floats, but should be overridden to
+implement other types of values such as multiplication, addition of vectors,
+merging of likelihoods etc.</p>
+<p>Most of the time, you’ll only need to override the add() and the sub() methods.
+You may also want to override the default value. This value should act as the
+‘unit’ or ‘neutral’ value of the add operation (therefore the sub operation as well).
+For example, the unit value of multiplication (which will still be called “add”) is 1.0.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="markov.html" class="btn btn-neutral float-left" title="spyn.ppi.markov" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="old.html" class="btn btn-neutral float-right" title="spyn.ppi.old" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

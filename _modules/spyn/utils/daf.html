@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>spyn.utils.daf &mdash; spyn 0.0.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            spyn
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn.html">spyn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi.html">spyn.ppi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html">spyn.ppi.binary_pairs_kv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/markov.html">spyn.ppi.markov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/naive_bayes_graph.html">spyn.ppi.naive_bayes_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/old.html">spyn.ppi.old</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/old/naive_binary_network.html">spyn.ppi.old.naive_binary_network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pairs_pot.html">spyn.ppi.pairs_pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pot.html">spyn.ppi.pot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/potter.html">spyn.ppi.potter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan.html">spyn.ppi.pstan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/io.html">spyn.ppi.pstan.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/models_scripts.html">spyn.ppi.pstan.models_scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/ppi/pstan/models_scripts/mixture_of_two_binomials.html">spyn.ppi.pstan.models_scripts.mixture_of_two_binomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/util.html">spyn.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/color.html">spyn.utils.color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/daf.html">spyn.utils.daf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/order_conserving.html">spyn.utils.order_conserving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/ordered_set.html">spyn.utils.ordered_set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/spyn/utils/special.html">spyn.utils.special</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">spyn</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">spyn.utils.daf</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for spyn.utils.daf</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;DataFrame helpers: variable-combination completion and cartesian product.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">array</span><span class="p">,</span> <span class="n">unique</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spyn.utils.ordered_set</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedSet</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">complete_df_with_all_var_combinations</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">var_cols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">var_cols</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">var_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">multi_index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">var_cols</span><span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="n">var_cols</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">var_cols</span><span class="p">)</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">multi_index</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">fill_value</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cartesian_product</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">):</span>
+    <span class="n">join_col</span> <span class="o">=</span> <span class="s1">&#39;this is the joining col that wont show up elsewhere&#39;</span>
+    <span class="n">df1</span><span class="p">[</span><span class="n">join_col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">df2</span><span class="p">[</span><span class="n">join_col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">join_col</span><span class="p">)</span>
+    <span class="n">df1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">join_col</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">join_col</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">join_col</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_force_list</span><span class="p">(</span><span class="n">list_wannabe</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list_wannabe</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">list_wannabe</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list_wannabe</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">list_wannabe</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">list_wannabe</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ch_col_names</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">new_names</span><span class="o">=</span><span class="p">(),</span> <span class="n">old_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># changes the names listed in new_names to the names listed in old_names</span>
+    <span class="n">new_names</span> <span class="o">=</span> <span class="n">_force_list</span><span class="p">(</span><span class="n">new_names</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">new_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">df</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">old_names</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">old_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">old_names</span> <span class="o">=</span> <span class="n">_force_list</span><span class="p">(</span><span class="n">old_names</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_names</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">old_names</span><span class="p">),</span> <span class="s2">&quot;old_names and new_names must be the same length&quot;</span>
+        <span class="c1"># return df.rename(columns={k: v for (k, v) in zip(old_names, new_names)}, inplace=inplace)</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">old_names</span><span class="p">,</span> <span class="n">new_names</span><span class="p">))),</span> <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="free_col_name">
+<a class="viewcode-back" href="../../../module_docs/spyn/utils/daf.html#spyn.utils.daf.free_col_name">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">free_col_name</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">candidate_cols</span><span class="p">,</span> <span class="n">raise_error</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Will look for the first string in candidate_cols that is not a column name of df.</span>
+<span class="sd">    If no free column is found, will raise error (default) or return None.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">candidate_cols</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">col</span>
+    <span class="k">if</span> <span class="n">raise_error</span><span class="p">:</span>
+        <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;All candidate_cols were already taken&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">group_and_count</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">count_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="k">del</span> <span class="n">t</span>
+    <span class="n">count_col</span> <span class="o">=</span> <span class="n">count_col</span> <span class="ow">or</span> <span class="n">free_col_name</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;gr_count&#39;</span><span class="p">])</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">count_col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">frequency</span><span class="p">:</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">count_col</span><span class="p">]</span> <span class="o">/=</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">count_col</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">d</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">intersect</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">OrderedSet</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">OrderedSet</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)(</span><span class="n">C</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">setdiff</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="c1"># C = OrderedSet(union(B, A)) - OrderedSet(intersect(B, A)) # no, that&#39;s the symmetric difference!</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">OrderedSet</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="n">OrderedSet</span><span class="p">(</span><span class="n">intersect</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)(</span><span class="n">C</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="reorder_as">
+<a class="viewcode-back" href="../../../module_docs/spyn/utils/daf.html#spyn.utils.daf.reorder_as">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">reorder_as</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    reorders A so as to respect the order in B.</span>
+<span class="sd">    Only the elements of A that are also in B will be reordered (and placed in front),</span>
+<span class="sd">    those that are not will be put at the end of the returned iterable, in their original order</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">intersect</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> <span class="o">+</span> <span class="n">setdiff</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">)(</span><span class="n">C</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">C</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="reorder_columns_as">
+<a class="viewcode-back" href="../../../module_docs/spyn/utils/daf.html#spyn.utils.daf.reorder_columns_as">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">reorder_columns_as</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col_order</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    reorders columns so that they respect the order in col_order.</span>
+<span class="sd">    Only the columns of df that are also in col_order will be reordered (and placed in front),</span>
+<span class="sd">    those that are not will be put at the end of the returned dataframe, in their original order</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">col_order</span><span class="p">,</span> <span class="s1">&#39;columns&#39;</span><span class="p">):</span>
+        <span class="n">col_order</span> <span class="o">=</span> <span class="n">col_order</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">col_order</span> <span class="o">=</span> <span class="n">reorder_as</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">col_order</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">inplace</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">col_order</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">col_idx_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">col_order</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">col_order</span><span class="p">))))))</span>
+        <span class="n">col_idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">col_idx_map</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">col_idx</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col_order</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sort_as</span><span class="p">(</span><span class="n">sort_x</span><span class="p">,</span> <span class="n">as_y</span><span class="p">,</span> <span class="o">**</span><span class="n">sorted_kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">as_y</span><span class="p">,</span> <span class="n">sort_x</span><span class="p">),</span> <span class="o">**</span><span class="n">sorted_kwargs</span><span class="p">)]</span>
+
+
+<div class="viewcode-block" id="map_vals_to_ints_inplace">
+<a class="viewcode-back" href="../../../module_docs/spyn/utils/daf.html#spyn.utils.daf.map_vals_to_ints_inplace">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">map_vals_to_ints_inplace</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cols_to_map</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    map_vals_to_ints_inplace(df, cols_to_map) will map columns of df inplace</span>
+<span class="sd">    If cols_to_map is a string, a single column will be mapped to consecutive integers from 0 onwards.</span>
+<span class="sd">    Elif cols_to_map is a dict, the function will attempt to map the columns dict.keys() using the (list-like)</span>
+<span class="sd">        maps specified in dict.values()</span>
+<span class="sd">    Else assumed that cols_to_map is list-like specifying columns to be mapped</span>
+
+<span class="sd">    Note: If no mapping is specified (i.e. cols_to_map is not a dict), the function will return the mapping dict,</span>
+<span class="sd">    which is of the form mapping_dict[col][val] := mapped val for col.</span>
+<span class="sd">    This can be used to reverse the operation, i.e.:</span>
+<span class="sd">        mapping_dict = map_vals_to_ints_inplace(df, cols_to_map)</span>
+<span class="sd">        map_vals_to_ints_inplace(df, mapping_dict)</span>
+<span class="sd">        will leave df unchanged</span>
+<span class="sd">    This can also be used to apply the same mapping to multiple columns. To apply the same mapping to A and B:</span>
+<span class="sd">        mapping_dict = map_vals_to_ints_inplace(df, [&#39;A&#39;])</span>
+<span class="sd">        map_vals_to_ints_inplace(df,</span>
+<span class="sd">            cols_to_map={&#39;B&#39;: dict(zip(mapping_dict[&#39;A&#39;], range(len(mapping_dict[&#39;A&#39;]))))})</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mapping_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cols_to_map</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>  <span class="c1"># mapping a single column</span>
+        <span class="n">mapping_dict</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_to_map</span><span class="p">]</span> <span class="o">=</span> <span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cols_to_map</span><span class="p">],</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">mapping_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">cols_to_map</span><span class="p">:</span> <span class="n">mapping_dict</span><span class="p">}</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cols_to_map</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>  <span class="c1"># mapping with a user specified map</span>
+        <span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">cols_to_map</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="s2">&quot;cols_to_map keys must be a subset of df columns&quot;</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">cols_to_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">this_map</span> <span class="o">=</span> <span class="n">cols_to_map</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">this_map</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">this_map</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span> <span class="o">==</span> <span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">this_map</span><span class="p">))))),</span> \
+                    <span class="s2">&quot;you must map to consecutive integers starting at 0&quot;</span>
+                <span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">this_map</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+                <span class="n">mapping_dict</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">sort_as</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">this_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">this_map</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">this_map</span><span class="p">)[</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">])]</span>
+                <span class="n">mapping_dict</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">this_map</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># mapping multiple columns</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols_to_map</span><span class="p">:</span>
+            <span class="n">mapping_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">map_vals_to_ints_inplace</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+    <span class="c1"># return the mapping dict</span>
+    <span class="k">return</span> <span class="n">mapping_dict</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

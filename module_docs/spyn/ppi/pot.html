@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>spyn.ppi.pot &mdash; spyn 0.0.6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="spyn.ppi.potter" href="potter.html" />
+    <link rel="prev" title="spyn.ppi.pairs_pot" href="pairs_pot.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            spyn
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../spyn.html">spyn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ppi.html">spyn.ppi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binary_pairs_kv.html">spyn.ppi.binary_pairs_kv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markov.html">spyn.ppi.markov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="naive_bayes_graph.html">spyn.ppi.naive_bayes_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="old.html">spyn.ppi.old</a></li>
+<li class="toctree-l1"><a class="reference internal" href="old/naive_binary_network.html">spyn.ppi.old.naive_binary_network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pairs_pot.html">spyn.ppi.pairs_pot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">spyn.ppi.pot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.pot.Pot"><code class="docutils literal notranslate"><span class="pre">Pot</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.add_count"><code class="docutils literal notranslate"><span class="pre">Pot.add_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.assimilate"><code class="docutils literal notranslate"><span class="pre">Pot.assimilate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.binarize"><code class="docutils literal notranslate"><span class="pre">Pot.binarize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.binary_pot"><code class="docutils literal notranslate"><span class="pre">Pot.binary_pot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.count_pot_to_prob_pot"><code class="docutils literal notranslate"><span class="pre">Pot.count_pot_to_prob_pot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.from_count_df_to_count"><code class="docutils literal notranslate"><span class="pre">Pot.from_count_df_to_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.from_counter"><code class="docutils literal notranslate"><span class="pre">Pot.from_counter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.from_hard_evidence"><code class="docutils literal notranslate"><span class="pre">Pot.from_hard_evidence()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.from_points_to_bins"><code class="docutils literal notranslate"><span class="pre">Pot.from_points_to_bins()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.from_points_to_count"><code class="docutils literal notranslate"><span class="pre">Pot.from_points_to_count()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.get_slice"><code class="docutils literal notranslate"><span class="pre">Pot.get_slice()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.given"><code class="docutils literal notranslate"><span class="pre">Pot.given()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.n"><code class="docutils literal notranslate"><span class="pre">Pot.n</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.normalize"><code class="docutils literal notranslate"><span class="pre">Pot.normalize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.order_vars"><code class="docutils literal notranslate"><span class="pre">Pot.order_vars()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.prob_of"><code class="docutils literal notranslate"><span class="pre">Pot.prob_of()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.project_to"><code class="docutils literal notranslate"><span class="pre">Pot.project_to()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.pval"><code class="docutils literal notranslate"><span class="pre">Pot.pval</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.pval_of"><code class="docutils literal notranslate"><span class="pre">Pot.pval_of()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.rand"><code class="docutils literal notranslate"><span class="pre">Pot.rand()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.rect_perspective_df"><code class="docutils literal notranslate"><span class="pre">Pot.rect_perspective_df()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.relative_risk"><code class="docutils literal notranslate"><span class="pre">Pot.relative_risk()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.round"><code class="docutils literal notranslate"><span class="pre">Pot.round()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.select"><code class="docutils literal notranslate"><span class="pre">Pot.select()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.sort_pts"><code class="docutils literal notranslate"><span class="pre">Pot.sort_pts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.unassimilate"><code class="docutils literal notranslate"><span class="pre">Pot.unassimilate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.values"><code class="docutils literal notranslate"><span class="pre">Pot.values</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.vars"><code class="docutils literal notranslate"><span class="pre">Pot.vars</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.vars_set"><code class="docutils literal notranslate"><span class="pre">Pot.vars_set</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spyn.ppi.pot.Pot.zero_potential"><code class="docutils literal notranslate"><span class="pre">Pot.zero_potential()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.pot.ProbPot"><code class="docutils literal notranslate"><span class="pre">ProbPot</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.pot.from_points_to_binary"><code class="docutils literal notranslate"><span class="pre">from_points_to_binary()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyn.ppi.pot.relative_risk"><code class="docutils literal notranslate"><span class="pre">relative_risk()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="potter.html">spyn.ppi.potter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pstan.html">spyn.ppi.pstan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pstan/io.html">spyn.ppi.pstan.io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pstan/models_scripts.html">spyn.ppi.pstan.models_scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pstan/models_scripts/mixture_of_two_binomials.html">spyn.ppi.pstan.models_scripts.mixture_of_two_binomials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../util.html">spyn.util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/color.html">spyn.utils.color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/daf.html">spyn.utils.daf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/order_conserving.html">spyn.utils.order_conserving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/ordered_set.html">spyn.utils.ordered_set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/special.html">spyn.utils.special</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">spyn</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">spyn.ppi.pot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/module_docs/spyn/ppi/pot.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-spyn.ppi.pot">
+<span id="spyn-ppi-pot"></span><h1>spyn.ppi.pot<a class="headerlink" href="#module-spyn.ppi.pot" title="Link to this heading"></a></h1>
+<p>Potentials: probability/likelihood tables with algebraic operators.</p>
+<p>The Pot class represents discrete probability tables as DataFrames with a ‘pval’
+column and uses operator overloading for probabilistic inference:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> factor product</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> normalization, conditioning, or factor division</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code> marginalization (list/str) or slicing (dict)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> projection (marginalization)</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>  <span class="c1"># marginalize to A</span>
+<span class="go">     pval</span>
+<span class="go">A</span>
+<span class="go">0       6</span>
+<span class="go">1      14</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="p">[])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># normalize</span>
+<span class="go">        pval</span>
+<span class="go">A B</span>
+<span class="go">0 0     0.10</span>
+<span class="go">  1     0.20</span>
+<span class="go">1 0     0.25</span>
+<span class="go">  1     0.45</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">spyn.ppi.pot.</span></span><span class="sig-name descname"><span class="pre">Pot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot" title="Link to this definition"></a></dt>
+<dd><p>A discrete potential (probability/likelihood table).</p>
+<p>The core data structure is a pandas DataFrame (<code class="docutils literal notranslate"><span class="pre">self.tb</span></code>) with variable
+columns and a mandatory <code class="docutils literal notranslate"><span class="pre">pval</span></code> column holding the values.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">vars</span>
+<span class="go">[&#39;A&#39;, &#39;B&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">n</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.add_count">
+<span class="sig-name descname"><span class="pre">add_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.add_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.add_count" title="Link to this definition"></a></dt>
+<dd><p>Add a count to all variable combinations (including missing ones).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.assimilate">
+<span class="sig-name descname"><span class="pre">assimilate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.assimilate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.assimilate" title="Link to this definition"></a></dt>
+<dd><p>Bayes rule: multiply by pot, normalize, project back to own vars.</p>
+<p>This computes P(X|D) ∝ P(D|X) * P(X), i.e. prior.assimilate(likelihood).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prior</span> <span class="o">=</span> <span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">likelihood</span> <span class="o">=</span> <span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">posterior</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">assimilate</span><span class="p">(</span><span class="n">likelihood</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">posterior</span><span class="o">.</span><span class="n">n</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.binarize">
+<span class="sig-name descname"><span class="pre">binarize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_values_to_map_to_1_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.binarize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.binarize" title="Link to this definition"></a></dt>
+<dd><p>Map specified variables to {0, 1} and re-aggregate.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.binary_pot">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">binary_pot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">varname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prob</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.binary_pot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.binary_pot" title="Link to this definition"></a></dt>
+<dd><p>Create a binary variable potential.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Pot</span><span class="o">.</span><span class="n">binary_pot</span><span class="p">(</span><span class="s1">&#39;coin&#39;</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
+<span class="go">      pval</span>
+<span class="go">coin</span>
+<span class="go">0      0.4</span>
+<span class="go">1      0.6</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.count_pot_to_prob_pot">
+<span class="sig-name descname"><span class="pre">count_pot_to_prob_pot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prior_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">possible_vals_for_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.count_pot_to_prob_pot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.count_pot_to_prob_pot" title="Link to this definition"></a></dt>
+<dd><p>Convert count pot to probability pot with Laplace-like smoothing.</p>
+<p>Adds prior_count to all counts, then normalizes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.from_count_df_to_count">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_count_df_to_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count_col</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'pval'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.from_count_df_to_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.from_count_df_to_count" title="Link to this definition"></a></dt>
+<dd><p>Create a pot from a DataFrame with a count column.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.from_counter">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_counter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Counter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.from_counter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.from_counter" title="Link to this definition"></a></dt>
+<dd><p>Create a pot from a Counter of tuples.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.from_hard_evidence">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_hard_evidence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">var_val</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.from_hard_evidence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.from_hard_evidence" title="Link to this definition"></a></dt>
+<dd><p>Create a singleton potential for hard evidence.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Pot</span><span class="o">.</span><span class="n">from_hard_evidence</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">n</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.from_points_to_bins">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_points_to_bins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.from_points_to_bins"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.from_points_to_bins" title="Link to this definition"></a></dt>
+<dd><p>Create a pot from points with binning (alias for count).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.from_points_to_count">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_points_to_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope_for_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.from_points_to_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.from_points_to_count" title="Link to this definition"></a></dt>
+<dd><p>Create a count pot from a collection of data points.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Pot</span><span class="o">.</span><span class="n">from_points_to_count</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">n</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.get_slice">
+<span class="sig-name descname"><span class="pre">get_slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intercept_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.get_slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.get_slice" title="Link to this definition"></a></dt>
+<dd><p>Return sub-pot at specific variable values.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="p">[{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>  <span class="c1"># slice where A=1</span>
+<span class="go">   pval</span>
+<span class="go">B</span>
+<span class="go">0     5</span>
+<span class="go">1     9</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.given">
+<span class="sig-name descname"><span class="pre">given</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conditional_vars</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.given"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.given" title="Link to this definition"></a></dt>
+<dd><p>Create conditional potential: P(remaining | conditional_vars).</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.n">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">n</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#spyn.ppi.pot.Pot.n" title="Link to this definition"></a></dt>
+<dd><p>Number of rows in the table.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.normalize" title="Link to this definition"></a></dt>
+<dd><p>Normalize the pot with respect to var_list.</p>
+<p>If var_list is empty, fully normalizes (divides by total sum).
+Otherwise, divides by the projection onto var_list (conditional prob).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>  <span class="c1"># full normalization</span>
+<span class="go">   pval</span>
+<span class="go">A</span>
+<span class="go">0   0.3</span>
+<span class="go">1   0.7</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.order_vars">
+<span class="sig-name descname"><span class="pre">order_vars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_pts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.order_vars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.order_vars" title="Link to this definition"></a></dt>
+<dd><p>Return a new Pot with reordered variables.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">order_vars</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">vars</span>
+<span class="go">[&#39;A&#39;, &#39;B&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.prob_of">
+<span class="sig-name descname"><span class="pre">prob_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_val_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.prob_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.prob_of" title="Link to this definition"></a></dt>
+<dd><p>Get probability for a variable assignment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.project_to">
+<span class="sig-name descname"><span class="pre">project_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">assert_subset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.project_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.project_to" title="Link to this definition"></a></dt>
+<dd><p>Marginalize to a subset of variables.</p>
+<p>Non-strict by default: ignores variables not in the pot.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">project_to</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>  <span class="c1"># sum out B</span>
+<span class="go">     pval</span>
+<span class="go">A</span>
+<span class="go">0       6</span>
+<span class="go">1      14</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.pval">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">pval</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Series</span></span><a class="headerlink" href="#spyn.ppi.pot.Pot.pval" title="Link to this definition"></a></dt>
+<dd><p>The pval column as a Series.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.pval_of">
+<span class="sig-name descname"><span class="pre">pval_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_val_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.pval_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.pval_of" title="Link to this definition"></a></dt>
+<dd><p>Look up the pval for a specific variable assignment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">pval_of</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}))</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.rand">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_var_vals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">try_to_get_unique_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.rand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.rand" title="Link to this definition"></a></dt>
+<dd><p>Generate a random probability pot.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Pot</span><span class="o">.</span><span class="n">rand</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">n</span>
+<span class="go">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-10</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.rect_perspective_df">
+<span class="sig-name descname"><span class="pre">rect_perspective_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.rect_perspective_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.rect_perspective_df" title="Link to this definition"></a></dt>
+<dd><p>For a 2-variable pot, return a matrix-form DataFrame.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">rect_perspective_df</span><span class="p">()</span>
+<span class="go">B  0  1</span>
+<span class="go">A</span>
+<span class="go">0  1  2</span>
+<span class="go">1  3  4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.relative_risk">
+<span class="sig-name descname"><span class="pre">relative_risk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exposure_var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exposure_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.relative_risk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.relative_risk" title="Link to this definition"></a></dt>
+<dd><p>Compute epidemiological relative risk from a joint pot.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.round">
+<span class="sig-name descname"><span class="pre">round</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ndigits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.round"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.round" title="Link to this definition"></a></dt>
+<dd><p>Round pval values.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.333</span><span class="p">,</span> <span class="mf">0.667</span><span class="p">]})</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">   pval</span>
+<span class="go">A</span>
+<span class="go">0  0.33</span>
+<span class="go">1  0.67</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.select" title="Link to this definition"></a></dt>
+<dd><p>Filter rows using a callable predicate on row dicts.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.sort_pts">
+<span class="sig-name descname"><span class="pre">sort_pts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.sort_pts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.sort_pts" title="Link to this definition"></a></dt>
+<dd><p>Return a new Pot with rows sorted by variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.unassimilate">
+<span class="sig-name descname"><span class="pre">unassimilate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.unassimilate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.unassimilate" title="Link to this definition"></a></dt>
+<dd><p>Inverse of assimilate.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.values">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">values</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></span><a class="headerlink" href="#spyn.ppi.pot.Pot.values" title="Link to this definition"></a></dt>
+<dd><p>The pval column as a numpy array.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.vars">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vars</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#spyn.ppi.pot.Pot.vars" title="Link to this definition"></a></dt>
+<dd><p>Variable names (all columns except ‘pval’).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Pot</span><span class="p">({</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;pval&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span><span class="o">.</span><span class="n">vars</span>
+<span class="go">[&#39;X&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.vars_set">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">vars_set</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#spyn.ppi.pot.Pot.vars_set" title="Link to this definition"></a></dt>
+<dd><p>Set of variable names.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spyn.ppi.pot.Pot.zero_potential">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">zero_potential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">varnames_and_scopes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#spyn.ppi.pot.Pot" title="spyn.ppi.pot.Pot"><span class="pre">Pot</span></a></span></span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#Pot.zero_potential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.Pot.zero_potential" title="Link to this definition"></a></dt>
+<dd><p>Create a pot with all variable combinations and pval=0.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pot</span> <span class="o">=</span> <span class="n">Pot</span><span class="o">.</span><span class="n">zero_potential</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pot</span><span class="o">.</span><span class="n">n</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spyn.ppi.pot.ProbPot">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">spyn.ppi.pot.</span></span><span class="sig-name descname"><span class="pre">ProbPot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#ProbPot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.ProbPot" title="Link to this definition"></a></dt>
+<dd><p>A Pot subclass for probability-specific operations.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spyn.ppi.pot.from_points_to_binary">
+<span class="sig-prename descclassname"><span class="pre">spyn.ppi.pot.</span></span><span class="sig-name descname"><span class="pre">from_points_to_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_fun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;function</span> <span class="pre">median&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#from_points_to_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.from_points_to_binary" title="Link to this definition"></a></dt>
+<dd><p>Convert data to binary based on a midpoint function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spyn.ppi.pot.relative_risk">
+<span class="sig-prename descclassname"><span class="pre">spyn.ppi.pot.</span></span><span class="sig-name descname"><span class="pre">relative_risk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joint_prob_pot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exposure_var</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/spyn/ppi/pot.html#relative_risk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spyn.ppi.pot.relative_risk" title="Link to this definition"></a></dt>
+<dd><p>Compute relative risk from a joint probability pot.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pairs_pot.html" class="btn btn-neutral float-left" title="spyn.ppi.pairs_pot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="potter.html" class="btn btn-neutral float-right" title="spyn.ppi.potter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

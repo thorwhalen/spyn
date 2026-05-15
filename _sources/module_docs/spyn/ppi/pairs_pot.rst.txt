@@ -1,0 +1,4 @@
+spyn.ppi.pairs_pot
+==================
+.. automodule:: spyn.ppi.pairs_pot
+   :members:
