@@ -60,7 +60,9 @@ A potential often represents some knowledge about all possible combinations of a
 
 
 ```python
-ab_counts = Pot(pd.DataFrame({'A': [0,0,1,1], 'B': [0,1,0,1], 'pval': [2,4,5,9]}))
+ab_counts = Pot(
+    pd.DataFrame({"A": [0, 0, 1, 1], "B": [0, 1, 0, 1], "pval": [2, 4, 5, 9]})
+)
 print(ab_counts)
 ```
 
@@ -79,7 +81,7 @@ Perhaps you want to know only about A counts. In that case you would do this:
 
 
 ```python
-print((ab_counts['A']))
+print((ab_counts["A"]))
 ```
 
       A  pval
@@ -97,7 +99,7 @@ which could also be written
 
 
 ```python
-ab_counts.project_to(var_list=['A'])
+ab_counts.project_to(var_list=["A"])
 ```
 
 
@@ -112,7 +114,7 @@ ab_counts.project_to(var_list=['A'])
 
 
 ```python
-ab_counts >> ['A']
+ab_counts >> ["A"]
 ```
 
 
@@ -131,7 +133,7 @@ In fact, if you have some data, in the form of a (pandas) DataFrame, that has on
 
 
 ```python
-data = pd.DataFrame({'A': [0,0,1,1,0,0,1,0], 'B': [0,1,0,1,1,0,1,1]})
+data = pd.DataFrame({"A": [0, 0, 1, 1, 0, 0, 1, 0], "B": [0, 1, 0, 1, 1, 0, 1, 1]})
 print(data)
 ```
 
@@ -148,8 +150,8 @@ print(data)
 
 
 ```python
-data['pval'] = 1
-print((Pot(data)[['A','B']]))
+data["pval"] = 1
+print((Pot(data)[["A", "B"]]))
 ```
 
       A  B  pval
@@ -248,7 +250,7 @@ So you have a potential representing $Prob(AB)$, the joint probability of every 
 
 
 ```python
-ab_probs[{'A': 0, 'B': 1}]
+ab_probs[{"A": 0, "B": 1}]
 ```
 
 
@@ -265,7 +267,7 @@ Ah, projection again! Yes, but with a bit of abuse. Here we're projecting not to
 
 
 ```python
-ab_probs[{'A': 0}]
+ab_probs[{"A": 0}]
 ```
 
 
@@ -286,7 +288,7 @@ If you want $X[{'A': 0}]$ to give you $Prob(A=0)$, you have to ask the right pro
 
 
 ```python
-ab_probs['A'][{'A': 0}]
+ab_probs["A"][{"A": 0}]
 ```
 
 
@@ -302,7 +304,7 @@ Though you could have also asked the $A=0$ hyper-plane to marginalize out all th
 
 
 ```python
-ab_probs[{'A': 0}][None]
+ab_probs[{"A": 0}][None]
 ```
 
 
@@ -317,7 +319,7 @@ ab_probs[{'A': 0}] wasn't very meaningful alone, but it becomes more meaningful 
 
 
 ```python
-ab_probs[{'A': 0}] / ab_probs[{'A': 0}][None]
+ab_probs[{"A": 0}] / ab_probs[{"A": 0}][None]
 ```
 
 
@@ -334,7 +336,7 @@ which you could have also writen as
 
 
 ```python
-ab_probs[{'A': 0}] / []
+ab_probs[{"A": 0}] / []
 ```
 
 
@@ -361,8 +363,8 @@ For example, take two potentials, one on XY, and one on YZ:
 
 
 ```python
-t = Pot({'X': [0,0,1,1], 'Y': [0,1,0,1], 'pval':[2,3,5,7]})
-tt = Pot({'Y': [0,1,1], 'Z': [0,1,2], 'pval':[10,100,1000]})
+t = Pot({"X": [0, 0, 1, 1], "Y": [0, 1, 0, 1], "pval": [2, 3, 5, 7]})
+tt = Pot({"Y": [0, 1, 1], "Z": [0, 1, 2], "pval": [10, 100, 1000]})
 print(t)
 print("")
 print(tt)
@@ -557,8 +559,8 @@ Intuitively, what is happening when you operate on two potentials, is that you a
 
 
 ```python
-t = Pot({'X': [0,1], 'pval':[2,3]})
-tt = Pot({'Y': [0,1], 'pval':[10,100]})
+t = Pot({"X": [0, 1], "pval": [2, 3]})
+tt = Pot({"Y": [0, 1], "pval": [10, 100]})
 print((t / tt))
 ```
 
@@ -597,7 +599,7 @@ $Prob(B|A)$ value for $(a,b)$ can intepreted as "the probability that B=b, given
 
 
 ```python
-ab_probs / ab_probs['B']
+ab_probs / ab_probs["B"]
 ```
 
 
@@ -616,7 +618,7 @@ Which you could also write as
 
 
 ```python
-ab_probs / ['B']
+ab_probs / ["B"]
 ```
 
 
@@ -635,7 +637,7 @@ or
 
 
 ```python
-ab_probs.normalize(['B'])
+ab_probs.normalize(["B"])
 ```
 
 
@@ -654,7 +656,7 @@ We got $Prob(B|A)$ as $Prob(AB)/Prob(A)$. Let's verify that multiplication works
 
 
 ```python
-ab_probs.normalize(['B']) * ab_probs['B']
+ab_probs.normalize(["B"]) * ab_probs["B"]
 ```
 
 
@@ -673,7 +675,7 @@ Look at what you get if you do $Prob(A) \times Prob(B)$:
 
 
 ```python
-ab_probs['A'] * ab_probs['B']
+ab_probs["A"] * ab_probs["B"]
 ```
 
 
@@ -716,7 +718,7 @@ If you had evidence about A (which is Bayesian for "new something about A"), you
 
 
 ```python
-ab_probs['B']
+ab_probs["B"]
 ```
 
 
@@ -733,7 +735,7 @@ If you knew that $A=0$, then you should really just take the hyper-plane of ab_p
 
 
 ```python
-ab_probs[{'A': 0}].normalize([])
+ab_probs[{"A": 0}].normalize([])
 ```
 
 
@@ -752,7 +754,7 @@ Evidence like $A=0$ is called "hard evidence". An example of "soft evidence" wou
 
 
 ```python
-soft_evidence = Pot(pd.DataFrame({'A': [0, 1], 'pval': [0.2, 0.8]}))
+soft_evidence = Pot(pd.DataFrame({"A": [0, 1], "pval": [0.2, 0.8]}))
 soft_evidence
 ```
 
@@ -770,7 +772,7 @@ Now if you multiply ab_probs by this evidence potential, normalize, and project 
 
 
 ```python
-(ab_probs * soft_evidence).normalize([])['B']
+(ab_probs * soft_evidence).normalize([])["B"]
 ```
 
 
@@ -808,14 +810,20 @@ from spyn.ppi.pot import Pot
 
 
 ```python
-count_data = ut.daf.get.rand(nrows=34, values_spec=[list(range(2)), list(range(2)), list(range(2)), list(range(4))], columns=['A', 'B', 'C', 'count'])
+count_data = ut.daf.get.rand(
+    nrows=34,
+    values_spec=[list(range(2)), list(range(2)), list(range(2)), list(range(4))],
+    columns=["A", "B", "C", "count"],
+)
 print("\n--- count_data data ---")
 print(count_data.head())
-print('etc.')
-abc = Pot.from_count_df_to_count(count_df=count_data[['A','B','C','count']], count_col='count')
-ab = abc[['A','B']]
-bc = abc[['B','C']]
-b = abc[['B']]
+print("etc.")
+abc = Pot.from_count_df_to_count(
+    count_df=count_data[["A", "B", "C", "count"]], count_col="count"
+)
+ab = abc[["A", "B"]]
+bc = abc[["B", "C"]]
+b = abc[["B"]]
 print("\n--- abc count potential ---")
 print(abc)
 print("\n--- ab count potential ---")
@@ -871,14 +879,18 @@ print(b)
 
 
 ```python
-pts = ut.daf.get.rand(nrows=34, values_spec=[list(range(2)), list(range(2)), list(range(2)), list(range(2))], columns=['A', 'B', 'C'])
+pts = ut.daf.get.rand(
+    nrows=34,
+    values_spec=[list(range(2)), list(range(2)), list(range(2)), list(range(2))],
+    columns=["A", "B", "C"],
+)
 print("\n--- pts data ---")
 print(pts.head())
-print('etc.')
-abc = Pot.from_points_to_count(pts[['A','B','C']])
-ab = abc[['A','B']]
-bc = abc[['B','C']]
-b = abc[['B']]
+print("etc.")
+abc = Pot.from_points_to_count(pts[["A", "B", "C"]])
+ab = abc[["A", "B"]]
+bc = abc[["B", "C"]]
+b = abc[["B"]]
 print("\n--- abc count potential ---")
 print(abc)
 print("\n--- ab count potential ---")
@@ -934,27 +946,61 @@ print(b)
 
 
 ```python
-prime_list = np.array([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97])
+prime_list = np.array(
+    [
+        2,
+        3,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23,
+        29,
+        31,
+        37,
+        41,
+        43,
+        47,
+        53,
+        59,
+        61,
+        67,
+        71,
+        73,
+        79,
+        83,
+        89,
+        97,
+    ]
+)
 float_list = prime_list
 
-idx = 0; idx_end = len(abc.tb)
-abc.tb['pval'] = float_list[idx:idx_end]
+idx = 0
+idx_end = len(abc.tb)
+abc.tb["pval"] = float_list[idx:idx_end]
 
-idx = 0; idx_end = len(ab.tb)
-ab.tb['pval'] = float_list[idx:idx_end]
+idx = 0
+idx_end = len(ab.tb)
+ab.tb["pval"] = float_list[idx:idx_end]
 
-idx = 0; idx_end = len(bc.tb)
-bc.tb['pval'] = float_list[idx:idx_end]
+idx = 0
+idx_end = len(bc.tb)
+bc.tb["pval"] = float_list[idx:idx_end]
 
-idx = 0; idx_end = len(b.tb)
-b.tb['pval'] = float_list[idx:idx_end]
+idx = 0
+idx_end = len(b.tb)
+b.tb["pval"] = float_list[idx:idx_end]
 
-idx = 0; idx_end = len(b.tb)
-b.tb['pval'] = float_list[idx:idx_end]
+idx = 0
+idx_end = len(b.tb)
+b.tb["pval"] = float_list[idx:idx_end]
 
-a = Pot(ut.daf.ch.ch_col_names(b.tb, 'A', 'B'))
-idx = 0; idx_end = len(a.tb)
-a.tb['pval'] = float_list[idx:idx_end]
+a = Pot(ut.daf.ch.ch_col_names(b.tb, "A", "B"))
+idx = 0
+idx_end = len(a.tb)
+a.tb["pval"] = float_list[idx:idx_end]
 
 # idx = 0; idx_end = idx + len(abc.tb)
 # abc.tb['val'] = float_list[idx:idx_end]
@@ -985,7 +1031,6 @@ print("\n--- b count potential ---")
 print(b)
 print("\n--- a count potential ---")
 print(a)
-
 ```
 
     
@@ -1068,7 +1113,7 @@ print(a * b)
 
 ```python
 print(a._merge_(b))
-print('_________________')
+print("_________________")
 print(a / b)
 ```
 
@@ -1106,7 +1151,7 @@ ab
 
 
 ```python
-ab >> ['A']
+ab >> ["A"]
 ```
 
 
@@ -1121,7 +1166,7 @@ ab >> ['A']
 
 
 ```python
-ab['A']
+ab["A"]
 ```
 
 
@@ -1136,7 +1181,7 @@ ab['A']
 
 
 ```python
-ab['B']
+ab["B"]
 ```
 
 
@@ -1151,9 +1196,9 @@ ab['B']
 
 
 ```python
-# marginalization happens over the intersection of the given variable list and the variables the potential actually has 
+# marginalization happens over the intersection of the given variable list and the variables the potential actually has
 # (other variables are ignored)
-ab>>['A', 'variable that does not exist', 'blah blah']
+ab >> ["A", "variable that does not exist", "blah blah"]
 ```
 
 
@@ -1169,7 +1214,7 @@ ab>>['A', 'variable that does not exist', 'blah blah']
 
 ```python
 # marginalizing over the whole set of variables doesn't do anything
-ab[['A', 'B']]
+ab[["A", "B"]]
 ```
 
 
@@ -1186,10 +1231,9 @@ ab[['A', 'B']]
 
 
 ```python
-# marginalizing over nothing (the empty set) essentially normalizes the val vector 
+# marginalizing over nothing (the empty set) essentially normalizes the val vector
 # (divides each element by the sum of all elements)
 ab[None]
-
 ```
 
 
@@ -1221,7 +1265,7 @@ bc
 
 
 ```python
-# Conditioning on [] is like normalization. If you start with a count potential, you get a joint-probability table 
+# Conditioning on [] is like normalization. If you start with a count potential, you get a joint-probability table
 # (with probabilities badly estimated in this small sample case)
 # Note that all pvals sum to 1
 bc / []
@@ -1243,7 +1287,7 @@ bc / []
 ```python
 # The following is like the conditional probability P(B|C) = P(BC)/P(B)
 # Note that all pvals with same B sum up to 1
-bc / 'B'
+bc / "B"
 ```
 
 
@@ -1260,7 +1304,7 @@ bc / 'B'
 
 
 ```python
-abc / ['A']
+abc / ["A"]
 ```
 
 
@@ -1281,7 +1325,7 @@ abc / ['A']
 
 
 ```python
-abc / ['A','B']
+abc / ["A", "B"]
 ```
 
 
@@ -1302,7 +1346,7 @@ abc / ['A','B']
 
 
 ```python
-abc / ['A','B','C']
+abc / ["A", "B", "C"]
 ```
 
 
@@ -1325,7 +1369,7 @@ abc / ['A','B','C']
 
 
 ```python
-ab[{'A':0, 'B':1}]
+ab[{"A": 0, "B": 1}]
 ```
 
 
@@ -1338,7 +1382,7 @@ ab[{'A':0, 'B':1}]
 
 
 ```python
-ab[{'A':0}]
+ab[{"A": 0}]
 ```
 
 
@@ -1372,7 +1416,7 @@ ab
 
 
 ```python
-ab.order_vars('B')
+ab.order_vars("B")
 ```
 
 
@@ -1391,7 +1435,7 @@ ab.order_vars('B')
 ```python
 # !!! Note order_vars returns a pot, but also changes the pot IN PLACE
 #   (So if you want to not have this, you should make a copy of the pot first -- ab_copy = Pot(ab).order_vars('A'))
-# !!! Also note that by default order_vars sorts the points (re-orders var values) by default 
+# !!! Also note that by default order_vars sorts the points (re-orders var values) by default
 #   (you can change this with by setting the sort_pts flag to False)
 ab
 ```
@@ -1410,7 +1454,7 @@ ab
 
 
 ```python
-Pot(ab).order_vars('A', sort_pts=True)
+Pot(ab).order_vars("A", sort_pts=True)
 ```
 
 
@@ -1427,7 +1471,7 @@ Pot(ab).order_vars('A', sort_pts=True)
 
 
 ```python
-Pot(ab).order_vars('A', sort_pts=False)
+Pot(ab).order_vars("A", sort_pts=False)
 ```
 
 
@@ -1472,7 +1516,7 @@ abc
 
 
 ```python
-(abc/'A')
+(abc / "A")
 ```
 
 
@@ -1493,7 +1537,7 @@ abc
 
 
 ```python
-(abc/'A')[{'A':1}]
+(abc / "A")[{"A": 1}]
 ```
 
 
@@ -1510,7 +1554,7 @@ abc
 
 
 ```python
-abc/{'A':1}
+abc / {"A": 1}
 ```
 
 
@@ -1527,7 +1571,7 @@ abc/{'A':1}
 
 
 ```python
-abc/{'A':1, 'B':0}
+abc / {"A": 1, "B": 0}
 ```
 
 
