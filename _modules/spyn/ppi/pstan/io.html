@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>spyn.ppi.pstan.io &mdash; spyn 0.0.6 documentation</title>
+  <title>spyn.ppi.pstan.io &mdash; spyn 0.0.7 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="../../../../_static/documentation_options.js?v=bbaf98b3"></script>
       <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../../_static/toggleprompt.js?v=d7ede5d2"></script>
@@ -95,21 +95,18 @@
   <h1>Source code for spyn.ppi.pstan.io</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;I/O and on-disk caching utilities for compiled Stan models.&quot;&quot;&quot;</span>
 
-<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;thor&#39;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;thor&quot;</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">hashlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">md5</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="n">stan_models_directory_paths</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;./&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;./data/&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;../data/&#39;</span>
-<span class="p">]</span>
+<span class="n">stan_models_directory_paths</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;./&quot;</span><span class="p">,</span> <span class="s2">&quot;./data/&quot;</span><span class="p">,</span> <span class="s2">&quot;../data/&quot;</span><span class="p">]</span>
 
 
 <span class="c1"># this_files_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), &#39;models&#39;)</span>
+
 
 <div class="viewcode-block" id="stan_cache">
 <a class="viewcode-back" href="../../../../module_docs/spyn/ppi/pstan/io.html#spyn.ppi.pstan.io.stan_cache">[docs]</a>
@@ -124,39 +121,40 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_cached_model_or_make_and_cache_it</span><span class="p">(</span><span class="n">model_code</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">pystan</span>
+
     <span class="n">filename</span> <span class="o">=</span> <span class="n">_get_filename_of_cached_model</span><span class="p">(</span><span class="n">model_code</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">)</span>
     <span class="n">sm</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">for</span> <span class="n">directory</span> <span class="ow">in</span> <span class="n">stan_models_directory_paths</span><span class="p">:</span>
         <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Using cached StanModel found at </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">filepath</span><span class="p">)</span>
-            <span class="n">sm</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+            <span class="n">sm</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">))</span>
             <span class="k">break</span>
     <span class="k">if</span> <span class="n">sm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">model_code</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;!!! No such model found&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">sm</span> <span class="o">=</span> <span class="n">pystan</span><span class="o">.</span><span class="n">StanModel</span><span class="p">(</span><span class="n">model_code</span><span class="o">=</span><span class="n">model_code</span><span class="p">)</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">sm</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_get_filename_of_cached_model</span><span class="p">(</span><span class="n">model_code</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span> <span class="ow">or</span> <span class="n">_get_model_name_from_code</span><span class="p">(</span><span class="n">model_code</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s1">&#39;cached-</span><span class="si">{model_name}</span><span class="s1">-</span><span class="si">{code_hash}</span><span class="s1">.pkl&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span>
-        <span class="n">code_hash</span><span class="o">=</span><span class="n">md5</span><span class="p">(</span><span class="n">model_code</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+    <span class="k">return</span> <span class="s2">&quot;cached-</span><span class="si">{model_name}</span><span class="s2">-</span><span class="si">{code_hash}</span><span class="s2">.pkl&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span> <span class="n">code_hash</span><span class="o">=</span><span class="n">md5</span><span class="p">(</span><span class="n">model_code</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_get_model_name_from_code</span><span class="p">(</span><span class="n">model_code</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">model_code</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">// &#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model_code</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">// &quot;</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">model_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">// ([^</span><span class="se">\n</span><span class="s1">]+)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">model_code</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">model_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">// ([^</span><span class="se">\n</span><span class="s2">]+)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">model_code</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;model&#39;</span>
+            <span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;model&#39;</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>
     <span class="k">return</span> <span class="n">model_name</span>
 </pre></div>
 
@@ -167,7 +165,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright NO COPYRIGHT.</p>
+    <p></p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

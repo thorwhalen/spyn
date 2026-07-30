@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>spyn.ppi.binary_pairs_kv &mdash; spyn 0.0.6 documentation</title>
+  <title>spyn.ppi.binary_pairs_kv &mdash; spyn 0.0.7 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -14,7 +14,7 @@
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=1fd71caa"></script>
+      <script src="../../../_static/documentation_options.js?v=bbaf98b3"></script>
       <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
@@ -95,7 +95,7 @@
   <h1>Source code for spyn.ppi.binary_pairs_kv</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Edge statistics over binary pair sets using key-value count structures.&quot;&quot;&quot;</span>
 
-<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;thor&#39;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;thor&quot;</span>
 
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
@@ -103,7 +103,6 @@
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">EdgeStats</span><span class="p">:</span>
-
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="n">CountVal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">KeyVal</span><span class="p">()</span>
@@ -144,11 +143,12 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The class that manages the count data.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<span class="c1">#     _count</span>
-<span class="c1">#     a_count</span>
-<span class="c1">#     b_count</span>
-<span class="c1">#     ab_count</span>
-<span class="c1">#     ba_count</span>
+
+    <span class="c1">#     _count</span>
+    <span class="c1">#     a_count</span>
+    <span class="c1">#     b_count</span>
+    <span class="c1">#     ab_count</span>
+    <span class="c1">#     ba_count</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">get_a_list_from_item</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">get_b_list_from_item</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="n">CountVal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
@@ -192,6 +192,7 @@
 <span class="sd">    &#39;unit&#39; or &#39;neutral&#39; value of the add operation (therefore the sub operation as well).</span>
 <span class="sd">    For example, the unit value of multiplication (which will still be called &quot;add&quot;) is 1.0.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">v</span> <span class="o">=</span> <span class="mf">0.0</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
@@ -213,13 +214,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">v</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">unwrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">unwrapped</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fun</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
@@ -255,7 +256,6 @@
 <div class="viewcode-block" id="CountVal">
 <a class="viewcode-back" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html#spyn.ppi.binary_pairs_kv.CountVal">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CountVal</span><span class="p">(</span><span class="n">Val</span><span class="p">):</span>
-
     <span class="n">v</span> <span class="o">=</span> <span class="mf">0.0</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
@@ -275,9 +275,10 @@
 <span class="sd">    That is, it holds (as a single float) the binary likelihood distribution and allows one to</span>
 <span class="sd">    merge two such distributions.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">;</span>  <span class="c1"># where the value will be stored</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mf">.5</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># where the value will be stored</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
@@ -301,6 +302,7 @@
 <span class="sd">    Extends a map so that one can add and subtract dict pairs by adding or subtracting</span>
 <span class="sd">     the (key-aligned) values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -309,7 +311,7 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;keys&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;keys&quot;</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
                     <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
@@ -327,7 +329,7 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">sub</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;keys&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;keys&quot;</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
                     <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
@@ -343,7 +345,7 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">mul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;keys&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;keys&quot;</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
                     <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
@@ -361,7 +363,7 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">div</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;keys&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;keys&quot;</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
                     <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">kv</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
@@ -396,11 +398,12 @@
 <div class="viewcode-block" id="KeyCount">
 <a class="viewcode-back" href="../../../module_docs/spyn/ppi/binary_pairs_kv.html#spyn.ppi.binary_pairs_kv.KeyCount">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">KeyCount</span><span class="p">(</span><span class="n">KeyVal</span><span class="p">):</span>
-<span class="c1">#     v = dict()</span>
-<span class="c1">#     init_val_constructor = None;</span>
+    <span class="c1">#     v = dict()</span>
+    <span class="c1">#     init_val_constructor = None;</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extends a map so that one can add and subtract dict pairs by adding or subtracting the (key-aligned) values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -421,8 +424,6 @@
 <span class="c1">#     ss = d[&#39;B&#39;].iloc[3:8]</span>
 <span class="c1">#     t = s + ss</span>
 <span class="c1">#     print t</span>
-
-
 </pre></div>
 
            </div>
@@ -432,7 +433,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright NO COPYRIGHT.</p>
+    <p></p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
