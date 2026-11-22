@@ -44,7 +44,7 @@
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=75c7c72ae941e8b558d8" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=75c7c72ae941e8b558d8" />
 
-    <script src="_static/documentation_options.js?v=a83ce22a"></script>
+    <script src="_static/documentation_options.js?v=0c446633"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -57,7 +57,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="light dark"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="0.0.10" />
+  <meta name="docsearch:version" content="0.0.11" />
   
     
     <script src="_static/searchtools.js"></script>
@@ -912,6 +912,7 @@ B
 </div>
 <section id="making-a-few-potentials-from-count-data">
 <h2>Making a few potentials from count data<a class="headerlink" href="#making-a-few-potentials-from-count-data" title="Link to this heading">#</a></h2>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">count_data</span> <span class="o">=</span> <span class="n">ut</span><span class="o">.</span><span class="n">daf</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span>
     <span class="n">nrows</span><span class="o">=</span><span class="mi">34</span><span class="p">,</span>
     <span class="n">values_spec</span><span class="o">=</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))],</span>
@@ -979,6 +980,7 @@ etc.
 </section>
 <section id="making-a-few-potentials-from-pts-data">
 <h2>Making a few potentials from pts data<a class="headerlink" href="#making-a-few-potentials-from-pts-data" title="Link to this heading">#</a></h2>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pts</span> <span class="o">=</span> <span class="n">ut</span><span class="o">.</span><span class="n">daf</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span>
     <span class="n">nrows</span><span class="o">=</span><span class="mi">34</span><span class="p">,</span>
     <span class="n">values_spec</span><span class="o">=</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">))],</span>
@@ -1044,6 +1046,7 @@ etc.
 </section>
 <section id="having-a-look-at-some-operations">
 <h2>Having a look at some operations<a class="headerlink" href="#having-a-look-at-some-operations" title="Link to this heading">#</a></h2>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prime_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="mi">2</span><span class="p">,</span>
@@ -1167,6 +1170,7 @@ etc.
   1     3
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ab</span> <span class="o">*</span> <span class="n">bc</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1181,6 +1185,7 @@ etc.
   1  1  1    49
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ab</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1191,6 +1196,7 @@ etc.
   1  1    21
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1201,6 +1207,7 @@ etc.
   1  1     9
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">_merge_</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"_________________"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span>
@@ -1221,6 +1228,7 @@ _________________
 </div>
 <section id="marginalization-or-projection-or-factoring-in-or-normalization">
 <h3>Marginalization (or “projection”, or “factoring in”, or “normalization”)<a class="headerlink" href="#marginalization-or-projection-or-factoring-in-or-normalization" title="Link to this heading">#</a></h3>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span>
 </pre></div>
 </div>
@@ -1232,6 +1240,7 @@ A B
   1     7
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1241,6 +1250,7 @@ A
 1    12
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span><span class="p">[</span><span class="s2">"A"</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1250,6 +1260,7 @@ A
 1    12
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span><span class="p">[</span><span class="s2">"B"</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1259,6 +1270,7 @@ B
 1    10
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># marginalization happens over the intersection of the given variable list and the variables the potential actually has</span>
 <span class="c1"># (other variables are ignored)</span>
 <span class="n">ab</span> <span class="o">&gt;&gt;</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"variable that does not exist"</span><span class="p">,</span> <span class="s2">"blah blah"</span><span class="p">]</span>
@@ -1270,6 +1282,7 @@ A
 1    12
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># marginalizing over the whole set of variables doesn't do anything</span>
 <span class="n">ab</span><span class="p">[[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">]]</span>
 </pre></div>
@@ -1282,6 +1295,7 @@ A B
   1     7
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># marginalizing over nothing (the empty set) essentially normalizes the val vector</span>
 <span class="c1"># (divides each element by the sum of all elements)</span>
 <span class="n">ab</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span>
@@ -1294,6 +1308,7 @@ A B
 </section>
 <section id="conditioning-as-in-prob-a-b">
 <h3>Conditioning (as in Prob(A|B))<a class="headerlink" href="#conditioning-as-in-prob-a-b" title="Link to this heading">#</a></h3>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bc</span>
 </pre></div>
 </div>
@@ -1305,6 +1320,7 @@ B C
   1     7
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conditioning on [] is like normalization. If you start with a count potential, you get a joint-probability table</span>
 <span class="c1"># (with probabilities badly estimated in this small sample case)</span>
 <span class="c1"># Note that all pvals sum to 1</span>
@@ -1319,6 +1335,7 @@ B C
   1  0.411765
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following is like the conditional probability P(B|C) = P(BC)/P(B)</span>
 <span class="c1"># Note that all pvals with same B sum up to 1</span>
 <span class="n">bc</span> <span class="o">/</span> <span class="s2">"B"</span>
@@ -1332,6 +1349,7 @@ B C
   1  0.583333
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">abc</span> <span class="o">/</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1347,6 +1365,7 @@ A B C
     1  0.316667
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">abc</span> <span class="o">/</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1362,6 +1381,7 @@ A B C
     1  0.527778
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">abc</span> <span class="o">/</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1380,6 +1400,7 @@ A B C
 </section>
 <section id="slicing-taking-sub-spaces-defined-by-intercepts">
 <h3>Slicing (taking sub-spaces defined by intercepts)<a class="headerlink" href="#slicing-taking-sub-spaces-defined-by-intercepts" title="Link to this heading">#</a></h3>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span><span class="p">[{</span><span class="s2">"A"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
 </pre></div>
 </div>
@@ -1387,6 +1408,7 @@ A B C
      3
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span><span class="p">[{</span><span class="s2">"A"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}]</span>
 </pre></div>
 </div>
@@ -1400,6 +1422,7 @@ B
 </section>
 <section id="a-few-utils">
 <h2>A few utils<a class="headerlink" href="#a-few-utils" title="Link to this heading">#</a></h2>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span>
 </pre></div>
 </div>
@@ -1411,6 +1434,7 @@ A B
   1     7
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ab</span><span class="o">.</span><span class="n">order_vars</span><span class="p">(</span><span class="s2">"B"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1422,6 +1446,7 @@ B A
   1     7
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># !!! Note order_vars returns a pot, but also changes the pot IN PLACE</span>
 <span class="c1">#   (So if you want to not have this, you should make a copy of the pot first -- ab_copy = Pot(ab).order_vars('A'))</span>
 <span class="c1"># !!! Also note that by default order_vars sorts the points (re-orders var values) by default</span>
@@ -1437,6 +1462,7 @@ B A
   1     7
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Pot</span><span class="p">(</span><span class="n">ab</span><span class="p">)</span><span class="o">.</span><span class="n">order_vars</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span> <span class="n">sort_pts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1448,6 +1474,7 @@ A B
   1     7
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Pot</span><span class="p">(</span><span class="n">ab</span><span class="p">)</span><span class="o">.</span><span class="n">order_vars</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span> <span class="n">sort_pts</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1465,6 +1492,7 @@ A B
 </section>
 <section id="misc">
 <h2>Misc<a class="headerlink" href="#misc" title="Link to this heading">#</a></h2>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">abc</span>
 </pre></div>
 </div>
@@ -1480,6 +1508,7 @@ A B C
     1    19
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">abc</span> <span class="o">/</span> <span class="s2">"A"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1495,6 +1524,7 @@ A B C
     1  0.316667
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">abc</span> <span class="o">/</span> <span class="s2">"A"</span><span class="p">)[{</span><span class="s2">"A"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
 </pre></div>
 </div>
@@ -1506,6 +1536,7 @@ B C
   1  0.316667
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">abc</span> <span class="o">/</span> <span class="p">{</span><span class="s2">"A"</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -1517,6 +1548,7 @@ B C
   1  0.316667
 </pre></div>
 </div>
+<!-- wads-docs: skip notebook export: uses `ut` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">abc</span> <span class="o">/</span> <span class="p">{</span><span class="s2">"A"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -1538,7 +1570,7 @@ C
 </section>
 </section>
 
-<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-22 19:52 UTC from <a href="https://github.com/thorwhalen/spyn/commit/5d07825ff18ff51e37a5be276193a7a07cca768a">5d07825</a> (master) · spyn 0.0.10 · <a href="about-this-build.html">about this build</a></p>
+<p class="epythet-provenance" style="font-size:.8em;opacity:.65;margin-top:2.5em;text-align:right">built 2026-11-22 21:54 UTC from <a href="https://github.com/thorwhalen/spyn/commit/bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e">bd0ae5d</a> (master) · spyn 0.0.11 · <a href="about-this-build.html">about this build</a></p>
 
                 </article>
               

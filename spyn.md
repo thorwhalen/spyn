@@ -1,4 +1,4 @@
-> built 2026-11-22 19:52 UTC from 5d07825 (master) · spyn 0.0.10. Details: build_info.json
+> built 2026-11-22 21:54 UTC from bd0ae5d (master) · spyn 0.0.11. Details: build_info.json
 
 # index.html.md
 
@@ -726,6 +726,7 @@ from spyn.ppi.pot import Pot
 
 ## Making a few potentials from count data
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 count_data = ut.daf.get.rand(
     nrows=34,
@@ -794,6 +795,7 @@ etc.
 
 ## Making a few potentials from pts data
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 pts = ut.daf.get.rand(
     nrows=34,
@@ -860,6 +862,7 @@ etc.
 
 ## Having a look at some operations
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 prime_list = np.array(
     [
@@ -985,6 +988,7 @@ print(a)
   1     3
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 print(ab * bc)
 ```
@@ -1001,6 +1005,7 @@ print(ab * bc)
   1  1  1    49
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 print(ab * b)
 ```
@@ -1013,6 +1018,7 @@ print(ab * b)
   1  1    21
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 print(a * b)
 ```
@@ -1025,6 +1031,7 @@ print(a * b)
   1  1     9
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 print(a._merge_(b))
 print("_________________")
@@ -1047,6 +1054,7 @@ _________________
 
 ### Marginalization (or “projection”, or “factoring in”, or “normalization”)
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab
 ```
@@ -1060,6 +1068,7 @@ A B
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab >> ["A"]
 ```
@@ -1071,6 +1080,7 @@ A
 1    12
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab["A"]
 ```
@@ -1082,6 +1092,7 @@ A
 1    12
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab["B"]
 ```
@@ -1093,6 +1104,7 @@ B
 1    10
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # marginalization happens over the intersection of the given variable list and the variables the potential actually has
 # (other variables are ignored)
@@ -1106,6 +1118,7 @@ A
 1    12
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # marginalizing over the whole set of variables doesn't do anything
 ab[["A", "B"]]
@@ -1120,6 +1133,7 @@ A B
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # marginalizing over nothing (the empty set) essentially normalizes the val vector
 # (divides each element by the sum of all elements)
@@ -1133,6 +1147,7 @@ ab[None]
 
 ### Conditioning (as in Prob(A|B))
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 bc
 ```
@@ -1146,6 +1161,7 @@ B C
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # Conditioning on [] is like normalization. If you start with a count potential, you get a joint-probability table
 # (with probabilities badly estimated in this small sample case)
@@ -1162,6 +1178,7 @@ B C
   1  0.411765
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # The following is like the conditional probability P(B|C) = P(BC)/P(B)
 # Note that all pvals with same B sum up to 1
@@ -1177,6 +1194,7 @@ B C
   1  0.583333
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc / ["A"]
 ```
@@ -1194,6 +1212,7 @@ A B C
     1  0.316667
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc / ["A", "B"]
 ```
@@ -1211,6 +1230,7 @@ A B C
     1  0.527778
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc / ["A", "B", "C"]
 ```
@@ -1230,6 +1250,7 @@ A B C
 
 ### Slicing (taking sub-spaces defined by intercepts)
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab[{"A": 0, "B": 1}]
 ```
@@ -1239,6 +1260,7 @@ ab[{"A": 0, "B": 1}]
      3
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab[{"A": 0}]
 ```
@@ -1252,6 +1274,7 @@ B
 
 ## A few utils
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab
 ```
@@ -1265,6 +1288,7 @@ A B
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab.order_vars("B")
 ```
@@ -1278,6 +1302,7 @@ B A
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # !!! Note order_vars returns a pot, but also changes the pot IN PLACE
 #   (So if you want to not have this, you should make a copy of the pot first -- ab_copy = Pot(ab).order_vars('A'))
@@ -1295,6 +1320,7 @@ B A
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 Pot(ab).order_vars("A", sort_pts=True)
 ```
@@ -1308,6 +1334,7 @@ A B
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 Pot(ab).order_vars("A", sort_pts=False)
 ```
@@ -1327,6 +1354,7 @@ A B
 
 ## Misc
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc
 ```
@@ -1344,6 +1372,7 @@ A B C
     1    19
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 (abc / "A")
 ```
@@ -1361,6 +1390,7 @@ A B C
     1  0.316667
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 (abc / "A")[{"A": 1}]
 ```
@@ -1374,6 +1404,7 @@ B C
   1  0.316667
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc / {"A": 1}
 ```
@@ -1387,6 +1418,7 @@ B C
   1  0.316667
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc / {"A": 1, "B": 0}
 ```
@@ -2490,7 +2522,7 @@ Acts similarly to collections.defaultdict, except
 
 # About this build
 
-This documentation was built on **2026-11-22 19:52 UTC** from commit <a href="https://github.com/thorwhalen/spyn/commit/5d07825ff18ff51e37a5be276193a7a07cca768a"><code>5d07825</code></a> on branch <code>master</code>, for **spyn 0.0.10** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-22 21:54 UTC** from commit <a href="https://github.com/thorwhalen/spyn/commit/bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e"><code>bd0ae5d</code></a> on branch <code>master</code>, for **spyn 0.0.11** (from <code>pyproject.toml</code>).
 
 #### NOTE
 Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
@@ -2499,9 +2531,9 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 |                     |                                                                                                                                                        |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/thorwhalen/spyn/commit/5d07825ff18ff51e37a5be276193a7a07cca768a"><code>5d07825ff18ff51e37a5be276193a7a07cca768a</code></a> |
+| Commit              | <a href="https://github.com/thorwhalen/spyn/commit/bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e"><code>bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e</code></a> |
 | Branch              | <code>master</code>                                                                                                                                    |
-| Tags at this commit | <code>0.0.10</code>                                                                                                                                    |
+| Tags at this commit | <code>0.0.11</code>                                                                                                                                    |
 | Working tree        | clean                                                                                                                                                  |
 | Remote              | <code>https://github.com/thorwhalen/spyn</code>                                                                                                        |
 
@@ -2510,9 +2542,9 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>thorwhalen/spyn</code>                                                               |
-| Run          | <a href="https://github.com/thorwhalen/spyn/actions/runs/45062970968">45062970968</a>      |
+| Run          | <a href="https://github.com/thorwhalen/spyn/actions/runs/45074543310">45074543310</a>      |
 | Ref          | <code>refs/heads/master</code>                                                             |
-| Event commit | <code>231389d42ce3bc8e8d1a907a8c6a1f57d7d74433</code> (in the history of the built commit) |
+| Event commit | <code>35153fb67588f858f7e1dd5e59440f780c0f5344</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -2537,13 +2569,13 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/spyn/0.0.10/">0.0.10</a>, the same as the documented version.
+Latest release: <a href="https://pypi.org/project/spyn/0.0.11/">0.0.11</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/thorwhalen/spyn && cd spyn
-git checkout 5d07825ff18ff51e37a5be276193a7a07cca768a
+git checkout bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e
 pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

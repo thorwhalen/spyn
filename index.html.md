@@ -722,6 +722,7 @@ from spyn.ppi.pot import Pot
 
 ## Making a few potentials from count data
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 count_data = ut.daf.get.rand(
     nrows=34,
@@ -790,6 +791,7 @@ etc.
 
 ## Making a few potentials from pts data
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 pts = ut.daf.get.rand(
     nrows=34,
@@ -856,6 +858,7 @@ etc.
 
 ## Having a look at some operations
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 prime_list = np.array(
     [
@@ -981,6 +984,7 @@ print(a)
   1     3
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 print(ab * bc)
 ```
@@ -997,6 +1001,7 @@ print(ab * bc)
   1  1  1    49
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 print(ab * b)
 ```
@@ -1009,6 +1014,7 @@ print(ab * b)
   1  1    21
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 print(a * b)
 ```
@@ -1021,6 +1027,7 @@ print(a * b)
   1  1     9
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 print(a._merge_(b))
 print("_________________")
@@ -1043,6 +1050,7 @@ _________________
 
 ### Marginalization (or “projection”, or “factoring in”, or “normalization”)
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab
 ```
@@ -1056,6 +1064,7 @@ A B
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab >> ["A"]
 ```
@@ -1067,6 +1076,7 @@ A
 1    12
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab["A"]
 ```
@@ -1078,6 +1088,7 @@ A
 1    12
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab["B"]
 ```
@@ -1089,6 +1100,7 @@ B
 1    10
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # marginalization happens over the intersection of the given variable list and the variables the potential actually has
 # (other variables are ignored)
@@ -1102,6 +1114,7 @@ A
 1    12
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # marginalizing over the whole set of variables doesn't do anything
 ab[["A", "B"]]
@@ -1116,6 +1129,7 @@ A B
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # marginalizing over nothing (the empty set) essentially normalizes the val vector
 # (divides each element by the sum of all elements)
@@ -1129,6 +1143,7 @@ ab[None]
 
 ### Conditioning (as in Prob(A|B))
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 bc
 ```
@@ -1142,6 +1157,7 @@ B C
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # Conditioning on [] is like normalization. If you start with a count potential, you get a joint-probability table
 # (with probabilities badly estimated in this small sample case)
@@ -1158,6 +1174,7 @@ B C
   1  0.411765
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # The following is like the conditional probability P(B|C) = P(BC)/P(B)
 # Note that all pvals with same B sum up to 1
@@ -1173,6 +1190,7 @@ B C
   1  0.583333
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc / ["A"]
 ```
@@ -1190,6 +1208,7 @@ A B C
     1  0.316667
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc / ["A", "B"]
 ```
@@ -1207,6 +1226,7 @@ A B C
     1  0.527778
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc / ["A", "B", "C"]
 ```
@@ -1226,6 +1246,7 @@ A B C
 
 ### Slicing (taking sub-spaces defined by intercepts)
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab[{"A": 0, "B": 1}]
 ```
@@ -1235,6 +1256,7 @@ ab[{"A": 0, "B": 1}]
      3
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab[{"A": 0}]
 ```
@@ -1248,6 +1270,7 @@ B
 
 ## A few utils
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab
 ```
@@ -1261,6 +1284,7 @@ A B
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 ab.order_vars("B")
 ```
@@ -1274,6 +1298,7 @@ B A
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 # !!! Note order_vars returns a pot, but also changes the pot IN PLACE
 #   (So if you want to not have this, you should make a copy of the pot first -- ab_copy = Pot(ab).order_vars('A'))
@@ -1291,6 +1316,7 @@ B A
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 Pot(ab).order_vars("A", sort_pts=True)
 ```
@@ -1304,6 +1330,7 @@ A B
   1     7
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 Pot(ab).order_vars("A", sort_pts=False)
 ```
@@ -1323,6 +1350,7 @@ A B
 
 ## Misc
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc
 ```
@@ -1340,6 +1368,7 @@ A B C
     1    19
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 (abc / "A")
 ```
@@ -1357,6 +1386,7 @@ A B C
     1  0.316667
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 (abc / "A")[{"A": 1}]
 ```
@@ -1370,6 +1400,7 @@ B C
   1  0.316667
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc / {"A": 1}
 ```
@@ -1383,6 +1414,7 @@ B C
   1  0.316667
 ```
 
+<!-- wads-docs: skip notebook export: uses \`ut\` (legacy utility package, not a spyn dependency) and names defined only in the notebook -->
 ```python
 abc / {"A": 1, "B": 0}
 ```

@@ -1,34 +1,34 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-22T19:52:06Z",
+  "built_at": "2026-11-22T21:54:42Z",
   "package": {
     "name": "spyn",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "display_name": "spyn",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "5d07825ff18ff51e37a5be276193a7a07cca768a",
-    "short_commit": "5d07825",
+    "commit": "bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e",
+    "short_commit": "bd0ae5d",
     "branch": "master",
     "tags": [
-      "0.0.10"
+      "0.0.11"
     ],
     "dirty": false,
     "remote_url": "https://github.com/thorwhalen/spyn",
-    "commit_url": "https://github.com/thorwhalen/spyn/commit/5d07825ff18ff51e37a5be276193a7a07cca768a",
+    "commit_url": "https://github.com/thorwhalen/spyn/commit/bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "thorwhalen/spyn",
-    "sha": "231389d42ce3bc8e8d1a907a8c6a1f57d7d74433",
+    "sha": "35153fb67588f858f7e1dd5e59440f780c0f5344",
     "sha_in_history": true,
     "ref": "refs/heads/master",
     "ref_name": "master",
-    "run_id": "45062970968",
-    "run_url": "https://github.com/thorwhalen/spyn/actions/runs/45062970968",
+    "run_id": "45074543310",
+    "run_url": "https://github.com/thorwhalen/spyn/actions/runs/45074543310",
     "server_url": "https://github.com"
   },
   "tools": {
@@ -62,11 +62,11 @@
   },
   "pypi": {
     "checked": true,
-    "latest": "0.0.10",
+    "latest": "0.0.11",
     "relation": "same",
     "error": null
   },
-  "reproduce": "git clone https://github.com/thorwhalen/spyn && cd spyn\ngit checkout 5d07825ff18ff51e37a5be276193a7a07cca768a\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/thorwhalen/spyn && cd spyn\ngit checkout bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
     "aligned": true,
