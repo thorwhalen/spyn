@@ -1,4 +1,0 @@
-spyn.ppi.pstan.models_scripts
-=============================
-.. automodule:: spyn.ppi.pstan.models_scripts
-   :members:

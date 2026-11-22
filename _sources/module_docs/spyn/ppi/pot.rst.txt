@@ -1,4 +1,0 @@
-spyn.ppi.pot
-============
-.. automodule:: spyn.ppi.pot
-   :members:

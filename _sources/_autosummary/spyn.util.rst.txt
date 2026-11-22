@@ -1,0 +1,19 @@
+spyn.util
+=========
+
+.. automodule:: spyn.util
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      col_combo_gen
+      combo_pt_gen
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      lazyprop
+   

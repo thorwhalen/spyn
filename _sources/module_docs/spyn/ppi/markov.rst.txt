@@ -1,4 +1,0 @@
-spyn.ppi.markov
-===============
-.. automodule:: spyn.ppi.markov
-   :members:

@@ -1,0 +1,15 @@
+spyn.ppi.markov
+===============
+
+.. automodule:: spyn.ppi.markov
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      IndexedMarkovCounts
+      Markov
+      MarkovCounts
+      MultipleMarkovCounts
+   

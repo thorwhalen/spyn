@@ -1,0 +1,13 @@
+spyn.ppi.pstan.models\_scripts
+==============================
+
+.. automodule:: spyn.ppi.pstan.models_scripts
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   mixture_of_two_binomials

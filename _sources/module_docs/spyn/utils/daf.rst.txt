@@ -1,4 +1,0 @@
-spyn.utils.daf
-==============
-.. automodule:: spyn.utils.daf
-   :members:

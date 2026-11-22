@@ -1,4 +1,0 @@
-spyn.ppi.pstan.io
-=================
-.. automodule:: spyn.ppi.pstan.io
-   :members:

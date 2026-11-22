@@ -1,0 +1,13 @@
+spyn.ppi.old
+============
+
+.. automodule:: spyn.ppi.old
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   naive_binary_network

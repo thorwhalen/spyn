@@ -1,0 +1,20 @@
+spyn.ppi
+========
+
+.. automodule:: spyn.ppi
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   binary_pairs_kv
+   markov
+   naive_bayes_graph
+   old
+   pairs_pot
+   pot
+   potter
+   pstan

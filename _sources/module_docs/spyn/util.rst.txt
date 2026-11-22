@@ -1,4 +1,0 @@
-spyn.util
-=========
-.. automodule:: spyn.util
-   :members:

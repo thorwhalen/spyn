@@ -1,0 +1,20 @@
+spyn.ppi.pot
+============
+
+.. automodule:: spyn.ppi.pot
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      from_points_to_binary
+      relative_risk
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Pot
+      ProbPot
+   

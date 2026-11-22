@@ -1,0 +1,17 @@
+spyn.utils
+==========
+
+.. automodule:: spyn.utils
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   color
+   daf
+   order_conserving
+   ordered_set
+   special

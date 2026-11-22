@@ -1,0 +1,18 @@
+spyn.utils.order\_conserving
+============================
+
+.. automodule:: spyn.utils.order_conserving
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      intersect
+      reorder_as
+      setdiff
+      union
+      unique_for_non_hashables
+      unique_from_iter
+      unique_list
+   

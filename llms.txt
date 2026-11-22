@@ -1,0 +1,36 @@
+# spyn
+
+> Tools to transform data into "model-less" operable inference objects
+
+
+## Pages
+
+- [Spyn: Hyper-graphical Probabilisitic Inference](index.html.md): Hyper-graphical Probabilisitic Inference.
+- [API reference](api.html.md): | &#96;spyn&#96;   |    |
+- [spyn](_autosummary/spyn.html.md): | &#96;ppi&#96;     |                                                         |
+- [spyn.ppi](_autosummary/spyn.ppi.html.md): | &#96;binary_pairs_kv&#96;     | Edge statistics over binary pair sets using key-value count structures.   ...
+- [spyn.ppi.binary_pairs_kv](_autosummary/spyn.ppi.binary_pairs_kv.html.md): Edge statistics over binary pair sets using key-value count structures.
+- [spyn.ppi.markov](_autosummary/spyn.ppi.markov.html.md): Markov chain model with conditional and initial state probabilities.
+- [spyn.ppi.naive_bayes_graph](_autosummary/spyn.ppi.naive_bayes_graph.html.md): Naive-Bayes-style bipartite graph statistics over item sets.
+- [spyn.ppi.old](_autosummary/spyn.ppi.old.html.md): | &#96;naive_binary_network&#96;   | Legacy naive binary network: edge statistics over item sets (kept for r...
+- [spyn.ppi.old.naive_binary_network](_autosummary/spyn.ppi.old.naive_binary_network.html.md): Legacy naive binary network: edge statistics over item sets (kept for reference).
+- [spyn.ppi.pot](_autosummary/spyn.ppi.pot.html.md): Potentials: probability/likelihood tables with algebraic operators.
+- [spyn.ppi.pstan](_autosummary/spyn.ppi.pstan.html.md): | &#96;io&#96;                         | I/O and on-disk caching utilities for compiled Stan models.   |
+- [spyn.ppi.pstan.io](_autosummary/spyn.ppi.pstan.io.html.md): I/O and on-disk caching utilities for compiled Stan models.
+- [spyn.ppi.pstan.models_scripts](_autosummary/spyn.ppi.pstan.models_scripts.html.md): Page content
+- [spyn.util](_autosummary/spyn.util.html.md): General-purpose utilities used across the spyn package.
+- [spyn.utils](_autosummary/spyn.utils.html.md): | &#96;color&#96;                       | Color and colormap utilities for matplotlib-based visualizations. ...
+- [spyn.utils.color](_autosummary/spyn.utils.color.html.md): Color and colormap utilities for matplotlib-based visualizations.
+- [spyn.utils.daf](_autosummary/spyn.utils.daf.html.md): DataFrame helpers: variable-combination completion and cartesian product.
+- [spyn.utils.order_conserving](_autosummary/spyn.utils.order_conserving.html.md): Order-preserving set operations using plain dicts (Python 3.7+).
+- [spyn.utils.ordered_set](_autosummary/spyn.utils.ordered_set.html.md): OrderedSet collection (Python recipe: http://code.activestate.com/recipes/576694/).
+- [spyn.utils.special](_autosummary/spyn.utils.special.html.md): Specialized dict subclasses used as default-value mappings.
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-22 17:52 UTC&#42;&#42; from commit &lt;a href="https://github.com/tho...
+
+## Optional
+
+- [spyn.md](spyn.md): Complete documentation in a single file.
+
+## Build
+
+- [build_info.json](build_info.json): build provenance (commit, version, tool versions, whether the docs match the package)

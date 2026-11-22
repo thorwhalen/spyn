@@ -1,0 +1,12 @@
+spyn.utils.special
+==================
+
+.. automodule:: spyn.utils.special
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      DictDefaultDict
+   

@@ -1,4 +1,0 @@
-spyn.utils.ordered_set
-======================
-.. automodule:: spyn.utils.ordered_set
-   :members:

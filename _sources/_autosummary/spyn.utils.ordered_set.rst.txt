@@ -1,0 +1,12 @@
+spyn.utils.ordered\_set
+=======================
+
+.. automodule:: spyn.utils.ordered_set
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      OrderedSet
+   

@@ -1,0 +1,14 @@
+spyn.ppi.pstan
+==============
+
+.. automodule:: spyn.ppi.pstan
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   io
+   models_scripts

@@ -1,0 +1,13 @@
+spyn.ppi.pstan.io
+=================
+
+.. automodule:: spyn.ppi.pstan.io
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      get_cached_model_or_make_and_cache_it
+      stan_cache
+   

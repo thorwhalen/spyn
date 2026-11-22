@@ -1,0 +1,22 @@
+spyn.utils.daf
+==============
+
+.. automodule:: spyn.utils.daf
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      cartesian_product
+      ch_col_names
+      complete_df_with_all_var_combinations
+      free_col_name
+      group_and_count
+      intersect
+      map_vals_to_ints_inplace
+      reorder_as
+      reorder_columns_as
+      setdiff
+      sort_as
+   

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "built_at": "2026-11-22T17:52:56Z",
+  "package": {
+    "name": "spyn",
+    "version": "0.0.9",
+    "display_name": "spyn",
+    "source": "pyproject.toml"
+  },
+  "git": {
+    "available": true,
+    "commit": "f030d87c23bcef3aceac35cde3d590b7eb42d855",
+    "short_commit": "f030d87",
+    "branch": "master",
+    "tags": [
+      "0.0.9"
+    ],
+    "dirty": false,
+    "remote_url": "https://github.com/thorwhalen/spyn",
+    "commit_url": "https://github.com/thorwhalen/spyn/commit/f030d87c23bcef3aceac35cde3d590b7eb42d855",
+    "error": null
+  },
+  "ci": {
+    "provider": "github",
+    "repository": "thorwhalen/spyn",
+    "sha": "3d63b5a9af4000a621865293589770b8c1dce3ea",
+    "sha_in_history": true,
+    "ref": "refs/heads/master",
+    "ref_name": "master",
+    "run_id": "45051738299",
+    "run_url": "https://github.com/thorwhalen/spyn/actions/runs/45051738299",
+    "server_url": "https://github.com"
+  },
+  "tools": {
+    "epythet": "0.2.23",
+    "sphinx": "9.1.1",
+    "docutils": "0.22.4",
+    "python": "3.12.16"
+  },
+  "config": {
+    "theme": "auto",
+    "html_theme": "pydata_sphinx_theme",
+    "accent": "#933235",
+    "mode": "auto",
+    "api_generator": "autosummary",
+    "ignore": [
+      "tests/",
+      "scrap/",
+      "examples/"
+    ],
+    "agent_outputs": true,
+    "aggregates": [
+      "md"
+    ],
+    "ai_artifacts": true,
+    "provenance": true,
+    "docs_dir": "docsrc"
+  },
+  "site": {
+    "modules_documented": 18,
+    "objects_documented": 74
+  },
+  "pypi": {
+    "checked": true,
+    "latest": "0.0.9",
+    "relation": "same",
+    "error": null
+  },
+  "reproduce": "git clone https://github.com/thorwhalen/spyn && cd spyn\ngit checkout f030d87c23bcef3aceac35cde3d590b7eb42d855\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "warnings": [],
+  "alignment": {
+    "aligned": true,
+    "notes": []
+  }
+}

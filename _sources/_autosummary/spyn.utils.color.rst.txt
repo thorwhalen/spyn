@@ -1,0 +1,13 @@
+spyn.utils.color
+================
+
+.. automodule:: spyn.utils.color
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      get_colorbar_tick_labels_as_floats
+      shifted_color_map
+   

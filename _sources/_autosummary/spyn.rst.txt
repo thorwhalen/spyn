@@ -1,0 +1,15 @@
+﻿spyn
+====
+
+.. automodule:: spyn
+
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   ppi
+   util
+   utils
