@@ -1,8 +1,8 @@
 metric,value
 schema_version,1.0
-timestamp,2026-11-22T19:51:03.366220Z
-commit_sha,231389d42ce3bc8e8d1a907a8c6a1f57d7d74433
-commit_message,Type coverage pass: return annotations on public methods [skip publish] (#3)
+timestamp,2026-11-22T21:52:15.061324Z
+commit_sha,6dd5c7a9a3a1928a30a9e7eb10eec7b8bd767af1
+commit_message,docs: skip-mark the 32 notebook-export README blocks that need ut [skip publish]
 python_version,3.10
 metrics.umpyre_stats.num_functions,30041
 metrics.umpyre_stats.num_classes,4330
@@ -16,11 +16,11 @@ metrics.umpyre_stats.comment_lines_ratio,0.05307214218761737
 metrics.umpyre_stats.function_lines_ratio,0.6598549252580939
 metrics.umpyre_stats.mean_lines_per_function,20.17632568822609
 metrics.umpyre_stats.files_analyzed,1791
-metrics.umpyre_stats.pypi_version,0.0.9
+metrics.umpyre_stats.pypi_version,0.0.10
 metrics.workflow_status.last_run_status,success
-metrics.workflow_status.last_success_timestamp,2026-11-22T19:42:57Z
+metrics.workflow_status.last_success_timestamp,2026-11-22T19:52:39Z
 metrics.workflow_status.recent_failure_count,0
-metrics.workflow_status.run_url,https://github.com/thorwhalen/spyn/actions/runs/45062216494
+metrics.workflow_status.run_url,https://github.com/thorwhalen/spyn/actions/runs/45063186547
 metrics.workflow_status.total_runs_analyzed,10
 metrics.wily.cyclomatic_avg,0.0
 metrics.wily.maintainability_index,0.0
@@ -36,4 +36,4 @@ metrics.coverage.branch_coverage,0.0
 metrics.coverage.statements_covered,0
 metrics.coverage.statements_total,0
 metrics.coverage.error,No coverage file found
-collection_duration_seconds,9.819092750549316
+collection_duration_seconds,9.205104351043701
