@@ -15,9 +15,15 @@ Bases: [`MutableSet`](https://docs.python.org/3/library/collections.abc.html#col
 
 Add an element.
 
+* **Return type:**
+  [`None`](https://docs.python.org/3/builtins/constants.html#None)
+
 #### discard(key)
 
 Remove an element.  Do not raise an exception if absent.
+
+* **Return type:**
+  [`None`](https://docs.python.org/3/builtins/constants.html#None)
 
 #### pop(last=True)
 

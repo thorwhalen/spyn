@@ -2,7 +2,7 @@
 
 # About this build
 
-This documentation was built on **2026-11-22 17:52 UTC** from commit <a href="https://github.com/thorwhalen/spyn/commit/f030d87c23bcef3aceac35cde3d590b7eb42d855"><code>f030d87</code></a> on branch <code>master</code>, for **spyn 0.0.9** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-22 19:52 UTC** from commit <a href="https://github.com/thorwhalen/spyn/commit/5d07825ff18ff51e37a5be276193a7a07cca768a"><code>5d07825</code></a> on branch <code>master</code>, for **spyn 0.0.10** (from <code>pyproject.toml</code>).
 
 #### NOTE
 Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
@@ -11,9 +11,9 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 |                     |                                                                                                                                                        |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/thorwhalen/spyn/commit/f030d87c23bcef3aceac35cde3d590b7eb42d855"><code>f030d87c23bcef3aceac35cde3d590b7eb42d855</code></a> |
+| Commit              | <a href="https://github.com/thorwhalen/spyn/commit/5d07825ff18ff51e37a5be276193a7a07cca768a"><code>5d07825ff18ff51e37a5be276193a7a07cca768a</code></a> |
 | Branch              | <code>master</code>                                                                                                                                    |
-| Tags at this commit | <code>0.0.9</code>                                                                                                                                     |
+| Tags at this commit | <code>0.0.10</code>                                                                                                                                    |
 | Working tree        | clean                                                                                                                                                  |
 | Remote              | <code>https://github.com/thorwhalen/spyn</code>                                                                                                        |
 
@@ -22,9 +22,9 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>thorwhalen/spyn</code>                                                               |
-| Run          | <a href="https://github.com/thorwhalen/spyn/actions/runs/45051738299">45051738299</a>      |
+| Run          | <a href="https://github.com/thorwhalen/spyn/actions/runs/45062970968">45062970968</a>      |
 | Ref          | <code>refs/heads/master</code>                                                             |
-| Event commit | <code>3d63b5a9af4000a621865293589770b8c1dce3ea</code> (in the history of the built commit) |
+| Event commit | <code>231389d42ce3bc8e8d1a907a8c6a1f57d7d74433</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -49,13 +49,13 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/spyn/0.0.9/">0.0.9</a>, the same as the documented version.
+Latest release: <a href="https://pypi.org/project/spyn/0.0.10/">0.0.10</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/thorwhalen/spyn && cd spyn
-git checkout f030d87c23bcef3aceac35cde3d590b7eb42d855
+git checkout 5d07825ff18ff51e37a5be276193a7a07cca768a
 pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```

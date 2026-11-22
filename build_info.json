@@ -1,34 +1,34 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-22T17:52:56Z",
+  "built_at": "2026-11-22T19:52:06Z",
   "package": {
     "name": "spyn",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "display_name": "spyn",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "f030d87c23bcef3aceac35cde3d590b7eb42d855",
-    "short_commit": "f030d87",
+    "commit": "5d07825ff18ff51e37a5be276193a7a07cca768a",
+    "short_commit": "5d07825",
     "branch": "master",
     "tags": [
-      "0.0.9"
+      "0.0.10"
     ],
     "dirty": false,
     "remote_url": "https://github.com/thorwhalen/spyn",
-    "commit_url": "https://github.com/thorwhalen/spyn/commit/f030d87c23bcef3aceac35cde3d590b7eb42d855",
+    "commit_url": "https://github.com/thorwhalen/spyn/commit/5d07825ff18ff51e37a5be276193a7a07cca768a",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "thorwhalen/spyn",
-    "sha": "3d63b5a9af4000a621865293589770b8c1dce3ea",
+    "sha": "231389d42ce3bc8e8d1a907a8c6a1f57d7d74433",
     "sha_in_history": true,
     "ref": "refs/heads/master",
     "ref_name": "master",
-    "run_id": "45051738299",
-    "run_url": "https://github.com/thorwhalen/spyn/actions/runs/45051738299",
+    "run_id": "45062970968",
+    "run_url": "https://github.com/thorwhalen/spyn/actions/runs/45062970968",
     "server_url": "https://github.com"
   },
   "tools": {
@@ -62,11 +62,11 @@
   },
   "pypi": {
     "checked": true,
-    "latest": "0.0.9",
+    "latest": "0.0.10",
     "relation": "same",
     "error": null
   },
-  "reproduce": "git clone https://github.com/thorwhalen/spyn && cd spyn\ngit checkout f030d87c23bcef3aceac35cde3d590b7eb42d855\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/thorwhalen/spyn && cd spyn\ngit checkout 5d07825ff18ff51e37a5be276193a7a07cca768a\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
     "aligned": true,
