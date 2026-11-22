@@ -4,26 +4,26 @@ import collections
 
 
 class OrderedSet(collections.abc.MutableSet):
-    def __init__(self, iterable=None):
+    def __init__(self, iterable=None) -> None:
         self.end = end = []
         end += [None, end, end]  # sentinel node for doubly linked list
         self.map = {}  # key --> [key, prev, next]
         if iterable is not None:
             self |= iterable
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.map)
 
-    def __contains__(self, key):
+    def __contains__(self, key) -> bool:
         return key in self.map
 
-    def add(self, key):
+    def add(self, key) -> None:
         if key not in self.map:
             end = self.end
             curr = end[1]
             curr[2] = end[1] = self.map[key] = [key, curr, end]
 
-    def discard(self, key):
+    def discard(self, key) -> None:
         if key in self.map:
             key, prev, next = self.map.pop(key)
             prev[2] = next
@@ -50,7 +50,7 @@ class OrderedSet(collections.abc.MutableSet):
         self.discard(key)
         return key
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         if not self:
             return "{}()".format(self.__class__.__name__)
         return "{}({!r})".format(self.__class__.__name__, list(self))

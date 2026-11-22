@@ -125,7 +125,7 @@ class lazyprop:
     3
     """
 
-    def __init__(self, func):
+    def __init__(self, func) -> None:
         self.__doc__ = getattr(func, "__doc__")
         self.__isabstractmethod__ = getattr(func, "__isabstractmethod__", False)
         self.func = func
@@ -137,6 +137,6 @@ class lazyprop:
             value = instance.__dict__[self.func.__name__] = self.func(instance)
             return value
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         cn = self.__class__.__name__
         return "<{} func={}>".format(cn, self.func)

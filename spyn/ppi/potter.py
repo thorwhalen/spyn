@@ -77,7 +77,7 @@ from sklearn.base import BaseEstimator, ClusterMixin
 
 
 class NaiveBayesPot(BaseEstimator, ClusterMixin):
-    def __init__(self, additive_smoother=1):
+    def __init__(self, additive_smoother=1) -> None:
         self.additive_smoother = additive_smoother
 
     def fit(

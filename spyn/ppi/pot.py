@@ -60,7 +60,9 @@ class Pot:
     2
     """
 
-    def __init__(self, data: Pot | float | int | pd.DataFrame | dict | None = None):
+    def __init__(
+        self, data: Pot | float | int | pd.DataFrame | dict | None = None
+    ) -> None:
         if isinstance(data, Pot):
             self.tb = data.tb
         elif isinstance(data, (float, int)):
@@ -683,7 +685,7 @@ class Pot:
 class ProbPot(Pot):
     """A Pot subclass for probability-specific operations."""
 
-    def __init__(self, data=None):
+    def __init__(self, data=None) -> None:
         super().__init__(data=data)
 
     @staticmethod

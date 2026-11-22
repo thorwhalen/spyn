@@ -14,7 +14,7 @@ from spyn.utils.special import DictDefaultDict
 
 
 class EdgeCounter:
-    def __init__(self, item_set_iterator=None):
+    def __init__(self, item_set_iterator=None) -> None:
         self.num_of_sets = 0
         self.node = Counter()
         self.edge = Counter()
@@ -22,12 +22,12 @@ class EdgeCounter:
             for item_set in item_set_iterator:
                 self.update(item_set)
 
-    def update(self, item_set):
+    def update(self, item_set) -> None:
         self.num_of_sets += 1
         self.node.update(item_set)
         self.edge.update(permutations(item_set, 2))
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         s = ""
         s += "num of sets: %d\n" % self.num_of_sets
         s += "num of nodes: %d\n" % len(self.node)
@@ -77,11 +77,11 @@ class NaiveGraph:
     A naive graph is essentially a collection of Naive Bayes Networks, when propagation_depth is 1 (the default).
     """
 
-    def __init__(self, data=None, propagation_depth=1, **kwargs):
+    def __init__(self, data=None, propagation_depth=1, **kwargs) -> None:
 
         self.propagation_depth = propagation_depth
 
-    def assimilate_evidence(self, evidence):
+    def assimilate_evidence(self, evidence) -> None:
         if isinstance(evidence, str):
             evidence = Pot.binary_pot(varname=evidence, prob=0.999999)
         evidence_var = evidence.vars()[0]
@@ -92,7 +92,7 @@ class NaiveGraph:
                 adj_pot.__mul__(evidence)
             )
 
-    def unassimilate_evidence(self, evidence):
+    def unassimilate_evidence(self, evidence) -> None:
         """
         This is SUPPPOSED to be the inverse of assimilation.
 
@@ -119,7 +119,7 @@ class NaiveGraph:
                 )
             ).normalize()
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         s = ""
         s += "num of nodes: %d\n" % len(self.node)
         s += "num of (directed) edges: %d\n" % sum([len(v) for v in self.edge.values()])
@@ -138,7 +138,7 @@ class BinaryNaiveGraph(NaiveGraph):
         prior_denominator=0.0,
         prior_numerator=0.0,
         **kwargs,
-    ):
+    ) -> None:
         super().__init__(data=data, propagation_depth=propagation_depth)
 
         if hasattr(data, "__iter__"):
@@ -214,7 +214,7 @@ class BinaryNaiveGraph(NaiveGraph):
         self.post_pot = None
         self.initialize_post_pot()
 
-    def initialize_post_pot(self):
+    def initialize_post_pot(self) -> None:
         self.post_pot = DictDefaultDict(self.node)
 
     def post_prob_sorted_vars(self):

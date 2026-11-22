@@ -8,7 +8,7 @@ class DictDefaultDict(dict):
         (2) it is not a function that is called to create the default value (so careful with referenced variables)
     """
 
-    def __init__(self, default_dict):
+    def __init__(self, default_dict) -> None:
         super().__init__()
         self.default_dict = default_dict
 
