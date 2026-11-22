@@ -1,5 +1,5 @@
 {
-  "collection_duration_seconds": 9.205104351043701,
+  "collection_duration_seconds": 7.805168628692627,
   "commit_message": "docs: skip-mark the 32 notebook-export README blocks that need ut [skip publish]",
   "commit_sha": "6dd5c7a9a3a1928a30a9e7eb10eec7b8bd767af1",
   "metrics": {
@@ -11,19 +11,29 @@
       "statements_total": 0
     },
     "umpyre_stats": {
-      "comment_lines": 48750,
-      "comment_lines_ratio": 0.05307214218761737,
-      "docs_lines": 186156,
-      "empty_lines": 132314,
-      "empty_lines_ratio": 0.14404487018281856,
-      "files_analyzed": 1791,
-      "function_lines": 606117,
-      "function_lines_ratio": 0.6598549252580939,
-      "mean_lines_per_function": 20.17632568822609,
-      "num_classes": 4330,
-      "num_functions": 30041,
+      "comment_lines": 49870,
+      "comment_lines_ratio": 0.05279488968334711,
+      "docs_lines": 224013,
+      "empty_lines": 134858,
+      "empty_lines_ratio": 0.14276746005447816,
+      "errors": [
+        "_shape.py: invalid syntax (_shape.py, line 4)",
+        "_array_like.py: invalid syntax (_array_like.py, line 15)",
+        "_nbit.py: invalid syntax (_nbit.py, line 6)",
+        "_scalars.py: invalid syntax (_scalars.py, line 7)",
+        "_char_codes.py: invalid syntax (_char_codes.py, line 3)",
+        "_dtype_like.py: invalid syntax (_dtype_like.py, line 21)",
+        "mypy_plugin.py: invalid syntax (mypy_plugin.py, line 118)"
+      ],
+      "files_analyzed": 1708,
+      "function_lines": 642599,
+      "function_lines_ratio": 0.6802876141092675,
+      "mean_lines_per_function": 21.863057974959172,
+      "num_classes": 4060,
+      "num_functions": 29392,
       "pypi_version": "0.0.10",
-      "total_lines": 918561
+      "total_errors": 7,
+      "total_lines": 944599
     },
     "wily": {
       "cyclomatic_avg": 0.0,
@@ -42,6 +52,6 @@
   },
   "python_version": "3.10",
   "schema_version": "1.0",
-  "timestamp": "2026-11-22T21:52:15.061324Z",
+  "timestamp": "2026-11-22T21:52:16.120483Z",
   "workflow_status": {}
 }
