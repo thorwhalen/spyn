@@ -25,7 +25,7 @@ class BipartiteStats:
     #     ab
     #     ba
 
-    def __init__(self, get_a_list_from_item=None, get_b_list_from_item=None):
+    def __init__(self, get_a_list_from_item=None, get_b_list_from_item=None) -> None:
         self._count = CountVal(0.0)
         self.a = KeyVal()
         self.b = KeyVal()
@@ -36,7 +36,7 @@ class BipartiteStats:
 
     def count_data(
         self, item_iterator, get_a_list_from_item=None, get_b_list_from_item=None
-    ):
+    ) -> None:
         self.__init__(
             get_a_list_from_item=get_a_list_from_item,
             get_b_list_from_item=get_b_list_from_item,
@@ -83,7 +83,7 @@ class BipartiteEdgeCounts:
     #     ab_count
     #     ba_count
 
-    def __init__(self, get_a_list_from_item=None, get_b_list_from_item=None):
+    def __init__(self, get_a_list_from_item=None, get_b_list_from_item=None) -> None:
         self._count = CountVal(0.0)
         self.a_count = KeyCount()
         self.b_count = KeyCount()
@@ -92,7 +92,7 @@ class BipartiteEdgeCounts:
         self.get_a_list_from_item = get_a_list_from_item or get_a_list_from_item_default
         self.get_b_list_from_item = get_b_list_from_item or get_b_list_from_item_default
 
-    def learn(self, item_iterator):
+    def learn(self, item_iterator) -> None:
         self.__init__()
         for item in item_iterator:
             self._count.increment()
@@ -125,22 +125,22 @@ class Val:
 
     v = 0.0
 
-    def __init__(self, v):
+    def __init__(self, v) -> None:
         if isinstance(v, Val):
             self.v = copy.deepcopy(v.v)
         else:
             self.v = copy.deepcopy(v)
 
-    def add(self, y):
+    def add(self, y) -> None:
         self.v = self.v + y.v
 
-    def sub(self, y):
+    def sub(self, y) -> None:
         self.v = self.v - y.v
 
-    def mul(self, y):
+    def mul(self, y) -> None:
         self.v = self.v * y.v
 
-    def div(self, y):
+    def div(self, y) -> None:
         self.v = self.v / y.v
 
     def unwrapped(self):
@@ -169,21 +169,21 @@ class Val:
         x.div(y)
         return x
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.v)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return str(self.v)
 
 
 class CountVal(Val):
     v = 0.0
 
-    def __init__(self, v=0.0):
+    def __init__(self, v=0.0) -> None:
         super().__init__(v)
         self.v = float(v)
 
-    def increment(self):
+    def increment(self) -> None:
         self.v += 1.0
 
 
@@ -196,14 +196,14 @@ class LHVal(Val):
 
     v = 0.5  # where the value will be stored
 
-    def __init__(self, v=0.5):
+    def __init__(self, v=0.5) -> None:
         super().__init__(v)
         self.v = float(v)
 
-    def add(self, y):
+    def add(self, y) -> None:
         self.v = (self.v * y.v) / (self.v * y.v + (1 - self.v) * (1 - y.v))
 
-    def sub(self, y):
+    def sub(self, y) -> None:
         self.v = (self.v / y.v) / (self.v / y.v + (1 - self.v) / (1 - y.v))
 
 
@@ -218,13 +218,13 @@ class KeyVal(Val):
      the (key-aligned) values
     """
 
-    def __init__(self, v=None):
+    def __init__(self, v=None) -> None:
         if v is None:
             self.v = dict()
         else:
             super().__init__(v)
 
-    def add(self, kv):
+    def add(self, kv) -> None:
         if hasattr(kv.v, "keys"):
             for k in list(kv.v.keys()):
                 if k in list(self.v.keys()):
@@ -235,7 +235,7 @@ class KeyVal(Val):
             for k in list(self.v.keys()):
                 self.v[k].v = self.v[k].v + kv.v
 
-    def sub(self, kv):
+    def sub(self, kv) -> None:
         if hasattr(kv.v, "keys"):
             for k in list(kv.v.keys()):
                 if k in list(self.v.keys()):
@@ -244,7 +244,7 @@ class KeyVal(Val):
             for k in list(self.v.keys()):
                 self.v[k].v = self.v[k].v - kv.v
 
-    def mul(self, kv):
+    def mul(self, kv) -> None:
         if hasattr(kv.v, "keys"):
             for k in list(kv.v.keys()):
                 if k in list(self.v.keys()):
@@ -255,7 +255,7 @@ class KeyVal(Val):
             for k in list(self.v.keys()):
                 self.v[k].v = self.v[k].v * kv.v
 
-    def div(self, kv):
+    def div(self, kv) -> None:
         if hasattr(kv.v, "keys"):
             for k in list(kv.v.keys()):
                 if k in list(self.v.keys()):
@@ -287,13 +287,13 @@ class KeyCount(KeyVal):
     Extends a map so that one can add and subtract dict pairs by adding or subtracting the (key-aligned) values
     """
 
-    def __init__(self, v=None):
+    def __init__(self, v=None) -> None:
         if v is None:
             self.v = dict()
         else:
             super().__init__(v)
 
-    def increment(self, k):
+    def increment(self, k) -> None:
         if k in self.v:
             self.v[k].add(Val(1.0))
         else:

@@ -13,7 +13,7 @@ import matplotlib.pylab as plt
 class Markov:
     def __init__(
         self, cond_probs, initial_probs, states=None, t_name=None, t_plus_1_name=None
-    ):
+    ) -> None:
         self.initial_probs = initial_probs
         self.cond_probs = cond_probs
         if (
@@ -49,7 +49,7 @@ class Markov:
         self.t_plus_1_name = t_plus_1_name
         self.cond_probs.index.name = t_plus_1_name
 
-    def plot_matrix_prod(self, n=1, display_transpose=False):
+    def plot_matrix_prod(self, n=1, display_transpose=False) -> None:
         cond_prob_matrix = np.matrix(self.cond_probs.as_matrix())
         cond_prob_matrix = cond_prob_matrix**n
         if display_transpose:
@@ -113,20 +113,20 @@ class Markov:
 
 
 class MarkovCounts:
-    def __init__(self):
+    def __init__(self) -> None:
         self.initial_counts = Counter()
         self.pair_counts = Counter()
 
-    def add_sequence(self, seq):
+    def add_sequence(self, seq) -> None:
         self.initial_counts.update([seq[0]])
         self.pair_counts.update(_sliding_window_iter(seq))
 
 
 class IndexedMarkovCounts:
-    def __init__(self):
+    def __init__(self) -> None:
         self.markov_counts = defaultdict(lambda: MarkovCounts())
 
-    def add_sequence(self, index, seq):
+    def add_sequence(self, index, seq) -> None:
         self.markov_counts[index].add_sequence(seq)
 
     def __getstate__(self):
@@ -147,11 +147,11 @@ class IndexedMarkovCounts:
 
 
 class MultipleMarkovCounts:
-    def __init__(self):
+    def __init__(self) -> None:
         self.initial_counts = defaultdict(lambda: Counter())
         self.pair_counts = defaultdict(lambda: Counter())
 
-    def add_sequence(self, index, seq):
+    def add_sequence(self, index, seq) -> None:
         self.initial_counts[index].update([seq[0]])
         self.pair_counts[index].update(_sliding_window_iter(seq))
 
