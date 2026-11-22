@@ -1,7 +1,7 @@
 {
-  "collection_duration_seconds": 7.805168628692627,
-  "commit_message": "docs: skip-mark the 32 notebook-export README blocks that need ut [skip publish]",
-  "commit_sha": "6dd5c7a9a3a1928a30a9e7eb10eec7b8bd767af1",
+  "collection_duration_seconds": 9.748274326324463,
+  "commit_message": "Merge 6dd5c7a9a3a1928a30a9e7eb10eec7b8bd767af1 into 5d07825ff18ff51e37a5be276193a7a07cca768a",
+  "commit_sha": "ea4e600aaff1d0d996af952900161b6a00b43ae6",
   "metrics": {
     "coverage": {
       "branch_coverage": 0.0,
@@ -52,6 +52,6 @@
   },
   "python_version": "3.10",
   "schema_version": "1.0",
-  "timestamp": "2026-11-22T21:52:16.120483Z",
+  "timestamp": "2026-11-22T21:52:25.047382Z",
   "workflow_status": {}
 }
