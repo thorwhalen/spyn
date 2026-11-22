@@ -1,28 +1,26 @@
 metric,value
 schema_version,1.0
-timestamp,2026-11-22T17:46:26.188209Z
+timestamp,2026-11-22T17:46:44.556869Z
 commit_sha,d4d960261ffd2e3923cc86b002fd18180cdb1b56
 commit_message,Merge 0b5e5080909bdfdf7a5de58626fc28d1dc25174a into 9c375553529dee1b64ed97b80b14a28d378f286e
 python_version,3.10
-metrics.umpyre_stats.num_functions,29392
-metrics.umpyre_stats.num_classes,4060
-metrics.umpyre_stats.total_lines,944597
-metrics.umpyre_stats.empty_lines,134858
-metrics.umpyre_stats.comment_lines,49870
-metrics.umpyre_stats.docs_lines,224013
-metrics.umpyre_stats.function_lines,642597
-metrics.umpyre_stats.empty_lines_ratio,0.14276776233674254
-metrics.umpyre_stats.comment_lines_ratio,0.05279500146623375
-metrics.umpyre_stats.function_lines_ratio,0.6802869371806177
-metrics.umpyre_stats.mean_lines_per_function,21.862989929232445
-metrics.umpyre_stats.files_analyzed,1708
+metrics.umpyre_stats.num_functions,30041
+metrics.umpyre_stats.num_classes,4330
+metrics.umpyre_stats.total_lines,918559
+metrics.umpyre_stats.empty_lines,132314
+metrics.umpyre_stats.comment_lines,48750
+metrics.umpyre_stats.docs_lines,186156
+metrics.umpyre_stats.function_lines,606115
+metrics.umpyre_stats.empty_lines_ratio,0.14404518381508427
+metrics.umpyre_stats.comment_lines_ratio,0.05307225774283416
+metrics.umpyre_stats.function_lines_ratio,0.6598541846522651
+metrics.umpyre_stats.mean_lines_per_function,20.176259112546187
+metrics.umpyre_stats.files_analyzed,1791
 metrics.umpyre_stats.pypi_version,0.0.8
-metrics.umpyre_stats.errors,"['_shape.py: invalid syntax (_shape.py, line 4)', '_array_like.py: invalid syntax (_array_like.py, line 15)', '_nbit.py: invalid syntax (_nbit.py, line 6)', '_scalars.py: invalid syntax (_scalars.py, line 7)', '_char_codes.py: invalid syntax (_char_codes.py, line 3)', '_dtype_like.py: invalid syntax (_dtype_like.py, line 21)', 'mypy_plugin.py: invalid syntax (mypy_plugin.py, line 118)']"
-metrics.umpyre_stats.total_errors,7
 metrics.workflow_status.last_run_status,success
-metrics.workflow_status.last_success_timestamp,2026-07-30T17:50:45Z
-metrics.workflow_status.recent_failure_count,2
-metrics.workflow_status.run_url,https://github.com/thorwhalen/spyn/actions/runs/30567744295
+metrics.workflow_status.last_success_timestamp,2026-11-22T17:46:28Z
+metrics.workflow_status.recent_failure_count,1
+metrics.workflow_status.run_url,https://github.com/thorwhalen/spyn/actions/runs/45051217645
 metrics.workflow_status.total_runs_analyzed,10
 metrics.wily.cyclomatic_avg,0.0
 metrics.wily.maintainability_index,0.0
@@ -38,4 +36,4 @@ metrics.coverage.branch_coverage,0.0
 metrics.coverage.statements_covered,0
 metrics.coverage.statements_total,0
 metrics.coverage.error,No coverage file found
-collection_duration_seconds,6.835195302963257
+collection_duration_seconds,7.94576621055603

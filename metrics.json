@@ -1,5 +1,5 @@
 {
-  "collection_duration_seconds": 6.835195302963257,
+  "collection_duration_seconds": 7.94576621055603,
   "commit_message": "Merge 0b5e5080909bdfdf7a5de58626fc28d1dc25174a into 9c375553529dee1b64ed97b80b14a28d378f286e",
   "commit_sha": "d4d960261ffd2e3923cc86b002fd18180cdb1b56",
   "metrics": {
@@ -11,29 +11,19 @@
       "statements_total": 0
     },
     "umpyre_stats": {
-      "comment_lines": 49870,
-      "comment_lines_ratio": 0.05279500146623375,
-      "docs_lines": 224013,
-      "empty_lines": 134858,
-      "empty_lines_ratio": 0.14276776233674254,
-      "errors": [
-        "_shape.py: invalid syntax (_shape.py, line 4)",
-        "_array_like.py: invalid syntax (_array_like.py, line 15)",
-        "_nbit.py: invalid syntax (_nbit.py, line 6)",
-        "_scalars.py: invalid syntax (_scalars.py, line 7)",
-        "_char_codes.py: invalid syntax (_char_codes.py, line 3)",
-        "_dtype_like.py: invalid syntax (_dtype_like.py, line 21)",
-        "mypy_plugin.py: invalid syntax (mypy_plugin.py, line 118)"
-      ],
-      "files_analyzed": 1708,
-      "function_lines": 642597,
-      "function_lines_ratio": 0.6802869371806177,
-      "mean_lines_per_function": 21.862989929232445,
-      "num_classes": 4060,
-      "num_functions": 29392,
+      "comment_lines": 48750,
+      "comment_lines_ratio": 0.05307225774283416,
+      "docs_lines": 186156,
+      "empty_lines": 132314,
+      "empty_lines_ratio": 0.14404518381508427,
+      "files_analyzed": 1791,
+      "function_lines": 606115,
+      "function_lines_ratio": 0.6598541846522651,
+      "mean_lines_per_function": 20.176259112546187,
+      "num_classes": 4330,
+      "num_functions": 30041,
       "pypi_version": "0.0.8",
-      "total_errors": 7,
-      "total_lines": 944597
+      "total_lines": 918559
     },
     "wily": {
       "cyclomatic_avg": 0.0,
@@ -44,14 +34,14 @@
     },
     "workflow_status": {
       "last_run_status": "success",
-      "last_success_timestamp": "2026-07-30T17:50:45Z",
-      "recent_failure_count": 2,
-      "run_url": "https://github.com/thorwhalen/spyn/actions/runs/30567744295",
+      "last_success_timestamp": "2026-11-22T17:46:28Z",
+      "recent_failure_count": 1,
+      "run_url": "https://github.com/thorwhalen/spyn/actions/runs/45051217645",
       "total_runs_analyzed": 10
     }
   },
   "python_version": "3.10",
   "schema_version": "1.0",
-  "timestamp": "2026-11-22T17:46:26.188209Z",
+  "timestamp": "2026-11-22T17:46:44.556869Z",
   "workflow_status": {}
 }
