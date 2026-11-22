@@ -5,7 +5,7 @@
 
 ## Pages
 
-- [Spyn: Hyper-graphical Probabilisitic Inference](index.html.md): Hyper-graphical Probabilisitic Inference.
+- [spyn: hyper-graphical probabilistic inference](index.html.md): Discrete probabilistic inference whose model is a set of “hyper-edges”: tables (potentials) that car...
 - [API reference](api.html.md): | &#96;spyn&#96;   |    |
 - [spyn](_autosummary/spyn.html.md): | &#96;ppi&#96;     |                                                         |
 - [spyn.ppi](_autosummary/spyn.ppi.html.md): | &#96;binary_pairs_kv&#96;     | Edge statistics over binary pair sets using key-value count structures.   ...
@@ -25,7 +25,7 @@
 - [spyn.utils.order_conserving](_autosummary/spyn.utils.order_conserving.html.md): Order-preserving set operations using plain dicts (Python 3.7+).
 - [spyn.utils.ordered_set](_autosummary/spyn.utils.ordered_set.html.md): OrderedSet collection (Python recipe: http://code.activestate.com/recipes/576694/).
 - [spyn.utils.special](_autosummary/spyn.utils.special.html.md): Specialized dict subclasses used as default-value mappings.
-- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-22 21:54 UTC&#42;&#42; from commit &lt;a href="https://github.com/tho...
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-11-22 23:34 UTC&#42;&#42; from commit &lt;a href="https://github.com/tho...
 
 ## Optional
 

@@ -1,34 +1,34 @@
 {
   "schema_version": 1,
-  "built_at": "2026-11-22T21:54:42Z",
+  "built_at": "2026-11-22T23:34:54Z",
   "package": {
     "name": "spyn",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "display_name": "spyn",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e",
-    "short_commit": "bd0ae5d",
+    "commit": "6dff6231ff247a9e4690fdacd649b01e33aafb21",
+    "short_commit": "6dff623",
     "branch": "master",
     "tags": [
-      "0.0.11"
+      "0.0.12"
     ],
     "dirty": false,
     "remote_url": "https://github.com/thorwhalen/spyn",
-    "commit_url": "https://github.com/thorwhalen/spyn/commit/bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e",
+    "commit_url": "https://github.com/thorwhalen/spyn/commit/6dff6231ff247a9e4690fdacd649b01e33aafb21",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "thorwhalen/spyn",
-    "sha": "35153fb67588f858f7e1dd5e59440f780c0f5344",
+    "sha": "be0a8d08e379872095673950ee21f9de0d267419",
     "sha_in_history": true,
     "ref": "refs/heads/master",
     "ref_name": "master",
-    "run_id": "45074543310",
-    "run_url": "https://github.com/thorwhalen/spyn/actions/runs/45074543310",
+    "run_id": "45083822204",
+    "run_url": "https://github.com/thorwhalen/spyn/actions/runs/45083822204",
     "server_url": "https://github.com"
   },
   "tools": {
@@ -63,13 +63,15 @@
   "pypi": {
     "checked": true,
     "latest": "0.0.11",
-    "relation": "same",
+    "relation": "ahead",
     "error": null
   },
-  "reproduce": "git clone https://github.com/thorwhalen/spyn && cd spyn\ngit checkout bd0ae5db8a5eef8d361d0cf889fa6b79f1a45a1e\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/thorwhalen/spyn && cd spyn\ngit checkout 6dff6231ff247a9e4690fdacd649b01e33aafb21\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
-    "aligned": true,
-    "notes": []
+    "aligned": false,
+    "notes": [
+      "The documented version (0.0.12) is ahead of the latest release on PyPI (0.0.11): these docs describe unreleased code."
+    ]
   }
 }
